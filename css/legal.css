@@ -66,20 +66,6 @@
 .legal-container a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 2px; }
 .legal-container a:hover { color: var(--accent); }
 
-.legal-disclaimer {
-  margin-top: 3.5rem;
-  padding: 1.4rem 1.6rem;
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  background: var(--bg-elevated);
-}
-.legal-disclaimer p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--ink-faint);
-  line-height: 1.6;
-}
-
 .legal-footer {
   border-top: 1px solid var(--border);
   padding-block: 2rem;
