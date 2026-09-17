@@ -3,56 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Papp Villanyszerelés — demóoldal</title>
+    <title>Fázis Villany — precíz villanyszerelés | demóoldal</title>
     <meta
       name="description"
-      content="Minta weboldal villanyszerelő vállalkozásnak — demó projekt a SzakiOldal portfólióból."
+      content="Ipari hangvételű bemutató weboldal villanyszerelő vállalkozásnak — demó projekt a SzakiOldal portfólióból."
     />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#08090A" />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2312172B'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Georgia,serif' fill='%23F5C518' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%2308090A'/%3E%3Crect x='6' y='6' width='88' height='88' rx='14' fill='none' stroke='%23D7FF3E' stroke-width='2' opacity='0.5'/%3E%3Cpath d='M56 16L26 56h20l-4 30 34-42H56l4-28z' fill='%23D7FF3E'/%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Mulish:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --bg: #12172b;
-        --surface: #1a2140;
-        --surface-2: #202850;
-        --line: #2e3766;
-        --ink: #f5f7ff;
-        --ink-dim: #aeb4d6;
-        --ink-faint: #767fad;
-        --accent: #f5c518;
-        --accent-dim: #c9a312;
-        --blue: #5c7cfa;
-        --on-accent: #12172b;
+        --bg: #08090a;
+        --panel: #131517;
+        --panel-2: #191b1d;
+        --line: #2b2e31;
+        --line-soft: rgba(255, 255, 255, 0.06);
+        --ink: #f5f6f4;
+        --ink-dim: #a6aca9;
+        --ink-faint: #6e7472;
+        --accent: #d7ff3e;
+        --accent-bright: #e7ff7a;
+        --accent-dim: #aecb27;
+        --on-accent: #08090a;
+        --glow: rgba(215, 255, 62, 0.35);
+        --heading-font: "Big Shoulders Display", "Arial Narrow", sans-serif;
+        --body-font: "Public Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       }
       *,
       *::before,
       *::after {
         box-sizing: border-box;
       }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
       body {
         margin: 0;
         background: var(--bg);
         color: var(--ink-dim);
-        font-family:
-          "Mulish",
-          system-ui,
-          -apple-system,
-          Segoe UI,
-          Roboto,
-          sans-serif;
-        font-size: 1.05rem;
-        line-height: 1.6;
+        font-family: var(--body-font);
+        font-size: 1.02rem;
+        line-height: 1.65;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        position: relative;
       }
-      img {
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background-image:
+          linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
+        background-size: 44px 44px;
+      }
+      img,
+      svg {
         max-width: 100%;
         display: block;
       }
@@ -62,88 +84,195 @@
       h1,
       h2,
       h3 {
-        font-family: "Rajdhani", system-ui, sans-serif;
+        font-family: var(--heading-font);
         color: var(--ink);
         margin: 0;
-        line-height: 1;
-        text-wrap: balance;
+        line-height: 0.98;
+        font-weight: 800;
         letter-spacing: 0.01em;
-        font-weight: 700;
       }
-      .mono {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
+      p {
+        margin: 0;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
       }
       :focus-visible {
         outline: 3px solid var(--accent);
-        outline-offset: 2px;
+        outline-offset: 3px;
       }
       @media (prefers-reduced-motion: reduce) {
-        * {
+        *,
+        *::before,
+        *::after {
           animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
           transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
         }
       }
 
       .container {
-        max-width: 1120px;
+        max-width: 1180px;
         margin-inline: auto;
         padding-inline: clamp(20px, 5vw, 48px);
       }
       section {
-        padding-block: clamp(56px, 8vw, 100px);
+        padding-block: clamp(56px, 8vw, 108px);
+        position: relative;
+      }
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        z-index: 200;
+        background: var(--accent);
+        color: var(--on-accent);
+        padding: 0.8em 1.2em;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .skip-link:focus {
+        left: 12px;
+        top: 12px;
       }
 
-      .topbar {
-        background: #0c0f1e;
-        color: #c7ccee;
-        font-size: 0.85rem;
-        font-weight: 600;
+      /* --- label / index system --- */
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6em;
+        font-family: var(--body-font);
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--accent);
       }
-      .topbar .container {
+      .tag::before {
+        content: "";
+        width: 22px;
+        height: 1px;
+        background: var(--accent);
+        flex-shrink: 0;
+      }
+      .idx {
+        font-family: var(--heading-font);
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+        color: var(--accent);
+      }
+      .section-head {
+        margin-bottom: clamp(2rem, 4vw, 3.2rem);
+        max-width: 60ch;
+      }
+      .section-head .tag {
+        margin-bottom: 0.9em;
+      }
+      .section-head h2 {
+        font-size: clamp(2rem, 3.4vw + 1rem, 3.1rem);
+        text-transform: uppercase;
+      }
+      .section-head p.lede {
+        margin-top: 1rem;
+        max-width: 56ch;
+        font-size: 1rem;
+      }
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        position: relative;
+      }
+      .panel::before,
+      .panel::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        pointer-events: none;
+        opacity: 0.9;
+      }
+      .panel::before {
+        top: -1px;
+        left: -1px;
+        border-top: 2px solid var(--accent);
+        border-left: 2px solid var(--accent);
+      }
+      .panel::after {
+        bottom: -1px;
+        right: -1px;
+        border-bottom: 2px solid var(--accent);
+        border-right: 2px solid var(--accent);
+      }
+
+      /* --- utility bar --- */
+      .utility-bar {
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        font-family: var(--body-font);
+        font-size: 0.82rem;
+        color: var(--ink-faint);
+      }
+      .utility-bar .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-block: 0.55rem;
+        padding-block: 0.6rem;
         gap: 1rem;
         flex-wrap: wrap;
       }
-      .topbar a {
-        color: var(--accent);
+      .utility-bar a {
+        color: var(--ink-dim);
         text-decoration: none;
+        font-weight: 600;
+      }
+      .utility-bar a:hover {
+        color: var(--accent);
       }
       .badge-demo {
         font-size: 0.68rem;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        background: #242c52;
-        color: #aeb4d6;
-        padding: 0.25em 0.65em;
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+        color: var(--ink-faint);
+        padding: 0.3em 0.75em;
         border-radius: 2px;
+        font-weight: 600;
       }
 
-      header {
-        background: rgba(18, 23, 43, 0.9);
-        backdrop-filter: blur(8px);
+      /* --- header / nav --- */
+      header.site-header {
+        background: rgba(8, 9, 10, 0.88);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--line);
         position: sticky;
         top: 0;
-        z-index: 50;
+        z-index: 100;
       }
       .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-block: 16px;
+        padding-block: 14px;
+        gap: 1rem;
       }
       .wordmark {
-        font-family: "Rajdhani", sans-serif;
-        font-weight: 700;
-        font-size: 1.4rem;
+        font-family: var(--heading-font);
+        font-weight: 800;
+        font-size: 1.45rem;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
         color: var(--ink);
         text-decoration: none;
         display: flex;
         align-items: center;
         gap: 0.5em;
+        flex-shrink: 0;
       }
       .wordmark svg {
         flex-shrink: 0;
@@ -151,15 +280,14 @@
       .nav-links {
         display: flex;
         gap: 2rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        align-items: center;
       }
       .nav-links a {
         text-decoration: none;
         color: var(--ink-dim);
         font-weight: 600;
-        font-size: 0.95rem;
+        font-size: 0.92rem;
+        letter-spacing: 0.02em;
       }
       .nav-links a:hover {
         color: var(--accent);
@@ -169,33 +297,60 @@
         background: none;
         border: 1px solid var(--line);
         color: var(--ink);
-        width: 42px;
-        height: 42px;
-        border-radius: 4px;
-        font-size: 1.2rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 2px;
         cursor: pointer;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+      .nav-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--ink);
+        transition:
+          transform 0.2s ease,
+          opacity 0.2s ease;
+      }
+      .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
       }
       .nav-mobile {
         display: none;
         flex-direction: column;
-        gap: 1rem;
-        padding-block: 1.2rem;
+        gap: 0.2rem;
+        padding-block: 0.6rem 1.2rem;
         border-top: 1px solid var(--line);
       }
       .nav-mobile a {
         text-decoration: none;
         color: var(--ink-dim);
         font-weight: 600;
+        padding: 0.85rem 0.2rem;
+        border-bottom: 1px solid var(--line-soft);
+        min-height: 44px;
+        display: flex;
+        align-items: center;
       }
-      @media (max-width: 980px) {
+      .nav-mobile.open {
+        display: flex;
+      }
+      @media (max-width: 860px) {
         .nav-links,
         .btn.desktop-only {
           display: none;
         }
         .nav-toggle {
-          display: block;
-        }
-        .nav-mobile.open {
           display: flex;
         }
       }
@@ -203,225 +358,425 @@
       .btn {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5em;
         font-weight: 700;
-        font-size: 0.98rem;
-        padding: 0.9em 1.7em;
-        border-radius: 4px;
+        font-size: 0.95rem;
+        min-height: 48px;
+        padding: 0.7em 1.7em;
+        border-radius: 2px;
         text-decoration: none;
-        border: 2px solid transparent;
+        border: 1px solid transparent;
         cursor: pointer;
         transition:
-          transform 0.15s,
-          background 0.15s,
-          border-color 0.15s,
-          color 0.15s;
-        font-family: "Mulish", sans-serif;
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          border-color 0.15s ease,
+          color 0.15s ease,
+          background 0.15s ease;
+        font-family: var(--body-font);
       }
       .btn-accent {
         background: var(--accent);
         color: var(--on-accent);
+        box-shadow: 0 0 0 rgba(215, 255, 62, 0);
       }
       .btn-accent:hover {
-        background: #ffd84d;
-        transform: translateY(-1px);
+        background: var(--accent-bright);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px var(--glow);
       }
       .btn-outline {
         border-color: var(--line);
         color: var(--ink);
+        background: transparent;
       }
       .btn-outline:hover {
         border-color: var(--accent);
         color: var(--accent);
       }
 
+      /* --- hero --- */
       .hero {
-        padding-block: clamp(48px, 8vw, 84px);
+        padding-block: clamp(52px, 8vw, 96px);
+        overflow: hidden;
       }
       .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-        gap: clamp(28px, 5vw, 64px);
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: clamp(32px, 5vw, 64px);
         align-items: center;
-      }
-      .eyebrow {
-        font-weight: 700;
-        font-size: 0.85rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 1em;
-        display: flex;
-        align-items: center;
-        gap: 0.6em;
-        font-family: "IBM Plex Mono", monospace;
-      }
-      .eyebrow::before {
-        content: "";
-        width: 20px;
-        height: 2px;
-        background: var(--accent);
       }
       .hero h1 {
-        font-size: clamp(2.3rem, 3.8vw + 1rem, 3.8rem);
+        font-size: clamp(2.5rem, 4.4vw + 1rem, 4.4rem);
+        text-transform: uppercase;
+        margin-top: 0.7rem;
       }
       .hero p.lede {
-        max-width: 46ch;
-        margin-top: 1.2rem;
-        font-size: 1.08rem;
-        font-family: "Mulish", sans-serif;
+        max-width: 48ch;
+        margin-top: 1.4rem;
+        font-size: 1.06rem;
       }
       .hero-ctas {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
-        margin-top: 2rem;
+        margin-top: 2.2rem;
       }
       .hero-art {
-        aspect-ratio: 1/0.9;
+        aspect-ratio: 1/0.95;
+        padding: clamp(10px, 2vw, 20px);
       }
-      @media (max-width: 720px) {
+      .hero-art-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .hero-art-glow {
+        position: absolute;
+        inset: 10%;
+        background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+        filter: blur(20px);
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      .hero-caption {
+        margin-top: 0.9rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        text-align: center;
+      }
+      @media (max-width: 780px) {
         .hero-grid {
           grid-template-columns: 1fr;
         }
         .hero-art {
-          max-width: 260px;
+          max-width: 360px;
           margin-inline: auto;
           order: -1;
         }
       }
 
+      .pulse-wire {
+        stroke-dasharray: 6 16;
+        animation: dashmove 5s linear infinite;
+      }
+      @keyframes dashmove {
+        to {
+          stroke-dashoffset: -440;
+        }
+      }
+      .node-live {
+        animation: nodeglow 2.4s ease-in-out infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+      @keyframes nodeglow {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.45;
+        }
+      }
+
+      /* --- trust strip --- */
       .trust {
-        background: var(--surface);
+        background: var(--panel);
         border-block: 1px solid var(--line);
+        padding-block: 0;
       }
       .trust-row {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 1.5rem;
-        padding-block: 2rem;
-      }
-      @media (max-width: 800px) {
-        .trust-row {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
       }
       .trust-item {
         display: flex;
         gap: 0.8rem;
         align-items: flex-start;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
+        padding: 1.8rem 1.6rem;
+        border-left: 1px solid var(--line);
+      }
+      .trust-item:first-child {
+        border-left: none;
       }
       .trust-item svg {
         flex-shrink: 0;
         margin-top: 2px;
       }
+      @media (max-width: 780px) {
+        .trust-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .trust-item:nth-child(3) {
+          border-left: none;
+        }
+      }
+      @media (max-width: 480px) {
+        .trust-row {
+          grid-template-columns: 1fr;
+        }
+        .trust-item {
+          border-left: none;
+          border-top: 1px solid var(--line);
+        }
+        .trust-item:first-child {
+          border-top: none;
+        }
+      }
 
-      .section-head {
-        margin-bottom: 2.6rem;
-        max-width: 56ch;
-      }
-      .section-head .eyebrow {
-        margin-bottom: 0.6em;
-      }
-      .section-head h2 {
-        font-size: clamp(1.9rem, 3vw + 1rem, 2.7rem);
-      }
+      /* --- services --- */
       .service-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1.4rem;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.2rem;
       }
-      @media (max-width: 860px) {
+      @media (max-width: 980px) {
         .service-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
-      @media (max-width: 560px) {
+      @media (max-width: 540px) {
         .service-grid {
           grid-template-columns: 1fr;
         }
       }
       .service-card {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 1.6rem;
+        padding: 1.7rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .service-card .top-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .service-card .idx {
+        font-size: 1.6rem;
       }
       .service-card .icon {
         color: var(--accent);
-        margin-bottom: 0.9rem;
       }
       .service-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.4rem;
-        font-weight: 600;
+        font-size: 1.15rem;
+        font-weight: 700;
+        text-transform: none;
+        letter-spacing: 0;
       }
       .service-card p {
-        margin: 0;
-        font-size: 0.92rem;
-        font-family: "Mulish", sans-serif;
+        font-size: 0.9rem;
       }
-
-      .price-table {
-        width: 100%;
-        border-collapse: collapse;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        overflow: hidden;
-      }
-      .price-table th,
-      .price-table td {
-        text-align: left;
-        padding: 1rem 1.2rem;
-        border-bottom: 1px solid var(--line);
-        font-size: 0.95rem;
-        font-family: "Mulish", sans-serif;
-      }
-      .price-table th {
-        font-family: "IBM Plex Mono", monospace;
-        text-transform: uppercase;
-        font-size: 0.75rem;
-        letter-spacing: 0.05em;
-        color: var(--ink-faint);
-        font-weight: 500;
-      }
-      .price-table td:last-child,
-      .price-table th:last-child {
-        text-align: right;
+      .service-card .card-link {
+        margin-top: auto;
+        font-size: 0.8rem;
         font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
         color: var(--accent);
-        font-variant-numeric: tabular-nums;
-        font-family: "IBM Plex Mono", monospace;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4em;
       }
-      .price-table tr:last-child td {
-        border-bottom: none;
-      }
-      .price-note {
-        font-size: 0.85rem;
-        color: var(--ink-faint);
-        margin-top: 1rem;
-        font-family: "Mulish", sans-serif;
+      .service-card .card-link:hover {
+        color: var(--accent-bright);
       }
 
-      .area-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 2.5rem;
-        align-items: center;
+      /* --- process --- */
+      .process {
+        background: var(--panel);
+        border-block: 1px solid var(--line);
       }
-      @media (max-width: 800px) {
-        .area-grid {
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.6rem;
+        position: relative;
+      }
+      .process-grid::before {
+        content: "";
+        position: absolute;
+        top: 27px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--line);
+      }
+      .process-step {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .process-badge {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--heading-font);
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: var(--accent);
+        position: relative;
+        z-index: 1;
+      }
+      .process-step h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        text-transform: none;
+      }
+      .process-step p {
+        font-size: 0.88rem;
+      }
+      @media (max-width: 780px) {
+        .process-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem 1.4rem;
+        }
+        .process-grid::before {
+          display: none;
+        }
+      }
+      @media (max-width: 480px) {
+        .process-grid {
           grid-template-columns: 1fr;
         }
       }
+
+      /* --- safety spec sheet --- */
+      .spec-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .spec-table th,
+      .spec-table td {
+        text-align: left;
+        padding: 1.1rem 1.3rem;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.94rem;
+        vertical-align: top;
+      }
+      .spec-table th {
+        font-family: var(--body-font);
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        color: var(--ink-faint);
+        font-weight: 700;
+        width: 34%;
+      }
+      .spec-table tr:last-child td,
+      .spec-table tr:last-child th {
+        border-bottom: none;
+      }
+      .spec-table td {
+        color: var(--ink-dim);
+      }
+
+      /* --- references --- */
+      .ref-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.4rem;
+      }
+      @media (max-width: 900px) {
+        .ref-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .ref-note {
+        margin-bottom: 2rem;
+        font-size: 0.92rem;
+        color: var(--ink-faint);
+        max-width: 60ch;
+        padding: 0.9rem 1.1rem;
+        border-left: 2px solid var(--accent);
+        background: var(--panel);
+      }
+      .ref-card {
+        padding: 1.7rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .ref-card .tag {
+        font-size: 0.7rem;
+      }
+      .ref-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: none;
+      }
+      .ref-card p {
+        font-size: 0.9rem;
+      }
+
+      /* --- contact --- */
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 1.4rem;
+        align-items: stretch;
+      }
+      @media (max-width: 860px) {
+        .contact-wrap {
+          grid-template-columns: 1fr;
+        }
+      }
+      .contact-box {
+        padding: clamp(1.8rem, 4vw, 3rem);
+      }
+      .contact-box h2 {
+        font-size: clamp(1.8rem, 3vw + 1rem, 2.5rem);
+        text-transform: uppercase;
+      }
+      .contact-box p {
+        max-width: 52ch;
+        margin-top: 1rem;
+        font-size: 0.96rem;
+      }
+      .contact-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .contact-meta {
+        margin-top: 1.6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        color: var(--ink-faint);
+      }
+      .area-box {
+        padding: clamp(1.8rem, 4vw, 3rem);
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .area-box h3 {
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+      .area-box p {
+        font-size: 0.9rem;
+      }
       .map-frame {
         border: 1px solid var(--line);
-        border-radius: 8px;
+        border-radius: 2px;
         overflow: hidden;
         aspect-ratio: 4/3;
-        filter: grayscale(0.3) invert(0.92) contrast(0.9);
+        filter: grayscale(1) invert(0.9) contrast(0.85) brightness(0.92);
       }
       .map-frame iframe {
         width: 100%;
@@ -429,32 +784,21 @@
         border: 0;
       }
 
-      .contact-box {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        padding: clamp(2rem, 5vw, 3.5rem);
-        text-align: center;
-      }
-      .contact-box h2 {
-        font-size: clamp(1.9rem, 3.4vw + 1rem, 2.8rem);
-      }
-      .contact-box p {
-        max-width: 52ch;
-        margin: 1rem auto 0;
-        font-family: "Mulish", sans-serif;
-      }
-      .contact-ctas {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-
+      /* --- footer --- */
       footer {
         padding-block: 2.4rem;
         border-top: 1px solid var(--line);
+      }
+      .foot-top {
+        display: flex;
+        align-items: center;
+        gap: 0.6em;
+        font-family: var(--heading-font);
+        font-weight: 800;
+        text-transform: uppercase;
+        color: var(--ink);
+        font-size: 1.1rem;
+        margin-bottom: 1.2rem;
       }
       .foot-row {
         display: flex;
@@ -462,7 +806,7 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 1rem;
-        font-size: 0.85rem;
+        font-size: 0.84rem;
         color: var(--ink-faint);
       }
       .foot-row a {
@@ -470,158 +814,158 @@
         text-decoration: none;
         font-weight: 600;
       }
+      .foot-row a:hover {
+        color: var(--accent-bright);
+      }
     </style>
   </head>
   <body>
-    <div class="topbar">
+    <a class="skip-link" href="#main-content">Ugrás a tartalomhoz</a>
+
+    <div class="utility-bar">
       <div class="container">
         <span
-          >⚡ Hibaelhárítás 0-24 ·
-          <a href="tel:+3637134323">+36 30 713 4323</a></span
+          >Munkanapokon 7–18 óra ·
+          <a href="tel:+36309984471">+36 30 998 4471</a></span
         >
-        <span class="badge-demo">Demó projekt — SzakiOldal portfólió</span>
+        <span class="badge-demo">Demo projekt — SzakiOldal portfólió</span>
       </div>
     </div>
 
-    <header>
+    <header class="site-header">
       <div class="container nav">
         <a href="#top" class="wordmark">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="#F5C518" />
+          <svg width="22" height="22" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="94" height="94" rx="14" fill="#08090A" stroke="#2B2E31" stroke-width="2" />
+            <path d="M56 16L26 56h20l-4 30 34-42H56l4-28z" fill="#D7FF3E" />
           </svg>
-          Papp Villanyszerelés
+          Fázis Villany
         </a>
-        <ul class="nav-links">
-          <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
-          <li><a href="#arazas">Árazás</a></li>
-          <li><a href="#terulet">Területünk</a></li>
-          <li><a href="#kapcsolat">Kapcsolat</a></li>
-        </ul>
-        <a href="tel:+3637134323" class="btn btn-accent desktop-only"
-          >Hívjon most</a
-        >
+        <nav aria-label="Fő navigáció">
+          <ul class="nav-links">
+            <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+            <li><a href="#biztonsag">Biztonság</a></li>
+            <li><a href="#referenciak">Referenciák</a></li>
+            <li><a href="#kapcsolat">Kapcsolat</a></li>
+          </ul>
+        </nav>
+        <a href="tel:+36309984471" class="btn btn-accent desktop-only">Hívjon most</a>
         <button
           class="nav-toggle"
           id="navToggle"
-          aria-label="Menü"
+          aria-label="Menü megnyitása"
           aria-expanded="false"
+          aria-controls="navMobile"
         >
-          ☰
+          <span></span><span></span><span></span>
         </button>
       </div>
       <div class="container nav-mobile" id="navMobile">
         <a href="#szolgaltatasok">Szolgáltatások</a>
-        <a href="#arazas">Árazás</a>
-        <a href="#terulet">Területünk</a>
+        <a href="#biztonsag">Biztonság</a>
+        <a href="#referenciak">Referenciák</a>
         <a href="#kapcsolat">Kapcsolat</a>
-        <a href="tel:+3637134323">Hívjon: +36 30 713 4323</a>
+        <a href="tel:+36309984471">Hívjon: +36 30 998 4471</a>
       </div>
     </header>
 
-    <main id="top">
-      <section class="hero">
+    <main id="main-content">
+      <section class="hero" id="top">
         <div class="container hero-grid">
           <div>
-            <p class="eyebrow">Villanyszerelés</p>
-            <h1>Ha nincs áram,<br />minden más várhat.</h1>
+            <p class="tag">Villanyszerelés · Budapest és környéke</p>
+            <h1>Árammal nem érdemes kockáztatni.</h1>
             <p class="lede">
-              Hibaelhárítás, biztosítéktábla-csere, érintésvédelmi
-              felülvizsgálat és okosotthon-szerelés Budapesten és környékén —
-              gyors kiszállással.
+              Hibaelhárítást, biztosítéktábla-cserét és teljes hálózatépítést vállalunk
+              lakásokban, házaknál és társasházi közös részeken. Telefonon egyeztetjük az
+              időpontot, a helyszínen pedig írásban adjuk meg az árat, mielőtt elkezdenénk.
             </p>
             <div class="hero-ctas">
-              <a href="tel:+3637134323" class="btn btn-accent"
-                >Hívjon most: +36 30 713 4323</a
-              >
-              <a href="#arazas" class="btn btn-outline">Árazás megtekintése</a>
+              <a href="tel:+36309984471" class="btn btn-accent">Hívjon most</a>
+              <a href="#szolgaltatasok" class="btn btn-outline">Szolgáltatásaink</a>
             </div>
           </div>
-          <div class="hero-art" aria-hidden="true">
-            <svg
-              viewBox="0 0 300 270"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style="width: 100%; height: 100%"
-            >
-              <defs>
-                <pattern
-                  id="dotgrid2"
-                  width="24"
-                  height="24"
-                  patternUnits="userSpaceOnUse"
+          <div>
+            <div class="hero-art panel">
+              <div class="hero-art-inner">
+                <div class="hero-art-glow" aria-hidden="true"></div>
+                <svg
+                  viewBox="0 0 340 340"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Stilizált elosztótábla és vezetékrajz illusztráció"
+                  style="width: 100%; height: 100%; position: relative"
                 >
-                  <circle cx="1.3" cy="1.3" r="1.3" fill="#242C52" />
-                </pattern>
-              </defs>
-              <rect width="300" height="270" fill="url(#dotgrid2)" rx="8" />
-              <path
-                d="M165,30 L95,150 h45 l-15,90 90,-120 h-50 z"
-                fill="#F5C518"
-              />
-              <circle cx="230" cy="70" r="4" fill="#5C7CFA" />
-              <circle cx="250" cy="130" r="3" fill="#5C7CFA" />
-              <circle cx="60" cy="190" r="3" fill="#5C7CFA" />
-              <path
-                d="M230,70 L250,90 L250,130"
-                stroke="#5C7CFA"
-                stroke-width="2"
-                fill="none"
-                opacity=".6"
-              />
-            </svg>
+                  <path d="M14 14h14M14 14v14" stroke="#2B2E31" stroke-width="1.5" />
+                  <path d="M326 14h-14M326 14v14" stroke="#2B2E31" stroke-width="1.5" />
+                  <path d="M14 326h14M14 326v-14" stroke="#2B2E31" stroke-width="1.5" />
+                  <path d="M326 326h-14M326 326v-14" stroke="#2B2E31" stroke-width="1.5" />
+
+                  <path d="M130 100 L60 100 L60 60" stroke="#2B2E31" stroke-width="1.6" fill="none" />
+                  <path d="M130 130 L40 130" stroke="#2B2E31" stroke-width="1.6" fill="none" />
+                  <path d="M130 200 L40 200 L40 240" stroke="#2B2E31" stroke-width="1.6" fill="none" />
+                  <path d="M210 130 L300 130 L300 90" stroke="#2B2E31" stroke-width="1.6" fill="none" />
+                  <path d="M210 200 L300 200" stroke="#2B2E31" stroke-width="1.6" fill="none" />
+
+                  <path
+                    class="pulse-wire"
+                    d="M210 160 L280 160 L280 260 L200 260"
+                    stroke="#D7FF3E"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    fill="none"
+                  />
+
+                  <rect x="130" y="90" width="80" height="150" rx="2" fill="#131517" stroke="#2B2E31" stroke-width="1.6" />
+                  <rect x="144" y="104" width="52" height="16" rx="1.5" fill="#191B1D" stroke="#2B2E31" />
+                  <rect x="144" y="128" width="52" height="16" rx="1.5" fill="#191B1D" stroke="#2B2E31" />
+                  <rect x="144" y="152" width="52" height="16" rx="1.5" fill="#08090A" stroke="#D7FF3E" stroke-width="1.4" />
+                  <rect x="144" y="176" width="52" height="16" rx="1.5" fill="#191B1D" stroke="#2B2E31" />
+                  <rect x="144" y="200" width="52" height="16" rx="1.5" fill="#191B1D" stroke="#2B2E31" />
+
+                  <circle class="node-live" cx="60" cy="60" r="4" fill="#D7FF3E" />
+                  <circle cx="40" cy="240" r="4" fill="#3A3E42" />
+                  <circle cx="300" cy="90" r="4" fill="#3A3E42" />
+                  <circle cx="200" cy="260" r="4" fill="#D7FF3E" />
+
+                  <text x="70" y="56" font-family="Public Sans, sans-serif" font-size="10" fill="#6E7472">L1</text>
+                  <text x="16" y="255" font-family="Public Sans, sans-serif" font-size="10" fill="#6E7472">N</text>
+                  <text x="176" y="278" font-family="Public Sans, sans-serif" font-size="10" fill="#D7FF3E">230V~</text>
+                  <text x="150" y="164" font-family="Public Sans, sans-serif" font-size="9" fill="#08090A" font-weight="700">16A</text>
+                </svg>
+              </div>
+            </div>
+            <p class="hero-caption">Elosztótábla — vázlatrajz</p>
           </div>
         </div>
       </section>
 
-      <section class="trust">
+      <section class="trust" aria-label="Megbízhatósági pontok">
         <div class="container trust-row">
           <div class="trust-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 12l5 5L20 6"
-                stroke="#F5C518"
-                stroke-width="2.4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 12l5 5L20 6" stroke="#D7FF3E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
             Írásos árajánlat minden munka előtt
           </div>
           <div class="trust-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 12l5 5L20 6"
-                stroke="#F5C518"
-                stroke-width="2.4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 12l5 5L20 6" stroke="#D7FF3E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
             Anyag- és munkagarancia
           </div>
           <div class="trust-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 12l5 5L20 6"
-                stroke="#F5C518"
-                stroke-width="2.4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 12l5 5L20 6" stroke="#D7FF3E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            Számlaképes, bejelentett vállalkozás
+            Szabvány szerinti kivitelezés
           </div>
           <div class="trust-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 12l5 5L20 6"
-                stroke="#F5C518"
-                stroke-width="2.4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 12l5 5L20 6" stroke="#D7FF3E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            Rugalmas időpont, sürgősségi kiszállás
+            Egyeztetett időpont, pontos érkezés
           </div>
         </div>
       </section>
@@ -629,234 +973,207 @@
       <section id="szolgaltatasok">
         <div class="container">
           <div class="section-head">
-            <p class="eyebrow">Mivel foglalkozunk</p>
-            <h2>Szolgáltatások</h2>
-          </div>
-          <div class="service-grid">
-            <div class="service-card">
-              <div class="icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <h3>Hibaelhárítás 0-24</h3>
-              <p>
-                Áramkimaradás, zárlat, villogó lámpák — gyors diagnózis a
-                helyszínen.
-              </p>
-            </div>
-
-            <div class="service-card">
-              <div class="icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                  <rect
-                    x="5"
-                    y="3"
-                    width="14"
-                    height="18"
-                    rx="1.5"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  />
-                  <path
-                    d="M9 8h6M9 12h6M9 16h3"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-              <h3>Biztosítéktábla-csere</h3>
-              <p>
-                Elavult elosztótáblák cseréje az aktuális szabványok szerint.
-              </p>
-            </div>
-
-            <div class="service-card">
-              <div class="icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M9 11l2 2 4-4"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <rect
-                    x="4"
-                    y="3"
-                    width="16"
-                    height="18"
-                    rx="2"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  />
-                </svg>
-              </div>
-              <h3>Érintésvédelmi felülvizsgálat</h3>
-              <p>
-                Időszakos kötelező felülvizsgálat, hivatalos jegyzőkönyvvel.
-              </p>
-            </div>
-
-            <div class="service-card">
-              <div class="icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M4 6h16M4 12h16M4 18h10"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-              <h3>Vezetékezés felújításnál</h3>
-              <p>
-                Új vezetékek, aljzatok és kapcsolók kiépítése, teljes körű
-                felújítás.
-              </p>
-            </div>
-
-            <div class="service-card">
-              <div class="icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 3a6 6 0 016 6c0 3-2 4-2 7H8c0-3-2-4-2-7a6 6 0 016-6z"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  />
-                  <path
-                    d="M9 20h6"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-              <h3>Okosotthon-szerelés</h3>
-              <p>
-                Okos kapcsolók, dimmerek és appvezérelt rendszerek telepítése.
-              </p>
-            </div>
-
-            <div class="service-card">
-              <div class="icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="4"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  />
-                  <path
-                    d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-              <h3>Világítástervezés</h3>
-              <p>Beltéri és kültéri világítás tervezéstől a kivitelezésig.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="arazas"
-        style="background: var(--surface); border-block: 1px solid var(--line)"
-      >
-        <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">Átlátható díjak</p>
-            <h2>Kiszállási díj</h2>
-          </div>
-          <table class="price-table">
-            <thead>
-              <tr>
-                <th>Időszak</th>
-                <th>Kiszállási díj</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Munkaidőben (H–P, 8–17 óra)</td>
-                <td>15.000 Ft</td>
-              </tr>
-              <tr>
-                <td>Munkaidőn túl és hétvégén</td>
-                <td>25.000 Ft</td>
-              </tr>
-              <tr>
-                <td>Éjszaka (22–06 óra) és ünnepnapon</td>
-                <td>35.000 Ft</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="price-note">
-            A kiszállási díj az első 30 perc munkadíjat tartalmazza. Az
-            anyagköltséget és a további munkadíjat mindig a helyszíni felmérés
-            után, írásban adjuk meg.
-          </p>
-        </div>
-      </section>
-
-      <section id="terulet">
-        <div class="container area-grid">
-          <div>
-            <p class="eyebrow">Hol dolgozunk</p>
-            <h2 style="font-size: clamp(1.9rem, 3vw + 1rem, 2.7rem)">
-              Területünk
-            </h2>
-            <p
-              style="
-                margin-top: 1rem;
-                max-width: 46ch;
-                font-family: &quot;Mulish&quot;, sans-serif;
-              "
-            >
-              Budapest teljes területén és Pest vármegye agglomerációjában
-              vállalunk munkát — kiemelten Budaörs, Érd, Szentendre és Gödöllő
-              térségében. Bizonytalan vagy, hogy hozzád kiérünk-e? Hívj, és
-              megmondjuk azonnal.
+            <p class="tag">[ 01 ] Szolgáltatások</p>
+            <h2>Mivel foglalkozunk</h2>
+            <p class="lede">
+              A kisebb hibaelhárítástól a teljes hálózat kiépítéséig ezeket a munkákat
+              vállaljuk lakóingatlanokban.
             </p>
           </div>
-          <div class="map-frame">
-            <iframe
-              src="https://www.google.com/maps?q=Budapest&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Szolgáltatási terület térkép"
-            ></iframe>
+          <div class="service-grid">
+            <div class="service-card panel">
+              <div class="top-row">
+                <span class="idx">01</span>
+                <span class="icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <h3>Villanyszerelés</h3>
+              <p>Dugaljak, kapcsolók és lámpatestek cseréje vagy bővítése lakásban és házban.</p>
+            </div>
+
+            <div class="service-card panel">
+              <div class="top-row">
+                <span class="idx">02</span>
+                <span class="icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 11l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </span>
+              </div>
+              <h3>Hibakeresés</h3>
+              <p>Zárlat, áramkimaradás, villogó vagy zümmögő világítás okának pontos behatárolása.</p>
+            </div>
+
+            <div class="service-card panel">
+              <div class="top-row">
+                <span class="idx">03</span>
+                <span class="icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  </svg>
+                </span>
+              </div>
+              <h3>Új hálózat kiépítése</h3>
+              <p>Teljes elektromos hálózat tervezése és kiépítése felújításnál vagy új építésű ingatlanban.</p>
+            </div>
+
+            <div class="service-card panel">
+              <div class="top-row">
+                <span class="idx">04</span>
+                <span class="icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <h3>Biztonság</h3>
+              <p>Érintésvédelmi felülvizsgálat, biztosítéktábla-csere, szabványossági ellenőrzés.</p>
+              <a href="#biztonsag" class="card-link">Részletek →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="process" id="folyamat">
+        <div class="container">
+          <div class="section-head">
+            <p class="tag">[ 02 ] Folyamat</p>
+            <h2>Hogyan dolgozunk</h2>
+          </div>
+          <div class="process-grid">
+            <div class="process-step">
+              <div class="process-badge">01</div>
+              <h3>Bejelentés</h3>
+              <p>Telefonon vagy emailben röviden leírja a problémát vagy az elképzelést.</p>
+            </div>
+            <div class="process-step">
+              <div class="process-badge">02</div>
+              <h3>Időpont</h3>
+              <p>Egyeztetünk egy Önnek megfelelő időpontot, sürgős esetben akár aznapra is.</p>
+            </div>
+            <div class="process-step">
+              <div class="process-badge">03</div>
+              <h3>Felmérés</h3>
+              <p>Megnézzük a hálózatot, és írásban adjuk meg az árat, mielőtt elkezdenénk.</p>
+            </div>
+            <div class="process-step">
+              <div class="process-badge">04</div>
+              <h3>Kivitelezés</h3>
+              <p>Elvégezzük a munkát, majd átadjuk a szükséges papírokat és garanciát.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="biztonsag">
+        <div class="container">
+          <div class="section-head">
+            <p class="tag">[ 03 ] Biztonság</p>
+            <h2>Biztonság</h2>
+            <p class="lede">
+              A villanyszerelés nem barkácsprojekt. Minden munkánál a hatályos szabályokat
+              követjük, és kérésre írásos dokumentációt is adunk róla.
+            </p>
+          </div>
+          <div class="panel">
+            <table class="spec-table">
+              <tbody>
+                <tr>
+                  <th scope="row">Érintésvédelem</th>
+                  <td>Időszakos felülvizsgálatot végzünk, kérésre mérési jegyzőkönyvvel.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Szabvány</th>
+                  <td>Az érvényes magyar elektromos szabályok és előírások szerint dolgozunk.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Biztosítéktábla</th>
+                  <td>Elavult, régi táblák cseréje korszerű, jól jelölt elosztóra.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Dokumentáció</th>
+                  <td>Minden nagyobb munkáról írásos anyag- és munkagaranciát adunk.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="referenciak">
+        <div class="container">
+          <div class="section-head">
+            <p class="tag">[ 04 ] Referenciák</p>
+            <h2>Példák a munkáinkra</h2>
+          </div>
+          <p class="ref-note">
+            Az alábbiak példák arra, milyen munkát vállalunk — nem konkrét ügyfelek
+            projektjei, hanem tipikus feladatok bemutatása.
+          </p>
+          <div class="ref-grid">
+            <div class="ref-card panel">
+              <p class="tag">Példa 01</p>
+              <h3>Teljes felújítás — társasházi lakás</h3>
+              <p>Elavult alumínium vezetékek cseréje rézre, új elosztótábla beépítése, a
+                vezetékek nyomvonalának előzetes megtervezésével.</p>
+            </div>
+            <div class="ref-card panel">
+              <p class="tag">Példa 02</p>
+              <h3>Ismétlődő kismegszakító-kiugrás — családi ház</h3>
+              <p>A hiba forrásának méréssel történő behatárolása, majd a túlterhelt áramkör
+                szétosztása a hálózaton.</p>
+            </div>
+            <div class="ref-card panel">
+              <p class="tag">Példa 03</p>
+              <h3>Okosotthon bővítés — új építésű ház</h3>
+              <p>Meglévő hálózat kiegészítése app-vezérelt kapcsolókkal és dimmerekkel, a
+                meglévő rendszer megbontása nélkül.</p>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="kapcsolat">
         <div class="container">
-          <div class="contact-box">
-            <p class="eyebrow" style="justify-content: center">Kapcsolat</p>
-            <h2>Áramszünet van, vagy csak árajánlatot kérnél?</h2>
-            <p>
-              Hívj most, vagy írj emailt — sürgős esetben 0-24 elérhetők
-              vagyunk, egyéb megkeresésre 24 órán belül válaszolunk.
-            </p>
-            <div class="contact-ctas">
-              <a href="tel:+36307134323" class="btn btn-accent"
-                >Hívj: +36 30 713 4323</a
-              >
-              <a
-                href="mailto:info@pappvillanyszereles.hu"
-                class="btn btn-outline"
-                >info@pappvillanyszereles.hu</a
-              >
+          <div class="section-head">
+            <p class="tag">[ 05 ] Kapcsolat</p>
+            <h2>Kérjen árajánlatot, vagy hívjon hiba esetén</h2>
+          </div>
+          <div class="contact-wrap">
+            <div class="contact-box panel">
+              <h2>Beszéljünk a hálózatáról</h2>
+              <p>
+                Hívjon minket telefonon, vagy írjon emailt — munkanapokon igyekszünk még
+                aznap visszajelezni.
+              </p>
+              <div class="contact-ctas">
+                <a href="tel:+36309984471" class="btn btn-accent">Hívjon: +36 30 998 4471</a>
+                <a href="mailto:info@fazisvillany.hu" class="btn btn-outline">info@fazisvillany.hu</a>
+              </div>
+              <div class="contact-meta">
+                <span>Fázis Villany · Budapest</span>
+                <span>Munkanapokon 7–18 óra</span>
+              </div>
+            </div>
+            <div class="area-box panel">
+              <h3>Szolgáltatási terület</h3>
+              <p>
+                Budapesten és Pest vármegye agglomerációjában vállalunk munkát — kiemelten
+                Budaörs, Érd, Szentendre és Gödöllő térségében. Bizonytalan, hogy Önhöz
+                kiérünk-e? Hívjon, és azonnal megmondjuk.
+              </p>
+              <div class="map-frame">
+                <iframe
+                  src="https://www.google.com/maps?q=Budapest&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Szolgáltatási terület térkép"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -864,30 +1181,45 @@
     </main>
 
     <footer>
-      <div class="container foot-row">
-        <span
-          >Ez egy bemutató célból készült mintaoldal, nem valódi
-          vállalkozás.</span
-        >
-        <a href="../index.html">← Vissza a SzakiOldal portfólióhoz</a>
+      <div class="container">
+        <div class="foot-top">
+          <svg width="18" height="18" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="94" height="94" rx="14" fill="#08090A" stroke="#2B2E31" stroke-width="2" />
+            <path d="M56 16L26 56h20l-4 30 34-42H56l4-28z" fill="#D7FF3E" />
+          </svg>
+          Fázis Villany
+        </div>
+        <div class="foot-row">
+          <span>Ez egy bemutató célból készült mintaoldal, nem valódi vállalkozás.</span>
+          <a href="../index.html">← Vissza a SzakiOldal portfólióhoz</a>
+        </div>
       </div>
     </footer>
 
     <script>
-      const navToggle = document.getElementById("navToggle");
-      const navMobile = document.getElementById("navMobile");
-      navToggle.addEventListener("click", () => {
-        const open = navMobile.classList.toggle("open");
-        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-        navToggle.textContent = open ? "✕" : "☰";
-      });
-      navMobile.querySelectorAll("a").forEach((a) =>
-        a.addEventListener("click", () => {
+      (function () {
+        var navToggle = document.getElementById("navToggle");
+        var navMobile = document.getElementById("navMobile");
+        if (!navToggle || !navMobile) return;
+
+        function closeMenu() {
           navMobile.classList.remove("open");
           navToggle.setAttribute("aria-expanded", "false");
-          navToggle.textContent = "☰";
-        }),
-      );
+        }
+
+        navToggle.addEventListener("click", function () {
+          var open = navMobile.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+
+        navMobile.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeMenu();
+        });
+      })();
     </script>
   </body>
 </html>

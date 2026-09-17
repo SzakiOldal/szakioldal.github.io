@@ -8,7 +8,29 @@ export function initShowcase() {
   const tagEl = document.querySelector('.showcase-caption-tag');
   const linkEl = document.querySelector('.showcase-caption-link');
   const badgeEl = document.querySelector('.showcase-caption-badge');
+  const urlEl = document.getElementById('showcaseUrl');
   if (!tabs.length || !panels.length) return;
+
+  function loadPanel(panel) {
+    if (!panel || panel.classList.contains('is-loading') || panel.classList.contains('is-loaded')) return;
+    const src = panel.dataset.src;
+    const frame = panel.querySelector('.showcase-frame');
+    if (!src || !frame) return;
+    panel.classList.add('is-loading');
+    let settled = false;
+    const markLoaded = () => {
+      if (settled) return;
+      settled = true;
+      panel.classList.remove('is-loading');
+      panel.classList.add('is-loaded');
+    };
+    frame.addEventListener('load', markLoaded, { once: true });
+    // Fallback: some browsers can miss/delay the iframe load event for a
+    // background/off-screen tab even once navigation has finished, so
+    // don't leave the loading spinner stuck forever.
+    window.setTimeout(markLoaded, 2500);
+    frame.src = src;
+  }
 
   function activate(target, { focus = false } = {}) {
     tabs.forEach((t) => {
@@ -19,10 +41,16 @@ export function initShowcase() {
     });
     panels.forEach((p) => p.classList.toggle('is-active', p.dataset.panel === target));
 
+    const activePanel = panels.find((p) => p.dataset.panel === target);
+    if (activePanel) loadPanel(activePanel);
+
     const tab = tabs.find((t) => t.dataset.target === target);
     if (!tab) return;
     if (nameEl) nameEl.textContent = tab.dataset.name || '';
     if (tagEl) tagEl.textContent = tab.dataset.tag || '';
+    if (urlEl && activePanel && activePanel.dataset.src) {
+      urlEl.textContent = 'szakioldal.github.io/' + activePanel.dataset.src.replace('/index.html', '');
+    }
     if (badgeEl) {
       const isLive = tab.dataset.live === 'true';
       badgeEl.textContent = isLive ? 'Élő oldal' : 'Koncepció';

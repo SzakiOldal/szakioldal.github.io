@@ -1,0 +1,1309 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nord Klíma — demóoldal</title>
+    <meta
+      name="description"
+      content="Minta weboldal klímaszerelő vállalkozásnak — demó projekt a SzakiOldal portfólióból."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230C93A8'/%3E%3Ctext x='50' y='69' font-size='54' font-family='Georgia,serif' fill='%23FFFFFF' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6fafc;
+        --surface: #ffffff;
+        --surface-2: #eaf4f7;
+        --line: #d9e8ee;
+        --ink: #0e2438;
+        --ink-dim: #4c6579;
+        --ink-faint: #8aa0b1;
+        --accent: #0c93a8;
+        --accent-dark: #086878;
+        --accent-soft: #cdeaef;
+        --navy: #0b1f30;
+        --on-accent: #ffffff;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink-dim);
+        font-family:
+          "Work Sans",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        font-size: 1.03rem;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        color: var(--ink);
+        margin: 0;
+        line-height: 1.15;
+        text-wrap: balance;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      p {
+        margin: 0;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      :focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      .container {
+        max-width: 1180px;
+        margin-inline: auto;
+        padding-inline: clamp(20px, 5vw, 48px);
+      }
+      section {
+        padding-block: clamp(64px, 9vw, 128px);
+      }
+
+      /* TOPBAR */
+      .topbar {
+        background: var(--navy);
+        color: #cfe7ec;
+        font-size: 0.82rem;
+        letter-spacing: 0.02em;
+      }
+      .topbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 0.6rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .topbar a {
+        color: #cfe7ec;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .badge-demo {
+        font-size: 0.68rem;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.1);
+        color: #cfe7ec;
+        padding: 0.3em 0.7em;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      /* HEADER / NAV */
+      header {
+        background: rgba(246, 250, 252, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-block: 18px;
+        gap: 1.5rem;
+      }
+      .wordmark {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--ink);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.55em;
+        letter-spacing: -0.01em;
+        flex-shrink: 0;
+      }
+      .wordmark .mark {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: inline-block;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: nowrap;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--ink-dim);
+        font-weight: 500;
+        font-size: 0.88rem;
+        white-space: nowrap;
+      }
+      .nav-links a:hover {
+        color: var(--accent-dark);
+      }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding-block: 1rem 1.4rem;
+        border-top: 1px solid var(--line);
+      }
+      .nav-mobile a {
+        text-decoration: none;
+        color: var(--ink-dim);
+        font-weight: 500;
+        padding: 0.85rem 0.2rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-mobile a:last-child {
+        border-bottom: none;
+        color: var(--accent-dark);
+        font-weight: 600;
+      }
+      @media (max-width: 1080px) {
+        .nav-links,
+        .btn.desktop-only {
+          display: none;
+        }
+        .nav-toggle {
+          display: block;
+        }
+        .nav-mobile.open {
+          display: flex;
+        }
+      }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.95em 1.8em;
+        min-height: 44px;
+        border-radius: 999px;
+        text-decoration: none;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease;
+      }
+      .btn-accent {
+        background: var(--accent);
+        color: var(--on-accent);
+      }
+      .btn-accent:hover {
+        background: var(--accent-dark);
+        transform: translateY(-1px);
+      }
+      .btn-outline {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+      .btn-outline:hover {
+        border-color: var(--accent);
+        color: var(--accent-dark);
+        transform: translateY(-1px);
+      }
+
+      /* EYEBROW / SECTION HEAD */
+      .eyebrow {
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-dark);
+        margin-bottom: 1.1em;
+        display: flex;
+        align-items: center;
+        gap: 0.7em;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 22px;
+        height: 1.5px;
+        background: var(--accent);
+        flex-shrink: 0;
+      }
+      .section-head {
+        margin-bottom: 3rem;
+        max-width: 58ch;
+      }
+      .section-head h2 {
+        font-size: clamp(1.9rem, 2.6vw + 1rem, 2.7rem);
+      }
+      .section-head p {
+        margin-top: 1.1rem;
+        max-width: 52ch;
+      }
+      .section-head.center {
+        margin-inline: auto;
+        text-align: center;
+      }
+      .section-head.center .eyebrow {
+        justify-content: center;
+      }
+      .section-head.center .eyebrow::before {
+        display: none;
+      }
+      .section-head.center p {
+        margin-inline: auto;
+      }
+
+      /* HERO */
+      .hero {
+        padding-block: clamp(56px, 9vw, 96px) clamp(48px, 7vw, 80px);
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: clamp(32px, 6vw, 72px);
+        align-items: center;
+      }
+      .hero h1 {
+        font-size: clamp(2.3rem, 3.4vw + 1.1rem, 3.8rem);
+        letter-spacing: -0.02em;
+      }
+      .hero p.lede {
+        max-width: 46ch;
+        margin-top: 1.4rem;
+        font-size: 1.08rem;
+        color: var(--ink-dim);
+      }
+      .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2.2rem;
+      }
+      .hero-art {
+        position: relative;
+        aspect-ratio: 1 / 0.95;
+        border-radius: 28px;
+        overflow: hidden;
+        background: linear-gradient(160deg, #eef7f9 0%, #f8fbfc 60%, #e7f2f5 100%);
+        border: 1px solid var(--line);
+        isolation: isolate;
+      }
+      .air-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(42px);
+        will-change: transform;
+      }
+      .blob-a {
+        width: 60%;
+        height: 60%;
+        top: -10%;
+        left: -8%;
+        background: radial-gradient(circle, #9fe0e8 0%, rgba(159, 224, 232, 0) 72%);
+        animation: drift1 22s ease-in-out infinite;
+      }
+      .blob-b {
+        width: 52%;
+        height: 52%;
+        bottom: -12%;
+        right: -6%;
+        background: radial-gradient(circle, #cdeef2 0%, rgba(205, 238, 242, 0) 72%);
+        animation: drift2 27s ease-in-out infinite;
+      }
+      .blob-c {
+        width: 40%;
+        height: 40%;
+        top: 32%;
+        left: 30%;
+        background: radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0) 74%);
+        opacity: 0.8;
+        animation: drift3 19s ease-in-out infinite;
+      }
+      @keyframes drift1 {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(6%, 8%) scale(1.12);
+        }
+      }
+      @keyframes drift2 {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(-7%, -5%) scale(1.08);
+        }
+      }
+      @keyframes drift3 {
+        0%,
+        100% {
+          transform: translate(-4%, 2%) scale(1);
+        }
+        50% {
+          transform: translate(4%, -4%) scale(1.15);
+        }
+      }
+      .unit-illustration {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 62%;
+        height: auto;
+      }
+      .flow {
+        animation: breathe 6.5s ease-in-out infinite;
+      }
+      .flow-2 {
+        animation-delay: 1.1s;
+      }
+      .flow-3 {
+        animation-delay: 2.2s;
+      }
+      @keyframes breathe {
+        0%,
+        100% {
+          opacity: 0.2;
+        }
+        50% {
+          opacity: 0.75;
+        }
+      }
+      @media (max-width: 760px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-art {
+          max-width: 360px;
+          margin-inline: auto;
+          order: -1;
+        }
+      }
+
+      /* TRUST ROW */
+      .trust {
+        border-block: 1px solid var(--line);
+        background: var(--surface);
+        padding-block: clamp(28px, 4vw, 44px);
+      }
+      .trust-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.75rem;
+      }
+      @media (max-width: 860px) {
+        .trust-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      .trust-item {
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+        font-size: 0.9rem;
+        color: var(--ink-dim);
+      }
+      .trust-item svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      /* UNIT / SERVICE CARD GRID */
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+      @media (max-width: 860px) {
+        .grid-3 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 560px) {
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1.9rem;
+      }
+      .card .icon {
+        color: var(--accent);
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        margin-bottom: 1.2rem;
+      }
+      .card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      .card p {
+        font-size: 0.92rem;
+      }
+
+      /* STEPS (TELEPÍTÉS) */
+      .steps {
+        display: grid;
+        gap: 0;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 1.5rem;
+        padding-block: 1.6rem;
+        border-top: 1px solid var(--line);
+      }
+      .step:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .step-num {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--accent-dark);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .step h3 {
+        font-size: 1.08rem;
+        margin-bottom: 0.35rem;
+      }
+      .step p {
+        font-size: 0.92rem;
+        max-width: 60ch;
+      }
+
+      /* SPLIT (KARBANTARTÁS / TISZTÍTÁS) */
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(28px, 5vw, 64px);
+        align-items: center;
+      }
+      @media (max-width: 800px) {
+        .split {
+          grid-template-columns: 1fr;
+        }
+      }
+      .checklist li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+        padding-block: 0.65rem;
+        border-top: 1px solid var(--line);
+        font-size: 0.94rem;
+      }
+      .checklist li:first-child {
+        border-top: none;
+      }
+      .checklist svg {
+        flex-shrink: 0;
+        margin-top: 3px;
+        color: var(--accent);
+      }
+
+      /* ENERGY */
+      .energy-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.75rem;
+        margin-top: 2.5rem;
+      }
+      @media (max-width: 860px) {
+        .energy-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .energy-item {
+        border-top: 2px solid var(--accent);
+        padding-top: 1.2rem;
+      }
+      .energy-item h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.5rem;
+      }
+      .energy-item p {
+        font-size: 0.92rem;
+      }
+
+      /* CONTACT */
+      .contact-box {
+        background: var(--navy);
+        color: #d6ebef;
+        border-radius: 24px;
+        padding: clamp(2.2rem, 6vw, 4rem);
+        text-align: center;
+      }
+      .contact-box h2 {
+        color: #ffffff;
+        font-size: clamp(1.9rem, 3.4vw + 1rem, 2.8rem);
+      }
+      .contact-box p.lede {
+        max-width: 52ch;
+        margin: 1.1rem auto 0;
+        color: #a9c7cf;
+      }
+      .contact-ctas {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2.2rem;
+      }
+      .contact-note {
+        margin-top: 1.6rem;
+        font-size: 0.85rem;
+        color: #7fa1aa;
+      }
+
+      footer {
+        padding-block: 2.6rem;
+        border-top: 1px solid var(--line);
+      }
+      .foot-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: var(--ink-faint);
+      }
+      .foot-row a {
+        color: var(--accent-dark);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      /* SCROLL REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.in-view {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <span
+          >Hívjon bizalommal ·
+          <a href="tel:+36204458821">+36 20 445 8821</a></span
+        >
+        <span class="badge-demo">Demo projekt — SzakiOldal portfólió</span>
+      </div>
+    </div>
+
+    <header>
+      <div class="container nav">
+        <a href="#top" class="wordmark"
+          ><span class="mark"></span>Nord Klíma</a
+        >
+        <ul class="nav-links">
+          <li><a href="#klimaberendezesek">Klímaberendezések</a></li>
+          <li><a href="#telepites">Telepítés</a></li>
+          <li><a href="#karbantartas">Karbantartás</a></li>
+          <li><a href="#tisztitas">Tisztítás</a></li>
+          <li><a href="#energiahatekonysag">Energiahatékonyság</a></li>
+          <li><a href="#ajanlatkeres">Ajánlatkérés</a></li>
+        </ul>
+        <a href="#ajanlatkeres" class="btn btn-accent desktop-only"
+          >Árajánlatot kérek</a
+        >
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Menü megnyitása"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </div>
+      <div class="container nav-mobile" id="navMobile">
+        <a href="#klimaberendezesek">Klímaberendezések</a>
+        <a href="#telepites">Telepítés</a>
+        <a href="#karbantartas">Karbantartás</a>
+        <a href="#tisztitas">Tisztítás</a>
+        <a href="#energiahatekonysag">Energiahatékonyság</a>
+        <a href="#ajanlatkeres">Ajánlatkérés</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Klímatechnika, letisztultan</p>
+            <h1>JÓ LEVEGŐ.<br />MINDEN ÉVSZAKBAN.</h1>
+            <p class="lede">
+              Klímaberendezések telepítése, karbantartása és tisztítása
+              otthonába vagy irodájába — csendes, energiatakarékos
+              megoldások, átlátható, írásos árajánlattal minden munka előtt.
+            </p>
+            <div class="hero-ctas">
+              <a href="#ajanlatkeres" class="btn btn-accent"
+                >Árajánlatot kérek</a
+              >
+              <a href="#klimaberendezesek" class="btn btn-outline"
+                >Berendezéseink</a
+              >
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="air-blob blob-a"></div>
+            <div class="air-blob blob-b"></div>
+            <div class="air-blob blob-c"></div>
+            <svg
+              class="unit-illustration"
+              viewBox="0 0 220 160"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="30"
+                y="18"
+                width="160"
+                height="32"
+                rx="12"
+                stroke="#0E2438"
+                stroke-width="3"
+              />
+              <line
+                x1="46"
+                y1="34"
+                x2="174"
+                y2="34"
+                stroke="#0C93A8"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <path
+                class="flow flow-1"
+                d="M48,58 C92,92 128,38 182,78"
+                stroke="#0C93A8"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <path
+                class="flow flow-2"
+                d="M40,80 C90,122 140,70 190,112"
+                stroke="#59C4D3"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <path
+                class="flow flow-3"
+                d="M55,102 C95,134 135,96 175,132"
+                stroke="#0E2438"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust">
+        <div class="container trust-row">
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 12l5 5L20 6"
+                stroke="#0C93A8"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Írásos árajánlat minden munka előtt
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 12l5 5L20 6"
+                stroke="#0C93A8"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Energiatakarékos, A+++ besorolású berendezések
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 12l5 5L20 6"
+                stroke="#0C93A8"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Precíz, tiszta kivitelezés
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 12l5 5L20 6"
+                stroke="#0C93A8"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Rugalmas időpontegyeztetés
+          </div>
+        </div>
+      </section>
+
+      <section id="klimaberendezesek" class="reveal">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Termékkínálat</p>
+            <h2>Klímaberendezések</h2>
+            <p>
+              Megbízható gyártók energiatakarékos berendezéseit telepítjük —
+              az igényeknek megfelelő megoldást választjuk ki, nem a
+              legdrágábbat.
+            </p>
+          </div>
+          <div class="grid-3">
+            <div class="card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="6"
+                    width="18"
+                    height="6"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M7 16v2M12 16v3M17 16v2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Oldalfali split klíma</h3>
+              <p>
+                A leggyakoribb megoldás egy-egy helyiség hűtésére és
+                fűtésére, halk üzemmel.
+              </p>
+            </div>
+            <div class="card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="7"
+                    cy="7"
+                    r="3"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <circle
+                    cx="17"
+                    cy="7"
+                    r="3"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M12 10v4M12 14l-5 6M12 14l5 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Multi split rendszerek</h3>
+              <p>
+                Több beltéri egység egyetlen kültéri egységgel — praktikus
+                megoldás nagyobb lakásokhoz, irodákhoz.
+              </p>
+            </div>
+            <div class="card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="6"
+                    y="4"
+                    width="12"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M9 8h6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Mobil klíma</h3>
+              <p>
+                Ideiglenes vagy bérelt ingatlanba, ahol fali telepítés nem
+                megoldható.
+              </p>
+            </div>
+            <div class="card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 20V10l8-6 8 6v10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </div>
+              <h3>Ipari és kereskedelmi klíma</h3>
+              <p>
+                Nagyobb légterek, üzletek, irodaházak és üzemcsarnokok
+                klimatizálása.
+              </p>
+            </div>
+            <div class="card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 12h16M4 12a4 4 0 004 4M4 12a4 4 0 014-4M20 12a4 4 0 01-4 4M20 12a4 4 0 00-4-4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Hővisszanyerős szellőztetés</h3>
+              <p>
+                Friss levegő folyamatos, energiahatékony cseréje, klímával
+                együtt tervezve.
+              </p>
+            </div>
+            <div class="card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="3"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Okos, applikációs vezérlés</h3>
+              <p>
+                Wi-Fi-s termosztát és app: bárhonnan beállítható hőmérséklet
+                és időzítés.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="telepites" class="reveal" style="background: var(--surface-2); border-block: 1px solid var(--line);">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Így dolgozunk</p>
+            <h2>Telepítés</h2>
+            <p>
+              A felméréstől az átadásig végigvezetjük a folyamatot —
+              rejtett költség és meglepetés nélkül.
+            </p>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <span class="step-num">1</span>
+              <div>
+                <h3>Helyszíni felmérés</h3>
+                <p>
+                  Megnézzük a helyiséget, a beltéri és kültéri egység
+                  elhelyezését, és átbeszéljük az igényeket.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-num">2</span>
+              <div>
+                <h3>Írásos árajánlat</h3>
+                <p>
+                  Tételes, átlátható ajánlatot adunk — csak jóváhagyás után
+                  kezdjük meg a munkát.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-num">3</span>
+              <div>
+                <h3>Szakszerű telepítés</h3>
+                <p>
+                  Precíz kivitelezés, takaros vezetékezés és tiszta,
+                  rendben hagyott munkaterület.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-num">4</span>
+              <div>
+                <h3>Átadás, beüzemelés</h3>
+                <p>
+                  Elmagyarázzuk a kezelést, beállítjuk az alapokat, és
+                  válaszolunk minden kérdésre.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="karbantartas" class="reveal">
+        <div class="container split">
+          <div>
+            <p class="eyebrow">Évente egyszer</p>
+            <h2>Karbantartás</h2>
+            <p style="margin-top: 1.1rem; max-width: 46ch;">
+              A rendszeres karbantartás hosszabbítja meg a berendezés
+              élettartamát, és tartja alacsonyan az üzemeltetési költséget.
+              Szezon előtt ajánlott, de bármikor elvégezhető.
+            </p>
+          </div>
+          <ul class="checklist">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12l5 5L20 6"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Hűtőközeg-szint és tömítettség ellenőrzése
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12l5 5L20 6"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Elektromos csatlakozások átvizsgálása
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12l5 5L20 6"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Kültéri egység és elvezető rendszer tisztítása
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12l5 5L20 6"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Működési teszt és írásos állapotjelentés
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="tisztitas" class="reveal" style="background: var(--surface-2); border-block: 1px solid var(--line);">
+        <div class="container split">
+          <ul class="checklist">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12l5 5L20 6"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Beltéri egység és párologtató vegyszeres tisztítása
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12l5 5L20 6"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Szűrők tisztítása vagy cseréje
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12l5 5L20 6"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Csepptálca és elvezető cső fertőtlenítése
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12l5 5L20 6"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Kellemetlen szagok és penészképződés megelőzése
+            </li>
+          </ul>
+          <div>
+            <p class="eyebrow">Frissebb, tisztább levegő</p>
+            <h2>Tisztítás</h2>
+            <p style="margin-top: 1.1rem; max-width: 46ch;">
+              A rendszeresen tisztított berendezés nemcsak higiénikusabb, de
+              hatékonyabban is hűt vagy fűt. Különösen ajánlott, ha allergiás
+              családtag is van a háztartásban.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="energiahatekonysag" class="reveal">
+        <div class="container">
+          <div class="section-head center">
+            <p class="eyebrow">Alacsonyabb rezsi, hosszabb élettartam</p>
+            <h2>Energiahatékonyság</h2>
+            <p>
+              Kizárólag korszerű, inverteres technológiájú berendezéseket
+              ajánlunk — ezek finomabban szabályozzák a teljesítményt, mint
+              a hagyományos, be-kikapcsolós rendszerek.
+            </p>
+          </div>
+          <div class="energy-grid">
+            <div class="energy-item">
+              <h3>Inverteres technológia</h3>
+              <p>
+                Folyamatosan a szükséges teljesítményre áll be, nem
+                ki-be kapcsolgat — ez kíméli a gépet és a villanyszámlát is.
+              </p>
+            </div>
+            <div class="energy-item">
+              <h3>A+++ energiaosztály</h3>
+              <p>
+                Az általunk telepített berendezések a legjobb elérhető
+                energiacímkével rendelkeznek.
+              </p>
+            </div>
+            <div class="energy-item">
+              <h3>Okos szabályozás</h3>
+              <p>
+                Időzítéssel és app-vezérléssel elkerülhető a felesleges
+                üzemidő üres helyiségekben is.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ajanlatkeres" class="reveal">
+        <div class="container">
+          <div class="contact-box">
+            <p class="eyebrow" style="justify-content: center; color: #8fd6e0;">
+              Ajánlatkérés
+            </p>
+            <h2>Kérjen árajánlatot még ma</h2>
+            <p class="lede">
+              Írja meg röviden, milyen helyiségbe keres megoldást, vagy
+              hívjon telefonon — gyors, írásos árajánlattal jelentkezünk.
+            </p>
+            <div class="contact-ctas">
+              <a href="tel:+36204458821" class="btn btn-accent"
+                >Hívjon: +36 20 445 8821</a
+              >
+              <a
+                href="mailto:info@nordklima.hu"
+                class="btn btn-outline"
+                style="border-color: #d6ebef; color: #d6ebef;"
+                >info@nordklima.hu</a
+              >
+            </div>
+            <p class="contact-note">
+              Megkeresésekre jellemzően 1 munkanapon belül válaszolunk.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container foot-row">
+        <span
+          >Ez egy bemutató célból készült mintaoldal, nem valódi
+          vállalkozás.</span
+        >
+        <a href="../index.html">← Vissza a SzakiOldal portfólióhoz</a>
+      </div>
+    </footer>
+
+    <script>
+      var navToggle = document.getElementById("navToggle");
+      var navMobile = document.getElementById("navMobile");
+      if (navToggle && navMobile) {
+        navToggle.addEventListener("click", function () {
+          var open = navMobile.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+          navToggle.textContent = open ? "✕" : "☰";
+        });
+        navMobile.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            navMobile.classList.remove("open");
+            navToggle.setAttribute("aria-expanded", "false");
+            navToggle.textContent = "☰";
+          });
+        });
+      }
+
+      var revealEls = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window && revealEls.length) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+        );
+        revealEls.forEach(function (el) {
+          io.observe(el);
+        });
+      } else {
+        revealEls.forEach(function (el) {
+          el.classList.add("in-view");
+        });
+      }
+    </script>
+  </body>
+</html>

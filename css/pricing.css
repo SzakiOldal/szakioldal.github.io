@@ -1,0 +1,197 @@
+/* ==========================================================================
+   Árak — compact premium pricing section
+   Prefix: pr-
+   ========================================================================== */
+
+.pr-section {
+  background: var(--bg);
+  padding-block: clamp(72px, 10vw, 132px);
+}
+
+.pr-container {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 64px);
+}
+
+.pr-head {
+  margin-bottom: clamp(36px, 5vw, 60px);
+  max-width: 46ch;
+}
+
+.pr-eyebrow {
+  margin: 0 0 0.9em;
+}
+
+.pr-heading {
+  font-size: clamp(2.2rem, 4vw + 1rem, 4rem);
+  max-width: 12ch;
+}
+
+.pr-sub {
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  color: var(--ink-dim);
+  font-size: 1.02rem;
+  max-width: 42ch;
+}
+
+.pr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pr-card {
+  background: var(--bg);
+  padding: clamp(28px, 3vw, 40px) clamp(24px, 2.6vw, 34px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: background var(--dur-base) var(--ease-out-expo);
+}
+
+.pr-card--featured {
+  background: var(--bg-elevated);
+}
+
+.pr-card-tag {
+  position: absolute;
+  top: 0;
+  right: clamp(24px, 2.6vw, 34px);
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent);
+  padding: 0.4em 0.8em;
+  border-radius: 999px;
+}
+
+.pr-card-name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 1.4rem;
+}
+
+.pr-card--featured .pr-card-name { color: var(--accent-2); }
+
+.pr-card-price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 2.6vw + 0.8rem, 2.6rem);
+  color: var(--ink);
+  line-height: 1;
+  margin: 0 0 0.6em;
+  letter-spacing: -0.01em;
+}
+
+.pr-card-price span {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+  margin-left: 0.3em;
+}
+
+.pr-card-desc {
+  margin: 0 0 1.8rem;
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+  min-height: 2.6em;
+}
+
+.pr-card-list {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.pr-card-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+  font-size: 0.9rem;
+  color: var(--ink-dim);
+  line-height: 1.4;
+}
+
+.pr-card-list li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 0.15em;
+  border-radius: 3px;
+  background: var(--border-strong);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.pr-card--featured .pr-card-list li::before { background: var(--accent); }
+
+.pr-card .btn { justify-content: center; }
+
+.pr-note {
+  margin-top: clamp(24px, 3vw, 36px);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  max-width: 60ch;
+}
+
+/* ---- extra add-ons strip ---- */
+.pr-extra {
+  margin-top: clamp(28px, 4vw, 44px);
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.pr-extra-item {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.pr-extra-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.4em;
+}
+
+.pr-extra-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .pr-grid { grid-template-columns: 1fr; }
+  .pr-card-tag { position: static; transform: none; display: inline-block; margin-bottom: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-card { transition: none; }
+}

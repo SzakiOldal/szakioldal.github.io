@@ -103,6 +103,115 @@
   margin-left: auto;
 }
 
+/* ---- per-item micro visual (lightweight, CSS-only story beat) ---- */
+.mk-visual {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1.4rem;
+  height: 34px;
+}
+
+.mk-item--02 .mk-visual,
+.mk-item--04 .mk-visual {
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+/* 01 — modern megjelenés: dated card swapped for a sharp one */
+.mk-visual--01 { position: relative; width: 78px; }
+.mk-visual--01 .mk-viz-old,
+.mk-visual--01 .mk-viz-new {
+  position: absolute;
+  top: 0; left: 0;
+  width: 60px;
+  height: 34px;
+  border-radius: 4px;
+  transition: transform 700ms var(--ease-out-expo) 200ms, opacity 700ms var(--ease-out-expo) 200ms;
+}
+.mk-visual--01 .mk-viz-old {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  opacity: 0.7;
+}
+.mk-visual--01 .mk-viz-new {
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: translate(10px, 10px);
+  opacity: 0.5;
+}
+.mk-item--01.is-revealed .mk-visual--01 .mk-viz-new {
+  transform: translate(18px, 6px);
+  opacity: 1;
+}
+
+/* 02 — mobilon is tökéletes: desktop -> tablet -> mobile */
+.mk-visual--02 .mk-viz-device {
+  display: block;
+  border-radius: 3px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-top: 2px solid var(--accent);
+  transform: scaleY(0.5);
+  opacity: 0;
+  transition: transform 500ms var(--ease-out-expo), opacity 500ms var(--ease-out-expo);
+}
+.mk-visual--02 .mk-viz-device--desktop { width: 40px; height: 26px; }
+.mk-visual--02 .mk-viz-device--tablet { width: 26px; height: 30px; transition-delay: 120ms; }
+.mk-visual--02 .mk-viz-device--mobile { width: 15px; height: 32px; transition-delay: 240ms; }
+.mk-item--02.is-revealed .mk-visual--02 .mk-viz-device {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* 03 — több érdeklődő: cta with an incoming pulse */
+.mk-visual--03 .mk-viz-cta {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent);
+  padding: 0.55em 0.9em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.mk-visual--03 .mk-viz-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.mk-item--03.is-revealed .mk-visual--03 .mk-viz-pulse {
+  animation: chip-pulse 1.8s ease-in-out infinite;
+}
+
+/* 04 — gyors és professzionális: loading bar that snaps full */
+.mk-visual--04 .mk-viz-bar {
+  display: block;
+  width: 56px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.mk-visual--04 .mk-viz-bar-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 900ms var(--ease-out-expo) 150ms;
+}
+.mk-item--04.is-revealed .mk-visual--04 .mk-viz-bar-fill { width: 100%; }
+.mk-visual--04 .mk-viz-time {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
 /* Subtle, sparing accent on interaction only */
 .mk-item:hover .mk-num,
 .mk-item:focus-within .mk-num {
@@ -126,9 +235,20 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mk-item-inner,
-  .mk-num {
+  .mk-num,
+  .mk-visual--01 .mk-viz-old,
+  .mk-visual--01 .mk-viz-new,
+  .mk-visual--02 .mk-viz-device,
+  .mk-visual--04 .mk-viz-bar-fill {
     transition: none !important;
   }
+  .mk-visual--01 .mk-viz-new,
+  .mk-visual--02 .mk-viz-device {
+    opacity: 1;
+    transform: none;
+  }
+  .mk-visual--04 .mk-viz-bar-fill { width: 100%; }
+  .mk-visual--03 .mk-viz-pulse { animation: none; }
 }
 
 /* Collapse the zigzag on narrow viewports for readability */

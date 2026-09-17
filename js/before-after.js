@@ -78,5 +78,30 @@ export function initBeforeAfter() {
     });
 
     setPos(50);
+
+    // One-time auto-intro: when the section first scrolls into view, briefly
+    // sweep the handle so visitors notice it's draggable, then hand control back.
+    let reduceMotion = false;
+    try {
+      reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (e) {}
+
+    if (!reduceMotion && typeof IntersectionObserver === 'function') {
+      const introObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            introObserver.disconnect();
+            compare.classList.add('ba-auto');
+            setPos(30);
+            window.setTimeout(() => setPos(70), 700);
+            window.setTimeout(() => setPos(50), 1500);
+            window.setTimeout(() => compare.classList.remove('ba-auto'), 2300);
+          });
+        },
+        { threshold: 0.4 }
+      );
+      introObserver.observe(compare);
+    }
   });
 }

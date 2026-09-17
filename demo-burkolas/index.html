@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>FORMA Burkolás — demóoldal</title>
+    <meta
+      name="description"
+      content="Minta weboldal csempézési és burkolási vállalkozásnak — demó projekt a SzakiOldal portfólióból."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%2314110D'/%3E%3Ctext x='50' y='70' font-size='56' font-family='Georgia,serif' fill='%239C6B44' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f3eee5;
+        --bg-alt: #ece3d3;
+        --surface: #fffdf9;
+        --ink: #1e1a15;
+        --ink-dim: #5c5548;
+        --ink-faint: #8c8371;
+        --line: #ddd3bf;
+        --sand: #d8cbb0;
+        --bronze: #9c6b44;
+        --bronze-dark: #7a5233;
+        --bronze-light: #c79868;
+        --black: #14110d;
+        --black-2: #201c17;
+        --on-accent: #fdfbf6;
+        --on-dark: #ece3d3;
+        --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink-dim);
+        font-family: "Work Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Fraunces", Georgia, serif;
+        color: var(--ink);
+        margin: 0;
+        line-height: 1.08;
+        text-wrap: balance;
+        font-weight: 600;
+      }
+      em {
+        font-style: italic;
+        color: var(--bronze);
+      }
+      :focus-visible {
+        outline: 3px solid var(--bronze);
+        outline-offset: 3px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      .container {
+        max-width: 1220px;
+        margin-inline: auto;
+        padding-inline: clamp(20px, 5vw, 56px);
+      }
+      section {
+        padding-block: clamp(56px, 9vw, 120px);
+      }
+      .eyebrow {
+        font-weight: 600;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--bronze);
+        margin: 0 0 1em;
+        display: flex;
+        align-items: center;
+        gap: 0.7em;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 26px;
+        height: 1px;
+        background: var(--bronze);
+      }
+
+      /* topbar */
+      .topbar {
+        background: var(--black);
+        color: var(--on-dark);
+        font-size: 0.82rem;
+        font-weight: 500;
+      }
+      .topbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 0.6rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .topbar a {
+        color: var(--bronze-light);
+        text-decoration: none;
+      }
+      .badge-demo {
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--on-dark);
+        padding: 0.3em 0.75em;
+        border-radius: 2px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      /* header / nav */
+      header {
+        background: rgba(243, 238, 229, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-block: 16px;
+      }
+      .wordmark {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 600;
+        font-size: 1.3rem;
+        color: var(--ink);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.6em;
+        letter-spacing: 0.02em;
+      }
+      .wordmark svg {
+        flex-shrink: 0;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--ink-dim);
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+      .nav-links a:hover {
+        color: var(--bronze);
+      }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        width: 44px;
+        height: 44px;
+        border-radius: 3px;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 1.1rem;
+        padding-block: 1.3rem;
+        border-top: 1px solid var(--line);
+      }
+      .nav-mobile a {
+        text-decoration: none;
+        color: var(--ink-dim);
+        font-weight: 500;
+        display: block;
+        padding-block: 0.3rem;
+      }
+      @media (max-width: 860px) {
+        .nav-links,
+        .btn.desktop-only {
+          display: none;
+        }
+        .nav-toggle {
+          display: block;
+        }
+        .nav-mobile.open {
+          display: flex;
+        }
+      }
+
+      /* buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.95em 1.8em;
+        border-radius: 2px;
+        text-decoration: none;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+        font-family: "Work Sans", sans-serif;
+        min-height: 44px;
+      }
+      .btn-accent {
+        background: var(--bronze);
+        color: var(--on-accent);
+      }
+      .btn-accent:hover {
+        background: var(--bronze-dark);
+        transform: translateY(-1px);
+      }
+      .btn-outline {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+      .btn-outline:hover {
+        border-color: var(--bronze);
+        color: var(--bronze);
+      }
+      .btn-outline-light {
+        border-color: rgba(253, 251, 246, 0.5);
+        color: var(--on-dark);
+      }
+      .btn-outline-light:hover {
+        border-color: var(--bronze-light);
+        color: var(--bronze-light);
+      }
+
+      /* hero */
+      .hero {
+        padding-block: clamp(52px, 9vw, 96px) clamp(40px, 6vw, 64px);
+      }
+      .hero-top {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.6rem;
+      }
+      .hero h1 {
+        font-size: clamp(2.6rem, 4.6vw + 1rem, 5.2rem);
+        text-transform: uppercase;
+        letter-spacing: 0.01em;
+        max-width: 16ch;
+      }
+      .hero-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+        gap: clamp(24px, 5vw, 64px);
+        align-items: end;
+        margin-top: clamp(24px, 4vw, 40px);
+      }
+      .hero p.lede {
+        max-width: 48ch;
+        font-size: 1.1rem;
+      }
+      .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.8rem;
+      }
+      @media (max-width: 720px) {
+        .hero-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* gallery — asymmetric masonry */
+      .gallery-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.4rem;
+      }
+      .gallery-head h2 {
+        font-size: clamp(2rem, 3.2vw + 1rem, 3.1rem);
+        max-width: 14ch;
+      }
+      .gallery-note {
+        max-width: 34ch;
+        font-size: 0.92rem;
+        color: var(--ink-faint);
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-auto-rows: 62px;
+        gap: 16px;
+      }
+      .tile {
+        position: relative;
+        overflow: hidden;
+        border-radius: 2px;
+        isolation: isolate;
+      }
+      .tile-media {
+        position: absolute;
+        inset: 0;
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: scale(1.001);
+      }
+      .tile-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: var(--noise);
+        opacity: 0.5;
+        mix-blend-mode: overlay;
+      }
+      .tile:hover .tile-media,
+      .tile:focus-within .tile-media {
+        transform: scale(1.07);
+      }
+      .tile-scrim {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(20, 17, 13, 0.82) 0%, rgba(20, 17, 13, 0.15) 48%, rgba(20, 17, 13, 0) 68%);
+      }
+      .tile-tag {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        font-size: 0.66rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--on-dark);
+        background: rgba(20, 17, 13, 0.45);
+        border: 1px solid rgba(253, 251, 246, 0.35);
+        padding: 0.4em 0.75em;
+        border-radius: 2px;
+        font-weight: 500;
+      }
+      .tile-info {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 16px;
+        color: var(--on-accent);
+      }
+      .tile-info h3 {
+        color: var(--on-accent);
+        font-size: clamp(1.05rem, 1.1vw + 0.8rem, 1.5rem);
+        font-weight: 600;
+      }
+      .tile-info p {
+        margin: 0.35em 0 0;
+        font-size: 0.86rem;
+        color: rgba(253, 251, 246, 0.82);
+        max-width: 36ch;
+      }
+      .tile-1 { grid-column: span 7; grid-row: span 7; }
+      .tile-2 { grid-column: span 5; grid-row: span 7; }
+      .tile-3 { grid-column: span 4; grid-row: span 5; }
+      .tile-4 { grid-column: span 4; grid-row: span 5; }
+      .tile-5 { grid-column: span 4; grid-row: span 5; }
+      .tile-6 { grid-column: span 12; grid-row: span 4; }
+
+      .tex-1 { background: linear-gradient(135deg, #ede9df 0%, #d9d0bc 45%, #b9ab8c 100%), repeating-linear-gradient(112deg, rgba(122, 82, 51, 0.1) 0 2px, transparent 2px 150px), repeating-linear-gradient(24deg, rgba(122, 82, 51, 0.07) 0 1px, transparent 1px 190px); }
+      .tex-2 { background: linear-gradient(158deg, #dcc9a4 0%, #b99a68 75%), repeating-linear-gradient(90deg, rgba(20, 17, 13, 0.12) 0 3px, transparent 3px 170px); }
+      .tex-3 { background: linear-gradient(160deg, #e9e4d6 0%, #cfc6b0 100%), repeating-linear-gradient(0deg, rgba(20, 17, 13, 0.09) 0 2px, transparent 2px 42px), repeating-linear-gradient(90deg, rgba(20, 17, 13, 0.09) 0 2px, transparent 2px 88px); }
+      .tex-4 { background: linear-gradient(135deg, #cec5b1 0%, #a89b7e 65%, #8b8067 100%), repeating-linear-gradient(90deg, rgba(20, 17, 13, 0.08) 0 2px, transparent 2px 230px); }
+      .tex-5 { background: repeating-linear-gradient(45deg, #b3865a 0 12px, #9c6b44 12px 24px), repeating-linear-gradient(-45deg, rgba(20, 17, 13, 0.14) 0 1px, transparent 1px 24px); }
+      .tex-6 { background: linear-gradient(162deg, #3d382f 0%, #1c1912 75%), repeating-linear-gradient(90deg, rgba(253, 251, 246, 0.06) 0 2px, transparent 2px 210px); }
+
+      @media (max-width: 860px) {
+        .gallery {
+          grid-template-columns: 1fr;
+          grid-auto-rows: auto;
+        }
+        .tile {
+          grid-column: auto;
+          grid-row: auto;
+        }
+        .tile-1 { aspect-ratio: 4 / 3.1; }
+        .tile-2 { aspect-ratio: 16 / 10; }
+        .tile-3 { aspect-ratio: 1 / 1; }
+        .tile-4 { aspect-ratio: 3 / 4; }
+        .tile-5 { aspect-ratio: 1 / 1; }
+        .tile-6 { aspect-ratio: 16 / 9; }
+      }
+
+      /* full-bleed showcase band */
+      .showcase {
+        background: var(--black);
+        color: var(--on-dark);
+        position: relative;
+      }
+      .showcase::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: var(--noise);
+        opacity: 0.4;
+        mix-blend-mode: overlay;
+        pointer-events: none;
+      }
+      .showcase .container {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: clamp(24px, 5vw, 64px);
+        align-items: center;
+      }
+      .showcase h2 {
+        color: var(--on-accent);
+        font-size: clamp(1.9rem, 3.2vw + 1rem, 3rem);
+        max-width: 15ch;
+      }
+      .showcase p {
+        color: rgba(236, 227, 211, 0.82);
+        max-width: 48ch;
+        margin-top: 1rem;
+      }
+      .showcase-list {
+        list-style: none;
+        margin: 1.6rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: 0.9rem;
+      }
+      .showcase-list li {
+        display: flex;
+        gap: 0.7em;
+        font-size: 0.92rem;
+        color: rgba(236, 227, 211, 0.9);
+      }
+      .showcase-list svg {
+        flex-shrink: 0;
+        margin-top: 3px;
+      }
+      @media (max-width: 760px) {
+        .showcase .container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* services — editorial index list */
+      .service-list {
+        border-top: 1px solid var(--line);
+      }
+      .service-row {
+        display: grid;
+        grid-template-columns: 6rem minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(16px, 4vw, 40px);
+        align-items: center;
+        padding-block: clamp(24px, 4vw, 40px);
+        border-bottom: 1px solid var(--line);
+        transition: background 0.2s ease;
+      }
+      .service-row:hover {
+        background: var(--bg-alt);
+      }
+      .service-num {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(1.6rem, 2.4vw + 1rem, 2.4rem);
+        color: var(--sand);
+        font-weight: 500;
+      }
+      .service-row h3 {
+        font-size: clamp(1.25rem, 1.6vw + 1rem, 1.7rem);
+        font-weight: 600;
+      }
+      .service-row p {
+        margin: 0;
+        font-size: 0.95rem;
+        max-width: 46ch;
+      }
+      @media (max-width: 760px) {
+        .service-row {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+        .service-num {
+          font-size: 1.4rem;
+        }
+      }
+
+      /* materials */
+      .materials-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: clamp(14px, 2.4vw, 24px);
+        margin-top: 2.4rem;
+      }
+      .swatch {
+        width: clamp(108px, 15vw, 156px);
+      }
+      .swatch-tile {
+        aspect-ratio: 1 / 1;
+        border-radius: 2px;
+        position: relative;
+        overflow: hidden;
+      }
+      .swatch-tile::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: var(--noise);
+        opacity: 0.45;
+        mix-blend-mode: overlay;
+      }
+      .swatch-label {
+        margin-top: 0.7rem;
+        font-size: 0.82rem;
+        color: var(--ink-dim);
+        font-weight: 500;
+      }
+      .trust-strip {
+        list-style: none;
+        margin: 3rem 0 0;
+        padding: 1.8rem 0 0;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.6rem 2.6rem;
+      }
+      .trust-strip li {
+        display: flex;
+        gap: 0.6em;
+        align-items: flex-start;
+        font-size: 0.9rem;
+        max-width: 30ch;
+      }
+      .trust-strip svg {
+        flex-shrink: 0;
+        margin-top: 3px;
+      }
+
+      /* contact */
+      .contact-wrap {
+        background: var(--bg-alt);
+        border-top: 1px solid var(--line);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+        gap: clamp(28px, 5vw, 64px);
+        align-items: center;
+      }
+      .contact-grid h2 {
+        font-size: clamp(2rem, 3.4vw + 1rem, 3rem);
+        max-width: 14ch;
+      }
+      .contact-grid > div:first-child p {
+        max-width: 44ch;
+        margin-top: 1rem;
+      }
+      .contact-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        padding: clamp(1.8rem, 4vw, 2.6rem);
+        border-radius: 2px;
+      }
+      .contact-card dl {
+        margin: 0 0 1.6rem;
+        display: grid;
+        gap: 1.1rem;
+      }
+      .contact-card dt {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 0.25em;
+      }
+      .contact-card dd {
+        margin: 0;
+        font-size: 1.05rem;
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .contact-card dd a {
+        text-decoration: none;
+      }
+      .contact-card dd a:hover {
+        color: var(--bronze);
+      }
+      .contact-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+      @media (max-width: 760px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      footer {
+        padding-block: 2.4rem;
+        border-top: 1px solid var(--line);
+        background: var(--bg);
+      }
+      .foot-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: var(--ink-faint);
+      }
+      .foot-row a {
+        color: var(--bronze);
+        text-decoration: none;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <span>Csempézés · Járólap · Fürdőszoba · Terasz · <a href="tel:+36204813357">+36 20 481 3357</a></span>
+        <span class="badge-demo">Demo projekt — SzakiOldal portfólió</span>
+      </div>
+    </div>
+
+    <header id="top">
+      <div class="container nav">
+        <a href="#top" class="wordmark">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="11" height="11" fill="#14110D" />
+            <rect x="14" y="1" width="11" height="6" fill="#9C6B44" />
+            <rect x="14" y="9" width="11" height="3" fill="#D8CBB0" />
+            <rect x="1" y="14" width="6" height="11" fill="#9C6B44" />
+            <rect x="9" y="14" width="16" height="11" fill="#DDD3BF" />
+          </svg>
+          FORMA Burkolás
+        </a>
+        <ul class="nav-links">
+          <li><a href="#munkaink">Munkáink</a></li>
+          <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+          <li><a href="#anyagok">Anyagok</a></li>
+          <li><a href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+        <a href="#kapcsolat" class="btn btn-accent desktop-only">Árajánlatot kérek</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="navMobile">
+          ☰
+        </button>
+      </div>
+      <div class="container nav-mobile" id="navMobile">
+        <a href="#munkaink">Munkáink</a>
+        <a href="#szolgaltatasok">Szolgáltatások</a>
+        <a href="#anyagok">Anyagok</a>
+        <a href="#kapcsolat">Kapcsolat</a>
+        <a href="tel:+36204813357">Hívjon: +36 20 481 3357</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <p class="eyebrow">Csempézés és burkolás</p>
+          <h1>Amit <em>elképzelt</em>, megépítjük.</h1>
+          <div class="hero-row">
+            <p class="lede">
+              Fürdőszoba-felújítástól a teraszburkolásig: precíz kivitelezés, gondosan kiválasztott
+              anyagok és olyan részletek, amik évek múlva is állják a sarat.
+            </p>
+            <div class="hero-ctas">
+              <a href="#munkaink" class="btn btn-outline">Munkáink megtekintése</a>
+              <a href="#kapcsolat" class="btn btn-accent">Árajánlatot kérek</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="munkaink">
+        <div class="container">
+          <div class="gallery-head">
+            <h2>Válogatás a munkatípusainkból</h2>
+            <p class="gallery-note">
+              Az alábbi elrendezések szemléltető koncepciók a jellemző munkáinkról — nem konkrét
+              ügyféladatok vagy előtte–utána fotók.
+            </p>
+          </div>
+          <div class="gallery">
+            <article class="tile tile-1">
+              <div class="tile-media tex-1" aria-hidden="true"></div>
+              <div class="tile-scrim" aria-hidden="true"></div>
+              <span class="tile-tag">Koncepció</span>
+              <div class="tile-info">
+                <h3>Fürdőszoba-felújítás</h3>
+                <p>Nagyméretű, márvány-hatású falburkolat és padlófűtés-kész aljzat kialakítása.</p>
+              </div>
+            </article>
+            <article class="tile tile-2">
+              <div class="tile-media tex-2" aria-hidden="true"></div>
+              <div class="tile-scrim" aria-hidden="true"></div>
+              <span class="tile-tag">Koncepció</span>
+              <div class="tile-info">
+                <h3>Teraszburkolás</h3>
+                <p>Fagyálló, csúszásmentes kültéri járólap, esésre tervezett aljzattal.</p>
+              </div>
+            </article>
+            <article class="tile tile-3">
+              <div class="tile-media tex-3" aria-hidden="true"></div>
+              <div class="tile-scrim" aria-hidden="true"></div>
+              <span class="tile-tag">Koncepció</span>
+              <div class="tile-info">
+                <h3>Konyhai hátfal-csempézés</h3>
+                <p>Precíz fúgázás, egyenletes mintaillesztés a munkapult mentén.</p>
+              </div>
+            </article>
+            <article class="tile tile-4">
+              <div class="tile-media tex-4" aria-hidden="true"></div>
+              <div class="tile-scrim" aria-hidden="true"></div>
+              <span class="tile-tag">Koncepció</span>
+              <div class="tile-info">
+                <h3>Nappali padlóburkolat</h3>
+                <p>Nagyformátumú járólap, minimális fúgahálóval a letisztult hatásért.</p>
+              </div>
+            </article>
+            <article class="tile tile-5">
+              <div class="tile-media tex-5" aria-hidden="true"></div>
+              <div class="tile-scrim" aria-hidden="true"></div>
+              <span class="tile-tag">Koncepció</span>
+              <div class="tile-info">
+                <h3>Bejárati mozaikburkolat</h3>
+                <p>Kézzel rakott mintás mozaik előtérbe, kopásálló kivitelben.</p>
+              </div>
+            </article>
+            <article class="tile tile-6">
+              <div class="tile-media tex-6" aria-hidden="true"></div>
+              <div class="tile-scrim" aria-hidden="true"></div>
+              <span class="tile-tag">Koncepció</span>
+              <div class="tile-info">
+                <h3>Homlokzati teraszburkolat</h3>
+                <p>Sötét tónusú, nagyméretű kültéri lapburkolat teljes homlokzat mentén.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="showcase">
+        <div class="container">
+          <div>
+            <p class="eyebrow">Kivitelezés</p>
+            <h2>A részletek adják a minőséget.</h2>
+            <p>
+              A fúgaszélesség, az aljzat esése, a sarokillesztés — ezek döntik el, hogy egy burkolat
+              évekig szépen néz ki, vagy hamar problémássá válik. Mi ezekre a részletekre is figyelünk,
+              nem csak a végeredményre.
+            </p>
+            <ul class="showcase-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#C79868" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                Írásos árajánlat minden munka előtt
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#C79868" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                Helyszíni felmérés és anyagminta-bemutató
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#C79868" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                Gondos vízszigetelés nedves helyiségekben
+              </li>
+            </ul>
+          </div>
+          <div class="tile" style="aspect-ratio: 4/3; border-radius: 2px;">
+            <div class="tile-media tex-4" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="szolgaltatasok">
+        <div class="container">
+          <div class="gallery-head">
+            <h2>Szolgáltatások</h2>
+            <p class="gallery-note">Négy fő terület, amiben otthon vagyunk — a tervezéstől az átadásig.</p>
+          </div>
+          <div class="service-list">
+            <div class="service-row">
+              <span class="service-num">01</span>
+              <h3>Csempézés</h3>
+              <p>Fürdőszoba, konyha, technikai helyiség fal- és padlócsempézése, pontos mintaillesztéssel.</p>
+            </div>
+            <div class="service-row">
+              <span class="service-num">02</span>
+              <h3>Járólap-fektetés</h3>
+              <p>Beltéri és kültéri járólapok fektetése, nagyméretű lapokkal is, sík és esésre tervezett aljzaton.</p>
+            </div>
+            <div class="service-row">
+              <span class="service-num">03</span>
+              <h3>Fürdőszoba-felújítás</h3>
+              <p>Teljes körű felújítás vízszigeteléstől a burkolásig, egy felelős kivitelezővel.</p>
+            </div>
+            <div class="service-row">
+              <span class="service-num">04</span>
+              <h3>Teraszburkolás</h3>
+              <p>Fagyálló, csúszásmentes kültéri burkolatok teraszra, bejáratokra, kertbe.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="anyagok">
+        <div class="container">
+          <p class="eyebrow">Anyagok és kivitelezés</p>
+          <h2 style="font-size: clamp(2rem, 3.2vw + 1rem, 3.1rem); max-width: 22ch;">
+            Olyan anyagokkal dolgozunk, amiket magunk is szívesen választanánk.
+          </h2>
+          <p style="max-width: 60ch; margin-top: 1rem;">
+            A helyszíni felmérés után anyagmintákat hozunk, hogy élőben lássa a színt, mintázatot és
+            felületet, mielőtt döntene. Az alábbiak a nálunk elérhető felülettípusok.
+          </p>
+          <div class="materials-grid">
+            <div class="swatch">
+              <div class="swatch-tile tex-1" aria-hidden="true"></div>
+              <p class="swatch-label">Márvány-hatású</p>
+            </div>
+            <div class="swatch">
+              <div class="swatch-tile tex-2" aria-hidden="true"></div>
+              <p class="swatch-label">Homokkő-hatású</p>
+            </div>
+            <div class="swatch">
+              <div class="swatch-tile tex-3" aria-hidden="true"></div>
+              <p class="swatch-label">Világos járólap</p>
+            </div>
+            <div class="swatch">
+              <div class="swatch-tile tex-4" aria-hidden="true"></div>
+              <p class="swatch-label">Nagyformátumú beton-hatású</p>
+            </div>
+            <div class="swatch">
+              <div class="swatch-tile tex-5" aria-hidden="true"></div>
+              <p class="swatch-label">Mozaikcsempe</p>
+            </div>
+            <div class="swatch">
+              <div class="swatch-tile tex-6" aria-hidden="true"></div>
+              <p class="swatch-label">Sötét, matt kültéri</p>
+            </div>
+          </div>
+          <ul class="trust-strip">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#9C6B44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              Gyors kiszállás, pontos ütemezés
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#9C6B44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              Tiszta munkaterület, letakarás átadásig
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#9C6B44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              Anyag- és munkagarancia minden projektre
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="kapcsolat" class="contact-wrap">
+        <div class="container contact-grid">
+          <div>
+            <p class="eyebrow">Kapcsolat</p>
+            <h2>Kérjen díjtalan helyszíni felmérést.</h2>
+            <p>
+              Írja le röviden, mit tervez, vagy hívjon minket — a felmérés és az írásos árajánlat
+              nem kerül semmibe.
+            </p>
+          </div>
+          <div class="contact-card">
+            <dl>
+              <div>
+                <dt>Telefon</dt>
+                <dd><a href="tel:+36204813357">+36 20 481 3357</a></dd>
+              </div>
+              <div>
+                <dt>E-mail</dt>
+                <dd><a href="mailto:info@formaburkolas.hu">info@formaburkolas.hu</a></dd>
+              </div>
+              <div>
+                <dt>Munkaterület</dt>
+                <dd>Budapest és Pest vármegye</dd>
+              </div>
+            </dl>
+            <div class="contact-ctas">
+              <a href="tel:+36204813357" class="btn btn-accent">Hívjon most</a>
+              <a href="mailto:info@formaburkolas.hu" class="btn btn-outline">Írjon e-mailt</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container foot-row">
+        <span>Ez egy bemutató célból készült mintaoldal, nem valódi vállalkozás.</span>
+        <a href="../index.html">← Vissza a SzakiOldal portfólióhoz</a>
+      </div>
+    </footer>
+
+    <script>
+      const navToggle = document.getElementById("navToggle");
+      const navMobile = document.getElementById("navMobile");
+      if (navToggle && navMobile) {
+        navToggle.addEventListener("click", () => {
+          const open = navMobile.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+          navToggle.textContent = open ? "✕" : "☰";
+        });
+        navMobile.querySelectorAll("a").forEach((a) =>
+          a.addEventListener("click", () => {
+            navMobile.classList.remove("open");
+            navToggle.setAttribute("aria-expanded", "false");
+            navToggle.textContent = "☰";
+          }),
+        );
+      }
+    </script>
+  </body>
+</html>

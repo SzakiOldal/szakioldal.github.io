@@ -4,10 +4,10 @@ import { initReveal } from './reveal.js';
 import { initCursor } from './cursor.js';
 import { initMagnetic } from './magnetic.js';
 import { initTilt } from './tilt.js';
+import { initParallax } from './parallax.js';
 import { initMorph } from './morph.js';
 import { initShowcase } from './showcase.js';
 import { initBeforeAfter } from './before-after.js';
-import { initServices } from './services.js';
 
 function boot() {
   initIntro();
@@ -16,10 +16,10 @@ function boot() {
   initCursor();
   initMagnetic();
   initTilt();
+  initParallax();
   initMorph();
   initShowcase();
   initBeforeAfter();
-  initServices();
 }
 
 if (document.readyState === 'loading') {
