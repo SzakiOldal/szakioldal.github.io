@@ -27,8 +27,9 @@ export function initShowcase() {
     frame.addEventListener('load', markLoaded, { once: true });
     // Fallback: some browsers can miss/delay the iframe load event for a
     // background/off-screen tab even once navigation has finished, so
-    // don't leave the loading spinner stuck forever.
-    window.setTimeout(markLoaded, 2500);
+    // don't leave the loading spinner stuck forever. These are small,
+    // self-contained pages — 6s is a generous last resort, not the norm.
+    window.setTimeout(markLoaded, 6000);
     frame.src = src;
   }
 

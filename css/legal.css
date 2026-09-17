@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Legal / informational static pages (Adatkezelés, ÁSZF, Impresszum)
+   Minimal, no JS dependency — reuses tokens.css + base.css for the shell.
+   ========================================================================== */
+
+.legal-header {
+  border-bottom: 1px solid var(--border);
+}
+.legal-header .nav {
+  height: auto;
+  padding-block: 22px;
+}
+.legal-back {
+  font-size: 0.85rem;
+  padding: 0.6em 1.2em;
+}
+
+.legal-main {
+  padding-block: clamp(48px, 8vw, 88px) clamp(64px, 10vw, 120px);
+}
+
+.legal-container {
+  max-width: 68ch;
+}
+
+.legal-container h1 {
+  font-size: clamp(2rem, 3.6vw + 1rem, 3rem);
+  margin-top: 0.4em;
+  max-width: 18ch;
+}
+
+.legal-updated {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin: 1.2rem 0 3rem;
+}
+
+.legal-container h2 {
+  font-size: clamp(1.2rem, 1.6vw + 0.9rem, 1.5rem);
+  margin-top: 2.6em;
+  margin-bottom: 0.7em;
+}
+
+.legal-container h2:first-of-type { margin-top: 0; }
+
+.legal-container p,
+.legal-container li {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ink-dim);
+}
+
+.legal-container p { margin: 0 0 1.1em; }
+
+.legal-container ul,
+.legal-container ol {
+  margin: 0 0 1.1em;
+  padding-left: 1.3em;
+}
+.legal-container li { margin-bottom: 0.5em; }
+
+.legal-container strong { color: var(--ink); }
+
+.legal-container a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 2px; }
+.legal-container a:hover { color: var(--accent); }
+
+.legal-disclaimer {
+  margin-top: 3.5rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--bg-elevated);
+}
+.legal-disclaimer p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  line-height: 1.6;
+}
+
+.legal-footer {
+  border-top: 1px solid var(--border);
+  padding-block: 2rem;
+}
+.legal-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.legal-footer a { font-size: 0.85rem; color: var(--ink-faint); }
+.legal-footer a:hover { color: var(--accent-2); }
+.legal-footer .foot-fine { font-size: 0.78rem; color: var(--ink-faint); font-family: var(--font-mono); margin: 0; }
+
+@media (max-width: 560px) {
+  .legal-footer .container { flex-direction: column; align-items: flex-start; }
+}

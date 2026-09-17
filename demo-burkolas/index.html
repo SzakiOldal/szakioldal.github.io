@@ -272,14 +272,29 @@
 
       /* hero */
       .hero {
-        padding-block: clamp(52px, 9vw, 96px) clamp(40px, 6vw, 64px);
+        padding-block: clamp(52px, 9vw, 96px) clamp(40px, 6vw, 72px);
+        position: relative;
+        overflow: hidden;
       }
-      .hero-top {
-        display: flex;
-        align-items: center;
-        gap: 1.2rem;
-        flex-wrap: wrap;
-        margin-bottom: 1.6rem;
+      .hero .container {
+        position: relative;
+        z-index: 1;
+      }
+      .hero-watermark {
+        position: absolute;
+        top: -0.14em;
+        left: -0.03em;
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 900;
+        font-size: clamp(4.5rem, 20vw, 15.5rem);
+        line-height: 1;
+        letter-spacing: 0.01em;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(20, 17, 13, 0.07);
+        white-space: nowrap;
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
       }
       .hero h1 {
         font-size: clamp(2.6rem, 4.6vw + 1rem, 5.2rem);
@@ -287,11 +302,11 @@
         letter-spacing: 0.01em;
         max-width: 16ch;
       }
-      .hero-row {
+      .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
-        gap: clamp(24px, 5vw, 64px);
-        align-items: end;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.72fr);
+        gap: clamp(32px, 5vw, 64px);
+        align-items: center;
         margin-top: clamp(24px, 4vw, 40px);
       }
       .hero p.lede {
@@ -304,9 +319,34 @@
         gap: 1rem;
         margin-top: 1.8rem;
       }
+      .hero-visual-frame {
+        position: relative;
+      }
+      .hero-visual-frame::before {
+        content: "";
+        position: absolute;
+        inset: 20px -20px -20px 20px;
+        border: 1px solid var(--bronze-light);
+        border-radius: 2px;
+        z-index: 0;
+      }
+      .hero-visual {
+        position: relative;
+        z-index: 1;
+        aspect-ratio: 3 / 4;
+        min-height: 320px;
+        box-shadow: 0 30px 60px -32px rgba(20, 17, 13, 0.45);
+      }
       @media (max-width: 720px) {
-        .hero-row {
+        .hero-grid {
           grid-template-columns: 1fr;
+        }
+        .hero-visual-frame::before {
+          inset: 14px -14px -14px 14px;
+        }
+        .hero-visual {
+          aspect-ratio: 16 / 11;
+          min-height: 0;
         }
       }
 
@@ -339,6 +379,12 @@
         overflow: hidden;
         border-radius: 2px;
         isolation: isolate;
+        box-shadow: 0 1px 2px rgba(20, 17, 13, 0.08), inset 0 0 0 1px rgba(20, 17, 13, 0.07);
+        transition: box-shadow 0.5s ease;
+      }
+      .tile:hover,
+      .tile:focus-within {
+        box-shadow: 0 28px 48px -26px rgba(20, 17, 13, 0.5), inset 0 0 0 1px rgba(20, 17, 13, 0.1);
       }
       .tile-media {
         position: absolute;
@@ -356,7 +402,7 @@
       }
       .tile:hover .tile-media,
       .tile:focus-within .tile-media {
-        transform: scale(1.07);
+        transform: scale(1.055);
       }
       .tile-scrim {
         position: absolute;
@@ -376,6 +422,22 @@
         padding: 0.4em 0.75em;
         border-radius: 2px;
         font-weight: 500;
+      }
+      .tile-index {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: rgba(253, 251, 246, 0.8);
+        letter-spacing: 0.02em;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+      }
+      .tile:hover .tile-index,
+      .tile:focus-within .tile-index {
+        opacity: 1;
       }
       .tile-info {
         position: absolute;
@@ -402,12 +464,12 @@
       .tile-5 { grid-column: span 4; grid-row: span 5; }
       .tile-6 { grid-column: span 12; grid-row: span 4; }
 
-      .tex-1 { background: linear-gradient(135deg, #ede9df 0%, #d9d0bc 45%, #b9ab8c 100%), repeating-linear-gradient(112deg, rgba(122, 82, 51, 0.1) 0 2px, transparent 2px 150px), repeating-linear-gradient(24deg, rgba(122, 82, 51, 0.07) 0 1px, transparent 1px 190px); }
-      .tex-2 { background: linear-gradient(158deg, #dcc9a4 0%, #b99a68 75%), repeating-linear-gradient(90deg, rgba(20, 17, 13, 0.12) 0 3px, transparent 3px 170px); }
-      .tex-3 { background: linear-gradient(160deg, #e9e4d6 0%, #cfc6b0 100%), repeating-linear-gradient(0deg, rgba(20, 17, 13, 0.09) 0 2px, transparent 2px 42px), repeating-linear-gradient(90deg, rgba(20, 17, 13, 0.09) 0 2px, transparent 2px 88px); }
-      .tex-4 { background: linear-gradient(135deg, #cec5b1 0%, #a89b7e 65%, #8b8067 100%), repeating-linear-gradient(90deg, rgba(20, 17, 13, 0.08) 0 2px, transparent 2px 230px); }
-      .tex-5 { background: repeating-linear-gradient(45deg, #b3865a 0 12px, #9c6b44 12px 24px), repeating-linear-gradient(-45deg, rgba(20, 17, 13, 0.14) 0 1px, transparent 1px 24px); }
-      .tex-6 { background: linear-gradient(162deg, #3d382f 0%, #1c1912 75%), repeating-linear-gradient(90deg, rgba(253, 251, 246, 0.06) 0 2px, transparent 2px 210px); }
+      .tex-1 { background: radial-gradient(120% 60% at 15% 0%, rgba(255, 255, 255, 0.35), transparent 55%), linear-gradient(135deg, #ede9df 0%, #d9d0bc 45%, #b9ab8c 100%), repeating-linear-gradient(112deg, rgba(122, 82, 51, 0.12) 0 2px, transparent 2px 150px), repeating-linear-gradient(24deg, rgba(122, 82, 51, 0.08) 0 1px, transparent 1px 190px), repeating-linear-gradient(96deg, rgba(20, 17, 13, 0.05) 0 1px, transparent 1px 260px); }
+      .tex-2 { background: radial-gradient(60% 45% at 80% 15%, rgba(255, 255, 255, 0.18), transparent 60%), linear-gradient(158deg, #dcc9a4 0%, #b99a68 75%), repeating-linear-gradient(90deg, rgba(20, 17, 13, 0.13) 0 3px, transparent 3px 170px), repeating-linear-gradient(4deg, rgba(20, 17, 13, 0.06) 0 2px, transparent 2px 60px); }
+      .tex-3 { background: radial-gradient(70% 50% at 20% 0%, rgba(255, 255, 255, 0.5), transparent 60%), linear-gradient(160deg, #e9e4d6 0%, #cfc6b0 100%), repeating-linear-gradient(0deg, rgba(20, 17, 13, 0.1) 0 2px, transparent 2px 42px), repeating-linear-gradient(90deg, rgba(20, 17, 13, 0.1) 0 2px, transparent 2px 88px); }
+      .tex-4 { background: radial-gradient(55% 45% at 25% 15%, rgba(255, 255, 255, 0.14), transparent 60%), radial-gradient(50% 40% at 82% 75%, rgba(20, 17, 13, 0.1), transparent 60%), linear-gradient(135deg, #cec5b1 0%, #a89b7e 65%, #8b8067 100%), repeating-linear-gradient(90deg, rgba(20, 17, 13, 0.09) 0 2px, transparent 2px 230px); }
+      .tex-5 { background: repeating-linear-gradient(45deg, #b3865a 0 12px, #9c6b44 12px 24px), repeating-linear-gradient(-45deg, rgba(20, 17, 13, 0.16) 0 1px, transparent 1px 24px), repeating-linear-gradient(45deg, rgba(253, 251, 246, 0.12) 0 1px, transparent 1px 24px); }
+      .tex-6 { background: radial-gradient(90% 70% at 25% 0%, rgba(255, 255, 255, 0.06), transparent 60%), linear-gradient(162deg, #3d382f 0%, #1c1912 75%), repeating-linear-gradient(90deg, rgba(253, 251, 246, 0.07) 0 2px, transparent 2px 210px); }
 
       @media (max-width: 860px) {
         .gallery {
@@ -522,6 +584,41 @@
         }
       }
 
+      /* process */
+      .process {
+        border-top: 1px solid var(--line);
+      }
+      .process-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: clamp(24px, 3vw, 32px);
+        margin-top: 2.6rem;
+      }
+      .process-step {
+        border-top: 2px solid var(--sand);
+        padding-top: 1.4rem;
+      }
+      .process-step h3 {
+        margin-top: 0.6rem;
+        font-size: clamp(1.05rem, 1vw + 0.9rem, 1.3rem);
+      }
+      .process-step p {
+        margin: 0.6rem 0 0;
+        font-size: 0.92rem;
+      }
+      @media (max-width: 760px) {
+        .process-list {
+          grid-template-columns: 1fr;
+          gap: 1.8rem;
+        }
+        .process-step {
+          border-top: none;
+          border-left: 2px solid var(--sand);
+          padding-top: 0;
+          padding-left: 1.2rem;
+        }
+      }
+
       /* materials */
       .materials-grid {
         display: flex;
@@ -577,8 +674,21 @@
       .contact-wrap {
         background: var(--bg-alt);
         border-top: 1px solid var(--line);
+        position: relative;
+        overflow: hidden;
+      }
+      .contact-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: var(--noise);
+        opacity: 0.18;
+        mix-blend-mode: overlay;
+        pointer-events: none;
       }
       .contact-grid {
+        position: relative;
+        z-index: 1;
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
         gap: clamp(28px, 5vw, 64px);
@@ -591,6 +701,26 @@
       .contact-grid > div:first-child p {
         max-width: 44ch;
         margin-top: 1rem;
+      }
+      .contact-note {
+        list-style: none;
+        margin: 1.8rem 0 0;
+        padding: 1.4rem 0 0;
+        border-top: 1px solid var(--line);
+        max-width: 44ch;
+        display: grid;
+        gap: 0.6rem;
+      }
+      .contact-note li {
+        display: flex;
+        gap: 0.6em;
+        align-items: flex-start;
+        font-size: 0.9rem;
+        color: var(--ink-faint);
+      }
+      .contact-note svg {
+        flex-shrink: 0;
+        margin-top: 3px;
       }
       .contact-card {
         background: var(--surface);
@@ -677,6 +807,7 @@
         <ul class="nav-links">
           <li><a href="#munkaink">Munkáink</a></li>
           <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+          <li><a href="#folyamat">Folyamat</a></li>
           <li><a href="#anyagok">Anyagok</a></li>
           <li><a href="#kapcsolat">Kapcsolat</a></li>
         </ul>
@@ -688,6 +819,7 @@
       <div class="container nav-mobile" id="navMobile">
         <a href="#munkaink">Munkáink</a>
         <a href="#szolgaltatasok">Szolgáltatások</a>
+        <a href="#folyamat">Folyamat</a>
         <a href="#anyagok">Anyagok</a>
         <a href="#kapcsolat">Kapcsolat</a>
         <a href="tel:+36204813357">Hívjon: +36 20 481 3357</a>
@@ -696,17 +828,31 @@
 
     <main>
       <section class="hero">
+        <span class="hero-watermark" aria-hidden="true">FORMA</span>
         <div class="container">
           <p class="eyebrow">Csempézés és burkolás</p>
           <h1>Amit <em>elképzelt</em>, megépítjük.</h1>
-          <div class="hero-row">
-            <p class="lede">
-              Fürdőszoba-felújítástól a teraszburkolásig: precíz kivitelezés, gondosan kiválasztott
-              anyagok és olyan részletek, amik évek múlva is állják a sarat.
-            </p>
-            <div class="hero-ctas">
-              <a href="#munkaink" class="btn btn-outline">Munkáink megtekintése</a>
-              <a href="#kapcsolat" class="btn btn-accent">Árajánlatot kérek</a>
+          <div class="hero-grid">
+            <div>
+              <p class="lede">
+                Fürdőszoba-felújítástól a teraszburkolásig: precíz kivitelezés, gondosan kiválasztott
+                anyagok és olyan részletek, amik évek múlva is állják a sarat.
+              </p>
+              <div class="hero-ctas">
+                <a href="#munkaink" class="btn btn-outline">Munkáink megtekintése</a>
+                <a href="#kapcsolat" class="btn btn-accent">Árajánlatot kérek</a>
+              </div>
+            </div>
+            <div class="hero-visual-frame">
+              <article class="tile hero-visual">
+                <div class="tile-media tex-1" aria-hidden="true"></div>
+                <div class="tile-scrim" aria-hidden="true"></div>
+                <span class="tile-tag">Koncepció</span>
+                <div class="tile-info">
+                  <h3>Márvány-hatású felület</h3>
+                  <p>Illusztráció a jellemző anyaghasználatról.</p>
+                </div>
+              </article>
             </div>
           </div>
         </div>
@@ -726,6 +872,7 @@
               <div class="tile-media tex-1" aria-hidden="true"></div>
               <div class="tile-scrim" aria-hidden="true"></div>
               <span class="tile-tag">Koncepció</span>
+              <span class="tile-index">01</span>
               <div class="tile-info">
                 <h3>Fürdőszoba-felújítás</h3>
                 <p>Nagyméretű, márvány-hatású falburkolat és padlófűtés-kész aljzat kialakítása.</p>
@@ -735,6 +882,7 @@
               <div class="tile-media tex-2" aria-hidden="true"></div>
               <div class="tile-scrim" aria-hidden="true"></div>
               <span class="tile-tag">Koncepció</span>
+              <span class="tile-index">02</span>
               <div class="tile-info">
                 <h3>Teraszburkolás</h3>
                 <p>Fagyálló, csúszásmentes kültéri járólap, esésre tervezett aljzattal.</p>
@@ -744,6 +892,7 @@
               <div class="tile-media tex-3" aria-hidden="true"></div>
               <div class="tile-scrim" aria-hidden="true"></div>
               <span class="tile-tag">Koncepció</span>
+              <span class="tile-index">03</span>
               <div class="tile-info">
                 <h3>Konyhai hátfal-csempézés</h3>
                 <p>Precíz fúgázás, egyenletes mintaillesztés a munkapult mentén.</p>
@@ -753,6 +902,7 @@
               <div class="tile-media tex-4" aria-hidden="true"></div>
               <div class="tile-scrim" aria-hidden="true"></div>
               <span class="tile-tag">Koncepció</span>
+              <span class="tile-index">04</span>
               <div class="tile-info">
                 <h3>Nappali padlóburkolat</h3>
                 <p>Nagyformátumú járólap, minimális fúgahálóval a letisztult hatásért.</p>
@@ -762,6 +912,7 @@
               <div class="tile-media tex-5" aria-hidden="true"></div>
               <div class="tile-scrim" aria-hidden="true"></div>
               <span class="tile-tag">Koncepció</span>
+              <span class="tile-index">05</span>
               <div class="tile-info">
                 <h3>Bejárati mozaikburkolat</h3>
                 <p>Kézzel rakott mintás mozaik előtérbe, kopásálló kivitelben.</p>
@@ -771,6 +922,7 @@
               <div class="tile-media tex-6" aria-hidden="true"></div>
               <div class="tile-scrim" aria-hidden="true"></div>
               <span class="tile-tag">Koncepció</span>
+              <span class="tile-index">06</span>
               <div class="tile-info">
                 <h3>Homlokzati teraszburkolat</h3>
                 <p>Sötét tónusú, nagyméretű kültéri lapburkolat teljes homlokzat mentén.</p>
@@ -842,6 +994,40 @@
         </div>
       </section>
 
+      <section id="folyamat" class="process">
+        <div class="container">
+          <div class="gallery-head">
+            <h2>Hogyan dolgozunk</h2>
+            <p class="gallery-note">
+              Négy egyértelmű lépés a felméréstől az átadásig — meglepetés és rejtett költség
+              nélkül.
+            </p>
+          </div>
+          <div class="process-list">
+            <div class="process-step">
+              <span class="service-num">01</span>
+              <h3>Helyszíni felmérés</h3>
+              <p>Megnézzük a teret, átbeszéljük az igényeket és a várható ütemezést.</p>
+            </div>
+            <div class="process-step">
+              <span class="service-num">02</span>
+              <h3>Írásos árajánlat</h3>
+              <p>Tételes, átlátható ajánlat anyag- és munkadíjjal — jóváhagyás után kezdünk.</p>
+            </div>
+            <div class="process-step">
+              <span class="service-num">03</span>
+              <h3>Precíz kivitelezés</h3>
+              <p>Gondos aljzat-előkészítés, esésképzés és mintaillesztés, tiszta munkaterülettel.</p>
+            </div>
+            <div class="process-step">
+              <span class="service-num">04</span>
+              <h3>Átadás, ellenőrzés</h3>
+              <p>Közösen végignézzük a kész munkát, és tájékoztatást adunk a karbantartásról.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="anyagok">
         <div class="container">
           <p class="eyebrow">Anyagok és kivitelezés</p>
@@ -904,6 +1090,20 @@
               Írja le röviden, mit tervez, vagy hívjon minket — a felmérés és az írásos árajánlat
               nem kerül semmibe.
             </p>
+            <ul class="contact-note">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#9C6B44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                Írja meg a helyiség vagy terület hozzávetőleges méretét
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#9C6B44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                Jelezze, milyen típusú burkolásról van szó
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#9C6B44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                Ha van elképzelt időpont, azt is írja meg
+              </li>
+            </ul>
           </div>
           <div class="contact-card">
             <dl>

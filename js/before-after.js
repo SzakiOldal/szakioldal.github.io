@@ -93,8 +93,8 @@ export function initBeforeAfter() {
             if (!entry.isIntersecting) return;
             introObserver.disconnect();
             compare.classList.add('ba-auto');
-            setPos(30);
-            window.setTimeout(() => setPos(70), 700);
+            setPos(37);
+            window.setTimeout(() => setPos(63), 700);
             window.setTimeout(() => setPos(50), 1500);
             window.setTimeout(() => compare.classList.remove('ba-auto'), 2300);
           });

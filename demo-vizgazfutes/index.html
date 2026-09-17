@@ -113,13 +113,41 @@
         padding-inline: clamp(20px, 5vw, 48px);
       }
       section {
-        padding-block: clamp(52px, 8vw, 104px);
+        padding-block: clamp(56px, 10vw, 132px);
       }
       .rule-top {
         border-top: 1px solid var(--line);
       }
       .tint {
         background: var(--surface-2);
+      }
+
+      /* Editorial background numerals — decorative section index */
+      main {
+        counter-reset: section-idx;
+      }
+      section.numbered {
+        position: relative;
+      }
+      section.numbered::before {
+        counter-increment: section-idx;
+        content: counter(section-idx, decimal-leading-zero);
+        position: absolute;
+        top: clamp(30px, 6vw, 58px);
+        right: clamp(20px, 5vw, 48px);
+        font-family: "Fraunces", serif;
+        font-weight: 600;
+        font-size: clamp(2.8rem, 7vw, 5.6rem);
+        line-height: 1;
+        color: var(--ink);
+        opacity: 0.055;
+        pointer-events: none;
+        user-select: none;
+      }
+      @media (max-width: 700px) {
+        section.numbered::before {
+          display: none;
+        }
       }
 
       .eyebrow {
@@ -144,16 +172,18 @@
         color: #f0b98b;
       }
       .section-head {
-        margin-bottom: 2.8rem;
+        margin-bottom: 3.6rem;
         max-width: 60ch;
+        position: relative;
       }
       .section-head h2 {
-        font-size: clamp(1.9rem, 2.6vw + 1rem, 2.7rem);
+        font-size: clamp(2.15rem, 3.6vw + 1rem, 3.5rem);
+        letter-spacing: -0.01em;
       }
       .section-head p.sub {
-        margin-top: 0.9rem;
+        margin-top: 1.1rem;
         max-width: 52ch;
-        font-size: 1.02rem;
+        font-size: 1.06rem;
       }
 
       /* TOPBAR */
@@ -332,6 +362,14 @@
         border-color: var(--accent);
         color: #f0b98b;
       }
+      .btn-lg {
+        padding: 1.15em 2.15em;
+        font-size: 1.04rem;
+        box-shadow: 0 16px 34px -14px rgba(179, 78, 21, 0.55);
+      }
+      .btn-lg:hover {
+        box-shadow: 0 18px 38px -12px rgba(179, 78, 21, 0.62);
+      }
 
       /* HERO */
       .hero {
@@ -339,25 +377,29 @@
       }
       .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-        gap: clamp(32px, 5vw, 64px);
+        grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.88fr);
+        gap: clamp(32px, 6vw, 76px);
         align-items: center;
       }
       .hero h1 {
-        font-size: clamp(2.15rem, 3.1vw + 1.1rem, 3.5rem);
+        font-size: clamp(2.5rem, 4.6vw + 1.2rem, 4.9rem);
         text-transform: uppercase;
         letter-spacing: 0.005em;
       }
+      .hero h1 .accent {
+        color: var(--accent-dark);
+      }
       .hero p.lede {
-        max-width: 48ch;
-        margin-top: 1.3rem;
-        font-size: 1.08rem;
+        max-width: 46ch;
+        margin-top: 1.5rem;
+        font-size: 1.14rem;
       }
       .hero-ctas {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
-        margin-top: 2.1rem;
+        align-items: center;
+        gap: 1.2rem;
+        margin-top: 2.4rem;
       }
       .hero-art {
         display: flex;
@@ -379,8 +421,9 @@
         }
       }
       .hero-svg {
-        width: min(88%, 380px);
+        width: min(92%, 420px);
         height: auto;
+        filter: drop-shadow(0 22px 30px rgba(28, 43, 42, 0.16));
       }
       .p-backdrop {
         fill: var(--surface-2);
@@ -458,6 +501,7 @@
       .trust-list {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         padding-block: 1.7rem;
         margin: 0;
         list-style: none;
@@ -465,10 +509,11 @@
       .trust-list li {
         display: flex;
         align-items: center;
-        gap: 0.7rem;
+        gap: 0.6rem;
         font-size: 0.88rem;
-        color: var(--ink-dim);
-        padding-inline: 1.6rem;
+        font-weight: 600;
+        color: var(--ink-soft);
+        padding-inline: 1.2rem;
         border-left: 1px solid var(--line);
       }
       .trust-list li:first-child {
@@ -508,7 +553,7 @@
             "a a b c"
             "a a d e"
             "f f f f";
-          gap: 1.25rem;
+          gap: 1.5rem;
         }
         .svc-a {
           grid-area: a;
@@ -530,15 +575,29 @@
         }
       }
       .service-card {
+        position: relative;
         background: var(--surface);
         border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 1.6rem;
+        padding: 1.85rem;
         transition: transform 0.15s ease, border-color 0.15s ease;
       }
       .service-card:hover {
         transform: translateY(-2px);
         border-color: var(--teal);
+      }
+      .service-index {
+        position: absolute;
+        top: 1.15rem;
+        right: 1.35rem;
+        font-family: "Fraunces", serif;
+        font-weight: 600;
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
+        color: var(--ink-faint);
+      }
+      .svc-a .service-index {
+        color: rgba(242, 234, 217, 0.5);
       }
       .svc-a {
         display: flex;
@@ -546,8 +605,8 @@
         justify-content: flex-end;
         background: var(--ink);
         border-color: var(--ink);
-        padding: 2rem;
-        min-height: 220px;
+        padding: 2.2rem;
+        min-height: 268px;
       }
       .svc-a .service-icon {
         color: #f0b98b;
@@ -570,9 +629,9 @@
         margin-bottom: 1rem;
       }
       .service-card h3 {
-        font-size: 1.14rem;
+        font-size: 1.22rem;
         font-weight: 600;
-        margin-bottom: 0.45rem;
+        margin-bottom: 0.5rem;
       }
       .service-card p {
         margin: 0;
@@ -595,19 +654,40 @@
       }
 
       /* MIÉRT MINKET */
-      .why-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-        gap: clamp(28px, 5vw, 64px);
-        align-items: start;
-      }
       .why-quote {
+        position: relative;
         font-family: "Fraunces", serif;
         font-style: italic;
         font-weight: 500;
-        font-size: clamp(1.5rem, 2vw + 1rem, 2.1rem);
+        font-size: clamp(1.9rem, 3.4vw + 1.1rem, 3.3rem);
         color: var(--ink);
-        line-height: 1.28;
+        line-height: 1.22;
+        max-width: 24ch;
+        padding-left: clamp(30px, 4vw, 54px);
+        margin-bottom: clamp(2.4rem, 5vw, 3.6rem);
+      }
+      .why-quote::before {
+        content: "\201C";
+        position: absolute;
+        left: -0.08em;
+        top: -0.36em;
+        font-family: Georgia, serif;
+        font-style: normal;
+        font-size: 3.4em;
+        line-height: 1;
+        color: var(--accent);
+        opacity: 0.32;
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+        gap: clamp(28px, 5vw, 64px);
+        align-items: start;
+      }
+      .why-lead {
+        font-size: 1.06rem;
+        color: var(--ink-soft);
+        max-width: 34ch;
       }
       .why-list {
         list-style: none;
@@ -778,23 +858,34 @@
 
       /* MUNKAFOLYAMAT */
       .process-list {
+        position: relative;
         display: flex;
         flex-direction: column;
+      }
+      .process-list::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: clamp(32px, 4vw, 48px);
+        width: 1px;
+        background: var(--line);
       }
       .process-step {
         display: grid;
         grid-template-columns: clamp(64px, 8vw, 96px) 1fr;
         gap: clamp(16px, 3vw, 32px);
-        padding-block: 1.8rem;
+        padding-block: 2.1rem;
         border-top: 1px solid var(--line);
       }
       .process-step:last-child {
         border-bottom: 1px solid var(--line);
       }
       .step-num {
+        position: relative;
         font-family: "Fraunces", serif;
         font-weight: 600;
-        font-size: clamp(2.2rem, 3vw, 3rem);
+        font-size: clamp(3rem, 6vw, 5.4rem);
         color: var(--line);
         line-height: 1;
       }
@@ -803,15 +894,15 @@
       }
       .step-body {
         max-width: 62ch;
-        padding-top: 0.3rem;
+        padding-top: 0.5rem;
       }
       .step-body h3 {
-        font-size: 1.15rem;
-        margin-bottom: 0.4rem;
+        font-size: 1.22rem;
+        margin-bottom: 0.5rem;
       }
       .process-step:nth-child(2) .step-body,
       .process-step:nth-child(4) .step-body {
-        margin-left: clamp(0px, 4vw, 48px);
+        margin-left: clamp(0px, 9vw, 88px);
       }
       @media (max-width: 700px) {
         .process-step:nth-child(2) .step-body,
@@ -911,6 +1002,32 @@
         text-decoration: none;
         font-weight: 600;
       }
+
+      /* MOBILE STICKY CTA — keeps the primary action reachable on small screens */
+      .mobile-cta {
+        display: none;
+      }
+      @media (max-width: 700px) {
+        .mobile-cta {
+          display: block;
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 70;
+          background: var(--surface);
+          border-top: 1px solid var(--line);
+          padding: 0.65rem clamp(20px, 5vw, 48px)
+            calc(0.65rem + env(safe-area-inset-bottom, 0px));
+          box-shadow: 0 -10px 26px -14px rgba(28, 43, 42, 0.3);
+        }
+        .mobile-cta .btn {
+          width: 100%;
+        }
+        body {
+          padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+        }
+      }
     </style>
   </head>
   <body>
@@ -970,15 +1087,15 @@
         <div class="container hero-grid">
           <div class="hero-copy">
             <p class="eyebrow">Víz-, gáz- és fűtésszerelés</p>
-            <h1>Csőtörésnél nincs idő keresgélni.</h1>
+            <h1>Csőtörésnél <span class="accent">nincs idő</span> keresgélni.</h1>
             <p class="lede">
               Vízszerelés, gázszerelés és fűtésrendszerek Budapesten és
               környékén — sürgősségi kiszállással, és írásos árajánlattal
               minden munka megkezdése előtt.
             </p>
             <div class="hero-ctas">
-              <a href="tel:+36702158843" class="btn btn-accent"
-                >Hívjon most: +36 70 215 8843</a
+              <a href="tel:+36702158843" class="btn btn-accent btn-lg"
+                >Segítségre van szükségem →</a
               >
               <a href="#arkepzes" class="btn btn-outline"
                 >Árképzés megtekintése</a
@@ -1136,7 +1253,7 @@
         </div>
       </section>
 
-      <section id="szolgaltatasok" class="rule-top">
+      <section id="szolgaltatasok" class="rule-top numbered">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Mivel foglalkozunk</p>
@@ -1148,6 +1265,7 @@
           </div>
           <div class="service-grid">
             <div class="service-card svc-a">
+              <span class="service-index">01</span>
               <div class="service-tag">Leggyakoribb sürgős hívás</div>
               <div class="service-icon">
                 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -1168,6 +1286,7 @@
             </div>
 
             <div class="service-card svc-b">
+              <span class="service-index">02</span>
               <div class="service-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -1187,6 +1306,7 @@
             </div>
 
             <div class="service-card svc-c">
+              <span class="service-index">03</span>
               <div class="service-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <rect
@@ -1211,6 +1331,7 @@
             </div>
 
             <div class="service-card svc-d">
+              <span class="service-index">04</span>
               <div class="service-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -1231,6 +1352,7 @@
             </div>
 
             <div class="service-card svc-e">
+              <span class="service-index">05</span>
               <div class="service-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <circle
@@ -1253,6 +1375,7 @@
             </div>
 
             <div class="service-card svc-f">
+              <span class="service-index">06</span>
               <div class="service-icon">
                 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -1275,15 +1398,19 @@
         </div>
       </section>
 
-      <section id="miert-minket" class="tint rule-top">
+      <section id="miert-minket" class="tint rule-top numbered">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Miért minket?</p>
             <h2>Amit mondunk, azt be is tartjuk.</h2>
           </div>
+          <p class="why-quote">
+            Amit a helyszínen mondunk, az a számlán is ugyanaz.
+          </p>
           <div class="why-grid">
-            <p class="why-quote">
-              Amit a helyszínen mondunk, az a számlán is ugyanaz.
+            <p class="why-lead">
+              Ez nem szlogen, hanem öt dolog, amit minden munkánál betartunk
+              — a csaptelepcserétől a kazánszerelésig.
             </p>
             <ul class="why-list">
               <li class="why-item">
@@ -1381,7 +1508,7 @@
         </div>
       </section>
 
-      <section id="surgosseg" class="rule-top">
+      <section id="surgosseg" class="rule-top numbered">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Sürgősségi kiszállás</p>
@@ -1399,7 +1526,7 @@
                   megmondjuk, mennyi idő alatt érünk oda.
                 </p>
               </div>
-              <a href="tel:+36702158843" class="btn btn-accent"
+              <a href="tel:+36702158843" class="btn btn-accent btn-lg"
                 >Hívjon: +36 70 215 8843</a
               >
             </div>
@@ -1423,7 +1550,7 @@
         </div>
       </section>
 
-      <section id="arkepzes" class="tint rule-top">
+      <section id="arkepzes" class="tint rule-top numbered">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Átlátható díjak</p>
@@ -1472,7 +1599,7 @@
         </div>
       </section>
 
-      <section id="munkafolyamat" class="rule-top">
+      <section id="munkafolyamat" class="rule-top numbered">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Így dolgozunk</p>
@@ -1524,7 +1651,7 @@
         </div>
       </section>
 
-      <section id="gyik" class="tint rule-top">
+      <section id="gyik" class="tint rule-top numbered">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Kérdése van?</p>
@@ -1584,7 +1711,7 @@
         </div>
       </section>
 
-      <section id="kapcsolat" class="rule-top">
+      <section id="kapcsolat" class="rule-top numbered">
         <div class="container">
           <div class="contact-box">
             <p class="eyebrow on-ink" style="justify-content: center">
@@ -1597,8 +1724,8 @@
               belül válaszolunk.
             </p>
             <div class="contact-ctas">
-              <a href="tel:+36702158843" class="btn btn-accent"
-                >Hívjon: +36 70 215 8843</a
+              <a href="tel:+36702158843" class="btn btn-accent btn-lg"
+                >Hívjon most: +36 70 215 8843</a
               >
               <a
                 href="mailto:info@baloghvizgazfutes.hu"
@@ -1620,6 +1747,12 @@
         <a href="../index.html">← Vissza a SzakiOldal portfólióhoz</a>
       </div>
     </footer>
+
+    <div class="mobile-cta">
+      <a href="tel:+36702158843" class="btn btn-accent"
+        >Hívjon most: +36 70 215 8843</a
+      >
+    </div>
 
     <script>
       (function () {

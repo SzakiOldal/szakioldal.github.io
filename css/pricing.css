@@ -57,13 +57,17 @@
 
 .pr-card--featured {
   background: var(--bg-elevated);
+  /* extra headroom so the "Legnépszerűbb" tag sits fully inside the card's
+     own box instead of straddling .pr-grid's overflow:hidden edge, where
+     it would get clipped */
+  padding-top: calc(clamp(28px, 3vw, 40px) + 30px);
 }
 
 .pr-card-tag {
   position: absolute;
-  top: 0;
+  top: clamp(16px, 2vw, 22px);
   right: clamp(24px, 2.6vw, 34px);
-  transform: translateY(-50%);
+  white-space: nowrap;
   font-family: var(--font-mono);
   font-size: 0.66rem;
   font-weight: 500;
@@ -71,8 +75,9 @@
   text-transform: uppercase;
   color: var(--accent-ink);
   background: var(--accent);
-  padding: 0.4em 0.8em;
+  padding: 0.45em 0.85em;
   border-radius: 999px;
+  box-shadow: 0 6px 20px -6px var(--accent-glow);
 }
 
 .pr-card-name {
@@ -189,7 +194,8 @@
 
 @media (max-width: 900px) {
   .pr-grid { grid-template-columns: 1fr; }
-  .pr-card-tag { position: static; transform: none; display: inline-block; margin-bottom: 1rem; }
+  .pr-card--featured { padding-top: clamp(28px, 3vw, 40px); }
+  .pr-card-tag { position: static; display: inline-block; margin-bottom: 1rem; box-shadow: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

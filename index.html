@@ -376,7 +376,6 @@
                     <iframe
                       class="showcase-frame"
                       title="Balogh Víz-Gáz-Fűtés előnézet"
-                      loading="lazy"
                       scrolling="no"
                       tabindex="-1"
                       aria-hidden="true"
@@ -396,7 +395,6 @@
                     <iframe
                       class="showcase-frame"
                       title="Fázis Villany előnézet"
-                      loading="lazy"
                       scrolling="no"
                       tabindex="-1"
                       aria-hidden="true"
@@ -416,7 +414,6 @@
                     <iframe
                       class="showcase-frame"
                       title="Nord Klíma előnézet"
-                      loading="lazy"
                       scrolling="no"
                       tabindex="-1"
                       aria-hidden="true"
@@ -436,7 +433,6 @@
                     <iframe
                       class="showcase-frame"
                       title="FORMA Burkolás előnézet"
-                      loading="lazy"
                       scrolling="no"
                       tabindex="-1"
                       aria-hidden="true"
@@ -456,6 +452,8 @@
               <a
                 href="demo-vizgazfutes/index.html"
                 class="showcase-caption-link mono"
+                target="_blank"
+                rel="noopener"
                 >Élő oldal megtekintése
                 <span class="arrow" aria-hidden="true">→</span></a
               >
@@ -490,11 +488,14 @@
                     ><span>Szolgáltatások</span><span>Kapcsolat</span>
                   </div>
                   <div class="ba-mock-oldtitle">Üdvözöljük weboldalunkon!</div>
+                  <p class="ba-mock-oldtext">
+                    Cégünk 2008 óta foglalkozik vízszereléssel és
+                    gázszereléssel.
+                  </p>
+                  <div class="ba-mock-oldsubhead">Szolgáltatásaink</div>
                   <div class="ba-mock-line"></div>
                   <div class="ba-mock-line ba-mock-line--short"></div>
                   <div class="ba-mock-oldblock"></div>
-                  <div class="ba-mock-line"></div>
-                  <div class="ba-mock-line ba-mock-line--short"></div>
                   <a class="ba-mock-oldlink" tabindex="-1"
                     >Elérhetőségeink itt &raquo;</a
                   >
@@ -515,17 +516,25 @@
                 <div class="ba-mock-accentbar"></div>
                 <div class="ba-mock-body">
                   <div class="ba-mock-newnav">
-                    <span></span><span></span><span></span>
+                    <span>Szolgáltatások</span><span>Rólunk</span
+                    ><span>Kapcsolat</span>
                   </div>
-                  <div
-                    class="ba-mock-line ba-mock-line--title ba-mock-line--sharp"
-                  ></div>
-                  <div class="ba-mock-line ba-mock-line--sharp"></div>
-                  <div
-                    class="ba-mock-line ba-mock-line--short ba-mock-line--sharp"
-                  ></div>
-                  <div class="ba-mock-block ba-mock-block--accent"></div>
-                  <span class="ba-mock-cta">Ajánlatot kérek →</span>
+                  <div class="ba-mock-newtitle">
+                    Gyors segítség, amikor igazán számít.
+                  </div>
+                  <p class="ba-mock-newtext">
+                    Víz-, gáz- és fűtésszerelés Budapesten.
+                  </p>
+                  <div class="ba-mock-newctas">
+                    <span class="ba-mock-cta">Ajánlatot kérek</span>
+                    <span class="ba-mock-cta ba-mock-cta--outline"
+                      >Hívjon most</span
+                    >
+                  </div>
+                  <div class="ba-mock-trust">
+                    <span>0-24 kiszállás</span><span>Írásos árajánlat</span
+                    ><span>Gyors válasz</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -657,8 +666,9 @@
           </div>
 
           <p class="pr-note" data-reveal="mask">
-            A fenti árak tájékoztató jellegűek. A végleges ár az igények és a
-            funkciók alapján kerül meghatározásra.
+            A feltüntetett árak tájékoztató jellegűek. A végleges ajánlat az
+            oldal összetettsége, tartalma és az egyedi funkciók alapján kerül
+            meghatározásra.
           </p>
 
           <div class="pr-extra" data-reveal="mask">
@@ -787,18 +797,45 @@
 
     <footer>
       <div class="container">
-        <div class="foot-row">
-          <span class="wordmark" style="font-size: 1.1rem">SzakiOldal</span>
-          <ul class="foot-links">
-            <li><a href="#munkaink">Munkáink</a></li>
-            <li><a href="#arak">Árak</a></li>
-            <li><a href="#folyamat">Folyamat</a></li>
-            <li><a href="#kapcsolat">Kapcsolat</a></li>
-          </ul>
+        <div class="foot-grid">
+          <div class="foot-brand">
+            <span class="wordmark">SzakiOldal</span>
+            <p class="foot-tagline">
+              Modern weboldalak szakipari vállalkozásoknak.
+            </p>
+          </div>
+          <div class="foot-col">
+            <p class="foot-col-title">Navigáció</p>
+            <ul class="foot-links">
+              <li><a href="#munkaink">Munkáink</a></li>
+              <li><a href="#arak">Árak</a></li>
+              <li><a href="#folyamat">Folyamat</a></li>
+              <li><a href="#kapcsolat">Kapcsolat</a></li>
+            </ul>
+          </div>
+          <div class="foot-col">
+            <p class="foot-col-title">Jogi</p>
+            <ul class="foot-links">
+              <li><a href="adatkezeles.html">Adatkezelési tájékoztató</a></li>
+              <li><a href="aszf.html">ÁSZF</a></li>
+              <li><a href="impresszum.html">Impresszum</a></li>
+            </ul>
+          </div>
+          <div class="foot-col">
+            <p class="foot-col-title">Kapcsolat</p>
+            <ul class="foot-links">
+              <li><a href="mailto:szakioldal@outlook.hu">szakioldal@outlook.hu</a></li>
+              <li><a href="tel:+307134323">+36 30 713 4323</a></li>
+            </ul>
+          </div>
         </div>
-        <p class="foot-fine">
-          © 2026 SzakiOldal — webfejlesztés magyar szakipari vállalkozásoknak.
-        </p>
+        <div class="foot-bottom">
+          <p class="foot-fine">© 2026 SzakiOldal. Minden jog fenntartva.</p>
+          <p class="foot-legal-note">
+            Az oldalon szereplő demók bemutató célú mintaoldalak, nem valódi
+            vállalkozások.
+          </p>
+        </div>
       </div>
     </footer>
 
