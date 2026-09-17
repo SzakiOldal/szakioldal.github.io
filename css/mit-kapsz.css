@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Mit kapsz — editorial, asymmetric 4-item section
+   Prefix: mk-
+   Assumes the host page's :root already defines --bg, --bg-elevated,
+   --surface, --surface-2, --border, --border-strong, --ink, --ink-dim,
+   --ink-faint, --accent, --accent-2, --accent-glow, and has Manrope,
+   Inter and JetBrains Mono loaded, plus --ease-out-expo, --ease-in-out,
+   --dur-fast, --dur-base, --dur-slow.
+   ========================================================================== */
+
+.mk-section {
+  background: var(--bg);
+  padding-block: clamp(5rem, 10vw, 9rem);
+}
+
+.mk-container {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+}
+
+.mk-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 clamp(3rem, 6vw, 5rem);
+}
+
+.mk-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.mk-item {
+  border-top: 1px solid var(--border);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.mk-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.mk-item-inner {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  max-width: 920px;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+/* Editorial rhythm: odd items left, even items pushed right + reversed */
+.mk-item--01 .mk-item-inner,
+.mk-item--03 .mk-item-inner {
+  margin-right: auto;
+}
+
+.mk-item--02 .mk-item-inner,
+.mk-item--04 .mk-item-inner {
+  margin-left: auto;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.mk-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  line-height: 1;
+  color: var(--ink-faint);
+  flex-shrink: 0;
+  transition: color var(--dur-base) var(--ease-out-expo);
+}
+
+.mk-item-content {
+  min-width: 0;
+}
+
+.mk-item-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4.4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 0.6em;
+}
+
+.mk-item-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--ink-dim);
+  max-width: 36ch;
+  margin: 0;
+}
+
+.mk-item--02 .mk-item-desc,
+.mk-item--04 .mk-item-desc {
+  margin-left: auto;
+}
+
+/* Subtle, sparing accent on interaction only */
+.mk-item:hover .mk-num,
+.mk-item:focus-within .mk-num {
+  color: var(--accent);
+  text-shadow: 0 0 24px var(--accent-glow);
+}
+
+.mk-item--01 .mk-item-inner:hover,
+.mk-item--01 .mk-item-inner:focus-within,
+.mk-item--03 .mk-item-inner:hover,
+.mk-item--03 .mk-item-inner:focus-within {
+  transform: translateX(8px);
+}
+
+.mk-item--02 .mk-item-inner:hover,
+.mk-item--02 .mk-item-inner:focus-within,
+.mk-item--04 .mk-item-inner:hover,
+.mk-item--04 .mk-item-inner:focus-within {
+  transform: translateX(-8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-item-inner,
+  .mk-num {
+    transition: none !important;
+  }
+}
+
+/* Collapse the zigzag on narrow viewports for readability */
+@media (max-width: 640px) {
+  .mk-item-inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    gap: 1rem;
+  }
+
+  .mk-item-desc {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}

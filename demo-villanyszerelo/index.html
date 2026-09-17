@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Papp Villanyszerelés — demóoldal</title>
+    <meta
+      name="description"
+      content="Minta weboldal villanyszerelő vállalkozásnak — demó projekt a SzakiOldal portfólióból."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2312172B'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Georgia,serif' fill='%23F5C518' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Mulish:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #12172b;
+        --surface: #1a2140;
+        --surface-2: #202850;
+        --line: #2e3766;
+        --ink: #f5f7ff;
+        --ink-dim: #aeb4d6;
+        --ink-faint: #767fad;
+        --accent: #f5c518;
+        --accent-dim: #c9a312;
+        --blue: #5c7cfa;
+        --on-accent: #12172b;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink-dim);
+        font-family:
+          "Mulish",
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Rajdhani", system-ui, sans-serif;
+        color: var(--ink);
+        margin: 0;
+        line-height: 1;
+        text-wrap: balance;
+        letter-spacing: 0.01em;
+        font-weight: 700;
+      }
+      .mono {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+      }
+      :focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.001ms !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+
+      .container {
+        max-width: 1120px;
+        margin-inline: auto;
+        padding-inline: clamp(20px, 5vw, 48px);
+      }
+      section {
+        padding-block: clamp(56px, 8vw, 100px);
+      }
+
+      .topbar {
+        background: #0c0f1e;
+        color: #c7ccee;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .topbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 0.55rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .topbar a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .badge-demo {
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: #242c52;
+        color: #aeb4d6;
+        padding: 0.25em 0.65em;
+        border-radius: 2px;
+      }
+
+      header {
+        background: rgba(18, 23, 43, 0.9);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-block: 16px;
+      }
+      .wordmark {
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: var(--ink);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+      }
+      .wordmark svg {
+        flex-shrink: 0;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--ink-dim);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        width: 42px;
+        height: 42px;
+        border-radius: 4px;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        padding-block: 1.2rem;
+        border-top: 1px solid var(--line);
+      }
+      .nav-mobile a {
+        text-decoration: none;
+        color: var(--ink-dim);
+        font-weight: 600;
+      }
+      @media (max-width: 980px) {
+        .nav-links,
+        .btn.desktop-only {
+          display: none;
+        }
+        .nav-toggle {
+          display: block;
+        }
+        .nav-mobile.open {
+          display: flex;
+        }
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        font-weight: 700;
+        font-size: 0.98rem;
+        padding: 0.9em 1.7em;
+        border-radius: 4px;
+        text-decoration: none;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition:
+          transform 0.15s,
+          background 0.15s,
+          border-color 0.15s,
+          color 0.15s;
+        font-family: "Mulish", sans-serif;
+      }
+      .btn-accent {
+        background: var(--accent);
+        color: var(--on-accent);
+      }
+      .btn-accent:hover {
+        background: #ffd84d;
+        transform: translateY(-1px);
+      }
+      .btn-outline {
+        border-color: var(--line);
+        color: var(--ink);
+      }
+      .btn-outline:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .hero {
+        padding-block: clamp(48px, 8vw, 84px);
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: clamp(28px, 5vw, 64px);
+        align-items: center;
+      }
+      .eyebrow {
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1em;
+        display: flex;
+        align-items: center;
+        gap: 0.6em;
+        font-family: "IBM Plex Mono", monospace;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 20px;
+        height: 2px;
+        background: var(--accent);
+      }
+      .hero h1 {
+        font-size: clamp(2.3rem, 3.8vw + 1rem, 3.8rem);
+      }
+      .hero p.lede {
+        max-width: 46ch;
+        margin-top: 1.2rem;
+        font-size: 1.08rem;
+        font-family: "Mulish", sans-serif;
+      }
+      .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .hero-art {
+        aspect-ratio: 1/0.9;
+      }
+      @media (max-width: 720px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-art {
+          max-width: 260px;
+          margin-inline: auto;
+          order: -1;
+        }
+      }
+
+      .trust {
+        background: var(--surface);
+        border-block: 1px solid var(--line);
+      }
+      .trust-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.5rem;
+        padding-block: 2rem;
+      }
+      @media (max-width: 800px) {
+        .trust-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      .trust-item {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+        font-size: 0.9rem;
+      }
+      .trust-item svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .section-head {
+        margin-bottom: 2.6rem;
+        max-width: 56ch;
+      }
+      .section-head .eyebrow {
+        margin-bottom: 0.6em;
+      }
+      .section-head h2 {
+        font-size: clamp(1.9rem, 3vw + 1rem, 2.7rem);
+      }
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.4rem;
+      }
+      @media (max-width: 860px) {
+        .service-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 560px) {
+        .service-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .service-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 1.6rem;
+      }
+      .service-card .icon {
+        color: var(--accent);
+        margin-bottom: 0.9rem;
+      }
+      .service-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+      }
+      .service-card p {
+        margin: 0;
+        font-size: 0.92rem;
+        font-family: "Mulish", sans-serif;
+      }
+
+      .price-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .price-table th,
+      .price-table td {
+        text-align: left;
+        padding: 1rem 1.2rem;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.95rem;
+        font-family: "Mulish", sans-serif;
+      }
+      .price-table th {
+        font-family: "IBM Plex Mono", monospace;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        color: var(--ink-faint);
+        font-weight: 500;
+      }
+      .price-table td:last-child,
+      .price-table th:last-child {
+        text-align: right;
+        font-weight: 700;
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+        font-family: "IBM Plex Mono", monospace;
+      }
+      .price-table tr:last-child td {
+        border-bottom: none;
+      }
+      .price-note {
+        font-size: 0.85rem;
+        color: var(--ink-faint);
+        margin-top: 1rem;
+        font-family: "Mulish", sans-serif;
+      }
+
+      .area-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2.5rem;
+        align-items: center;
+      }
+      @media (max-width: 800px) {
+        .area-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .map-frame {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        filter: grayscale(0.3) invert(0.92) contrast(0.9);
+      }
+      .map-frame iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .contact-box {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: clamp(2rem, 5vw, 3.5rem);
+        text-align: center;
+      }
+      .contact-box h2 {
+        font-size: clamp(1.9rem, 3.4vw + 1rem, 2.8rem);
+      }
+      .contact-box p {
+        max-width: 52ch;
+        margin: 1rem auto 0;
+        font-family: "Mulish", sans-serif;
+      }
+      .contact-ctas {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      footer {
+        padding-block: 2.4rem;
+        border-top: 1px solid var(--line);
+      }
+      .foot-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: var(--ink-faint);
+      }
+      .foot-row a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <span
+          >⚡ Hibaelhárítás 0-24 ·
+          <a href="tel:+3637134323">+36 30 713 4323</a></span
+        >
+        <span class="badge-demo">Demó projekt — SzakiOldal portfólió</span>
+      </div>
+    </div>
+
+    <header>
+      <div class="container nav">
+        <a href="#top" class="wordmark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="#F5C518" />
+          </svg>
+          Papp Villanyszerelés
+        </a>
+        <ul class="nav-links">
+          <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+          <li><a href="#arazas">Árazás</a></li>
+          <li><a href="#terulet">Területünk</a></li>
+          <li><a href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+        <a href="tel:+3637134323" class="btn btn-accent desktop-only"
+          >Hívjon most</a
+        >
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Menü"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </div>
+      <div class="container nav-mobile" id="navMobile">
+        <a href="#szolgaltatasok">Szolgáltatások</a>
+        <a href="#arazas">Árazás</a>
+        <a href="#terulet">Területünk</a>
+        <a href="#kapcsolat">Kapcsolat</a>
+        <a href="tel:+3637134323">Hívjon: +36 30 713 4323</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Villanyszerelés</p>
+            <h1>Ha nincs áram,<br />minden más várhat.</h1>
+            <p class="lede">
+              Hibaelhárítás, biztosítéktábla-csere, érintésvédelmi
+              felülvizsgálat és okosotthon-szerelés Budapesten és környékén —
+              gyors kiszállással.
+            </p>
+            <div class="hero-ctas">
+              <a href="tel:+3637134323" class="btn btn-accent"
+                >Hívjon most: +36 30 713 4323</a
+              >
+              <a href="#arazas" class="btn btn-outline">Árazás megtekintése</a>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <svg
+              viewBox="0 0 300 270"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style="width: 100%; height: 100%"
+            >
+              <defs>
+                <pattern
+                  id="dotgrid2"
+                  width="24"
+                  height="24"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <circle cx="1.3" cy="1.3" r="1.3" fill="#242C52" />
+                </pattern>
+              </defs>
+              <rect width="300" height="270" fill="url(#dotgrid2)" rx="8" />
+              <path
+                d="M165,30 L95,150 h45 l-15,90 90,-120 h-50 z"
+                fill="#F5C518"
+              />
+              <circle cx="230" cy="70" r="4" fill="#5C7CFA" />
+              <circle cx="250" cy="130" r="3" fill="#5C7CFA" />
+              <circle cx="60" cy="190" r="3" fill="#5C7CFA" />
+              <path
+                d="M230,70 L250,90 L250,130"
+                stroke="#5C7CFA"
+                stroke-width="2"
+                fill="none"
+                opacity=".6"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust">
+        <div class="container trust-row">
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 12l5 5L20 6"
+                stroke="#F5C518"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Írásos árajánlat minden munka előtt
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 12l5 5L20 6"
+                stroke="#F5C518"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Anyag- és munkagarancia
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 12l5 5L20 6"
+                stroke="#F5C518"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Számlaképes, bejelentett vállalkozás
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 12l5 5L20 6"
+                stroke="#F5C518"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Rugalmas időpont, sürgősségi kiszállás
+          </div>
+        </div>
+      </section>
+
+      <section id="szolgaltatasok">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Mivel foglalkozunk</p>
+            <h2>Szolgáltatások</h2>
+          </div>
+          <div class="service-grid">
+            <div class="service-card">
+              <div class="icon">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Hibaelhárítás 0-24</h3>
+              <p>
+                Áramkimaradás, zárlat, villogó lámpák — gyors diagnózis a
+                helyszínen.
+              </p>
+            </div>
+
+            <div class="service-card">
+              <div class="icon">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="5"
+                    y="3"
+                    width="14"
+                    height="18"
+                    rx="1.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M9 8h6M9 12h6M9 16h3"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Biztosítéktábla-csere</h3>
+              <p>
+                Elavult elosztótáblák cseréje az aktuális szabványok szerint.
+              </p>
+            </div>
+
+            <div class="service-card">
+              <div class="icon">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M9 11l2 2 4-4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <rect
+                    x="4"
+                    y="3"
+                    width="16"
+                    height="18"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                </svg>
+              </div>
+              <h3>Érintésvédelmi felülvizsgálat</h3>
+              <p>
+                Időszakos kötelező felülvizsgálat, hivatalos jegyzőkönyvvel.
+              </p>
+            </div>
+
+            <div class="service-card">
+              <div class="icon">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 6h16M4 12h16M4 18h10"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Vezetékezés felújításnál</h3>
+              <p>
+                Új vezetékek, aljzatok és kapcsolók kiépítése, teljes körű
+                felújítás.
+              </p>
+            </div>
+
+            <div class="service-card">
+              <div class="icon">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3a6 6 0 016 6c0 3-2 4-2 7H8c0-3-2-4-2-7a6 6 0 016-6z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M9 20h6"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Okosotthon-szerelés</h3>
+              <p>
+                Okos kapcsolók, dimmerek és appvezérelt rendszerek telepítése.
+              </p>
+            </div>
+
+            <div class="service-card">
+              <div class="icon">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Világítástervezés</h3>
+              <p>Beltéri és kültéri világítás tervezéstől a kivitelezésig.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="arazas"
+        style="background: var(--surface); border-block: 1px solid var(--line)"
+      >
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Átlátható díjak</p>
+            <h2>Kiszállási díj</h2>
+          </div>
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>Időszak</th>
+                <th>Kiszállási díj</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Munkaidőben (H–P, 8–17 óra)</td>
+                <td>15.000 Ft</td>
+              </tr>
+              <tr>
+                <td>Munkaidőn túl és hétvégén</td>
+                <td>25.000 Ft</td>
+              </tr>
+              <tr>
+                <td>Éjszaka (22–06 óra) és ünnepnapon</td>
+                <td>35.000 Ft</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="price-note">
+            A kiszállási díj az első 30 perc munkadíjat tartalmazza. Az
+            anyagköltséget és a további munkadíjat mindig a helyszíni felmérés
+            után, írásban adjuk meg.
+          </p>
+        </div>
+      </section>
+
+      <section id="terulet">
+        <div class="container area-grid">
+          <div>
+            <p class="eyebrow">Hol dolgozunk</p>
+            <h2 style="font-size: clamp(1.9rem, 3vw + 1rem, 2.7rem)">
+              Területünk
+            </h2>
+            <p
+              style="
+                margin-top: 1rem;
+                max-width: 46ch;
+                font-family: &quot;Mulish&quot;, sans-serif;
+              "
+            >
+              Budapest teljes területén és Pest vármegye agglomerációjában
+              vállalunk munkát — kiemelten Budaörs, Érd, Szentendre és Gödöllő
+              térségében. Bizonytalan vagy, hogy hozzád kiérünk-e? Hívj, és
+              megmondjuk azonnal.
+            </p>
+          </div>
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps?q=Budapest&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Szolgáltatási terület térkép"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section id="kapcsolat">
+        <div class="container">
+          <div class="contact-box">
+            <p class="eyebrow" style="justify-content: center">Kapcsolat</p>
+            <h2>Áramszünet van, vagy csak árajánlatot kérnél?</h2>
+            <p>
+              Hívj most, vagy írj emailt — sürgős esetben 0-24 elérhetők
+              vagyunk, egyéb megkeresésre 24 órán belül válaszolunk.
+            </p>
+            <div class="contact-ctas">
+              <a href="tel:+36307134323" class="btn btn-accent"
+                >Hívj: +36 30 713 4323</a
+              >
+              <a
+                href="mailto:info@pappvillanyszereles.hu"
+                class="btn btn-outline"
+                >info@pappvillanyszereles.hu</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container foot-row">
+        <span
+          >Ez egy bemutató célból készült mintaoldal, nem valódi
+          vállalkozás.</span
+        >
+        <a href="../index.html">← Vissza a SzakiOldal portfólióhoz</a>
+      </div>
+    </footer>
+
+    <script>
+      const navToggle = document.getElementById("navToggle");
+      const navMobile = document.getElementById("navMobile");
+      navToggle.addEventListener("click", () => {
+        const open = navMobile.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        navToggle.textContent = open ? "✕" : "☰";
+      });
+      navMobile.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          navMobile.classList.remove("open");
+          navToggle.setAttribute("aria-expanded", "false");
+          navToggle.textContent = "☰";
+        }),
+      );
+    </script>
+  </body>
+</html>

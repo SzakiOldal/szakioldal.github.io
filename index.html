@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SzakiOldal — weboldal, ami dolgozik helyetted</title>
+    <meta
+      name="description"
+      content="Prémium weboldalak magyar szakipari vállalkozásoknak — víz-gáz-fűtésszerelőknek, villanyszerelőknek és más szakembereknek."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2308090B'/%3E%3Ctext x='50' y='69' font-size='56' font-family='Georgia,serif' fill='%233E9DFF' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/mit-kapsz.css" />
+    <link rel="stylesheet" href="css/before-after.css" />
+    <link rel="stylesheet" href="css/services.css" />
+    <link rel="stylesheet" href="css/process.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="intro-overlay" id="introOverlay">
+      <div class="intro-mark">
+        SzakiOldal
+        <span class="intro-line"></span>
+      </div>
+    </div>
+
+    <header>
+      <div class="container nav">
+        <a href="#top" class="wordmark">SzakiOldal</a>
+        <ul class="nav-links">
+          <li><a href="#munkaink">Munkáink</a></li>
+          <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+          <li><a href="#folyamat">Folyamat</a></li>
+          <li><a href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+        <a href="#kapcsolat" class="nav-cta desktop-only" data-magnetic
+          >Weboldalt szeretnék →</a
+        >
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Menü"
+          aria-expanded="false"
+        >
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="nav-mobile" id="navMobile">
+      <a href="#munkaink">Munkáink</a>
+      <a href="#szolgaltatasok">Szolgáltatások</a>
+      <a href="#folyamat">Folyamat</a>
+      <a href="#kapcsolat">Kapcsolat</a>
+      <a href="#kapcsolat">Weboldalt szeretnék →</a>
+    </div>
+
+    <main id="top">
+      <!-- ============ HERO ============ -->
+      <section class="hero">
+        <div class="bg-grid" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-reveal="slide-left">
+              webfejlesztés szakipari vállalkozásoknak
+            </p>
+            <h1 class="hero-title" data-reveal="mask">
+              A bejárat ma már<br /><span class="accent">a weboldalad.</span>
+            </h1>
+            <p class="hero-sub" data-reveal="mask" data-reveal-delay="1">
+              Itt dől el, bejön-e hozzád.
+            </p>
+            <div
+              class="hero-ctas"
+              data-reveal="slide-left"
+              data-reveal-delay="2"
+            >
+              <a
+                href="#kapcsolat"
+                class="btn btn-primary"
+                data-magnetic
+                data-cursor="view"
+                >Kérek egy weboldalt <span class="arrow">→</span></a
+              >
+              <a href="#munkaink" class="btn btn-outline" data-magnetic
+                >Megnézem a munkákat</a
+              >
+            </div>
+          </div>
+
+          <div class="hero-visual" data-reveal="scale" data-reveal-delay="1">
+            <div class="mockup-glow" aria-hidden="true"></div>
+            <div class="mockup hero-mockup" data-tilt="8">
+              <div class="mockup-bar">
+                <div class="mockup-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="mockup-url">szakioldal.hu/ugyfel</div>
+              </div>
+              <div class="mockup-screen hero-mockup-screen" aria-hidden="true">
+                <div class="hmk-nav">
+                  <div class="hmk-word">Márka</div>
+                  <div class="hmk-links">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="hmk-hero">
+                  <div class="hmk-eyebrow"></div>
+                  <div class="hmk-title"></div>
+                  <div class="hmk-title short"></div>
+                  <div class="hmk-line"></div>
+                  <div class="hmk-btn"></div>
+                </div>
+                <div class="hmk-cards">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+            <div class="chip chip-toast" style="top: 6%; left: -9%">
+              <span class="chip-dot pulse"></span>
+              <span>Új érdeklődő <strong>érkezett</strong></span>
+            </div>
+            <div class="chip chip-stat" style="bottom: 8%; right: -7%">
+              <span>Betöltés <strong>0.4s</strong></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROBLEM -> SOLUTION ============ -->
+      <section class="divider" id="problem">
+        <div class="container problem-grid">
+          <div class="problem-copy">
+            <p class="problem-line" data-reveal="mask">
+              A szaktudásod nem kérdés. Az online jelenléted sajnos az.
+            </p>
+            <p
+              class="problem-solution-line accent"
+              data-reveal="mask"
+              data-reveal-delay="1"
+            >
+              Mi ezt helyrehozzuk.
+            </p>
+          </div>
+          <div class="problem-visual" data-reveal="scale">
+            <div class="mockup problem-mockup" data-morph>
+              <div class="mockup-bar">
+                <div class="mockup-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="mockup-url">regi-oldal.hu</div>
+              </div>
+              <div class="mockup-screen" aria-hidden="true">
+                <div class="morph-layer morph-old">
+                  <span class="ml-badge">2011 óta változatlan</span>
+                  <div class="ml-title">Üdvözöljük Weboldalunkon</div>
+                  <div class="ml-line"></div>
+                  <div class="ml-line short"></div>
+                  <div class="ml-btn"></div>
+                </div>
+                <div class="morph-layer morph-new">
+                  <div class="ml-eyebrow"></div>
+                  <div class="ml-title"></div>
+                  <div class="ml-line"></div>
+                  <div class="ml-btn"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ MIT KAPSZ ============ -->
+      <section class="mk-section divider" id="mit-kapsz">
+        <div class="mk-container">
+          <p class="mk-eyebrow" data-reveal="blur">Mit kapsz</p>
+
+          <div class="mk-list">
+            <article
+              class="mk-item mk-item--01"
+              data-reveal="mask"
+              data-reveal-delay="1"
+            >
+              <div class="mk-item-inner">
+                <span class="mk-num" aria-hidden="true">01</span>
+                <div class="mk-item-content">
+                  <h3 class="mk-item-title">Modern megjelenés</h3>
+                  <p class="mk-item-desc">
+                    A vállalkozásodhoz illő, egyedi design.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="mk-item mk-item--02"
+              data-reveal="slide-right"
+              data-reveal-delay="2"
+            >
+              <div class="mk-item-inner">
+                <span class="mk-num" aria-hidden="true">02</span>
+                <div class="mk-item-content">
+                  <h3 class="mk-item-title">Mobilon is tökéletes</h3>
+                  <p class="mk-item-desc">
+                    Telefonon, tableten és számítógépen is.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="mk-item mk-item--03"
+              data-reveal="slide-left"
+              data-reveal-delay="3"
+            >
+              <div class="mk-item-inner">
+                <span class="mk-num" aria-hidden="true">03</span>
+                <div class="mk-item-content">
+                  <h3 class="mk-item-title">Több érdeklődő</h3>
+                  <p class="mk-item-desc">
+                    A weboldal célja nem csak a látvány, hanem a
+                    kapcsolatfelvétel.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="mk-item mk-item--04"
+              data-reveal="scale"
+              data-reveal-delay="4"
+            >
+              <div class="mk-item-inner">
+                <span class="mk-num" aria-hidden="true">04</span>
+                <div class="mk-item-content">
+                  <h3 class="mk-item-title">Gyors és professzionális</h3>
+                  <p class="mk-item-desc">
+                    Modern technológia és optimalizált felépítés.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SHOWCASE ============ -->
+      <section class="divider showcase" id="munkaink">
+        <div class="container showcase-head">
+          <p class="eyebrow" data-reveal="slide-left">munkáink</p>
+          <h2 data-reveal="mask">Ilyen lehet a te weboldalad.</h2>
+        </div>
+
+        <div
+          class="container showcase-tabs"
+          role="tablist"
+          aria-label="Projektek"
+        >
+          <button
+            class="showcase-tab is-active"
+            role="tab"
+            aria-selected="true"
+            data-target="vizgazfutes"
+            data-name="Balogh Víz-Gáz-Fűtés"
+            data-tag="Víz • Gáz • Fűtés"
+            data-link="demo-vizgazfutes/index.html"
+            data-live="true"
+          >
+            Víz-Gáz-Fűtés
+          </button>
+          <button
+            class="showcase-tab"
+            role="tab"
+            aria-selected="false"
+            data-target="villanyszereles"
+            data-name="Papp Villanyszerelés"
+            data-tag="Villanyszerelés"
+            data-link="demo-villanyszerelo/index.html"
+            data-live="true"
+          >
+            Villanyszerelő
+          </button>
+          <button
+            class="showcase-tab"
+            role="tab"
+            aria-selected="false"
+            data-target="klima"
+            data-name="Fekete Klímatechnika"
+            data-tag="Klímaszerelés"
+            data-link=""
+            data-live="false"
+          >
+            Klímaszerelő
+          </button>
+          <button
+            class="showcase-tab"
+            role="tab"
+            aria-selected="false"
+            data-target="burkolas"
+            data-name="Horváth Burkolás"
+            data-tag="Burkolás"
+            data-link=""
+            data-live="false"
+          >
+            Burkoló
+          </button>
+        </div>
+
+        <div class="container">
+          <div class="showcase-stage" data-reveal="scale">
+            <div
+              class="mockup showcase-mockup"
+              data-tilt="5"
+              data-cursor="view"
+            >
+              <div class="mockup-bar">
+                <div class="mockup-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="mockup-url">szakioldal.hu/munkaink</div>
+              </div>
+              <div class="mockup-screen">
+                <div
+                  class="showcase-panel is-active"
+                  data-panel="vizgazfutes"
+                  style="background: #f6f1e7; color: #1e2d2e"
+                >
+                  <div class="sp-inner sp-hero">
+                    <span class="sp-eyebrow" style="color: #b44e15"
+                      >víz-, gáz- és fűtésszerelés</span
+                    >
+                    <span class="sp-title" style="color: #1e2d2e"
+                      >Csőtörésnél nincs<br />idő keresgélni.</span
+                    >
+                    <span class="sp-line" style="color: #54615f"
+                      >Sürgősségi kiszállás, írásos árajánlat, kiszállási
+                      díjtábla.</span
+                    >
+                    <span
+                      class="sp-btn"
+                      style="background: #d9631e; color: #fff"
+                      >Hívjon most →</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="showcase-panel"
+                  data-panel="villanyszereles"
+                  style="background: #12172b; color: #f5f7ff"
+                >
+                  <div class="sp-inner sp-hero">
+                    <span class="sp-eyebrow" style="color: #f5c518"
+                      >villanyszerelés</span
+                    >
+                    <span class="sp-title" style="color: #f5f7ff"
+                      >Ha nincs áram,<br />minden más várhat.</span
+                    >
+                    <span class="sp-line" style="color: #aeb4d6"
+                      >Hibaelhárítás 0-24, érintésvédelmi felülvizsgálat.</span
+                    >
+                    <span
+                      class="sp-btn"
+                      style="background: #f5c518; color: #12172b"
+                      >Hívjon most →</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="showcase-panel"
+                  data-panel="klima"
+                  style="background: #0b1d22; color: #eaf6f8"
+                >
+                  <div class="sp-inner sp-hero">
+                    <span class="sp-eyebrow" style="color: #4fd9e8"
+                      >Fekete Klímatechnika</span
+                    >
+                    <span class="sp-title" style="color: #eaf6f8"
+                      >Friss levegő,<br />egész évben.</span
+                    >
+                    <span class="sp-line" style="color: #9fc4c9"
+                      >Split klíma telepítés, éves karbantartás, ipari
+                      klímarendszerek.</span
+                    >
+                    <span
+                      class="sp-btn"
+                      style="background: #4fd9e8; color: #0b1d22"
+                      >Ajánlatot kérek →</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="showcase-panel"
+                  data-panel="burkolas"
+                  style="background: #241b16; color: #f3e9de"
+                >
+                  <div class="sp-inner sp-hero">
+                    <span class="sp-eyebrow" style="color: #e0955a"
+                      >Horváth Burkolás</span
+                    >
+                    <span class="sp-title" style="color: #f3e9de"
+                      >Minden csempe<br />a helyén.</span
+                    >
+                    <span class="sp-line" style="color: #c7b6a6"
+                      >Csempézés, járólap-fektetés, fürdőszoba-felújítás,
+                      teraszburkolás.</span
+                    >
+                    <span
+                      class="sp-btn"
+                      style="background: #e0955a; color: #241b16"
+                      >Ajánlatot kérek →</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-caption">
+              <span class="showcase-caption-name">Balogh Víz-Gáz-Fűtés</span>
+              <span class="showcase-caption-tag mono">Víz • Gáz • Fűtés</span>
+              <span class="showcase-caption-badge is-live">Élő oldal</span>
+              <a
+                href="demo-vizgazfutes/index.html"
+                class="showcase-caption-link mono"
+                >Élő oldal megtekintése
+                <span class="arrow" aria-hidden="true">→</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ BEFORE / AFTER ============ -->
+      <section class="divider" id="elotte-utana">
+        <div class="container" style="margin-bottom: clamp(28px, 4vw, 48px)">
+          <p class="eyebrow" data-reveal="slide-left">előtte / utána</p>
+          <h2 data-reveal="mask">Ugyanaz a vállalkozás. Más benyomás.</h2>
+        </div>
+
+        <div class="ba-compare-section">
+          <div class="ba-compare" data-reveal="scale">
+            <div class="ba-panel ba-panel--before" aria-hidden="true">
+              <span class="ba-label ba-label--before"
+                >Régi online jelenlét</span
+              >
+              <div class="ba-mock ba-mock--before">
+                <div class="ba-mock-chrome">
+                  <span class="ba-mock-dot"></span>
+                  <span class="ba-mock-dot"></span>
+                  <span class="ba-mock-dot"></span>
+                  <div class="ba-mock-address"></div>
+                </div>
+                <div class="ba-mock-body">
+                  <div class="ba-mock-line ba-mock-line--title"></div>
+                  <div class="ba-mock-line"></div>
+                  <div class="ba-mock-line ba-mock-line--short"></div>
+                  <div class="ba-mock-block"></div>
+                  <div class="ba-mock-line"></div>
+                  <div class="ba-mock-line ba-mock-line--short"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ba-panel ba-panel--after" aria-hidden="true">
+              <span class="ba-label ba-label--after">SzakiOldal</span>
+              <div class="ba-mock ba-mock--after">
+                <div class="ba-mock-chrome">
+                  <span class="ba-mock-dot"></span>
+                  <span class="ba-mock-dot"></span>
+                  <span class="ba-mock-dot"></span>
+                  <div class="ba-mock-address"></div>
+                </div>
+                <div class="ba-mock-accentbar"></div>
+                <div class="ba-mock-body">
+                  <div
+                    class="ba-mock-line ba-mock-line--title ba-mock-line--sharp"
+                  ></div>
+                  <div class="ba-mock-line ba-mock-line--sharp"></div>
+                  <div
+                    class="ba-mock-line ba-mock-line--short ba-mock-line--sharp"
+                  ></div>
+                  <div class="ba-mock-block ba-mock-block--accent"></div>
+                  <div class="ba-mock-cta"></div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="ba-handle"
+              role="slider"
+              tabindex="0"
+              aria-label="Előtte és utána összehasonlító csúszka"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-orientation="horizontal"
+            >
+              <span class="ba-handle-line ba-handle-line--top"></span>
+              <span class="ba-handle-knob">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M9 6l-5 6 5 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M15 6l5 6-5 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <span class="ba-handle-line ba-handle-line--bottom"></span>
+            </div>
+
+            <span class="ba-sr-only"
+              >Húzd a csúszkát: balra a régi weboldal, jobbra a SzakiOldal
+              dizájn látható.</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ AMIT ÉPÍTÜNK ============ -->
+      <section
+        class="svc-section divider"
+        id="szolgaltatasok"
+        aria-labelledby="svc-heading"
+      >
+        <div class="svc-container">
+          <div class="svc-head">
+            <p class="svc-eyebrow" data-reveal="blur">Szolgáltatás</p>
+            <h2 class="svc-heading" id="svc-heading" data-reveal="mask">
+              Amit építünk
+            </h2>
+          </div>
+
+          <ul class="svc-list" role="list">
+            <li class="svc-item" data-reveal="slide-left" data-reveal-delay="1">
+              <div class="svc-item-row">
+                <span class="svc-item-index" aria-hidden="true">01</span>
+                <div class="svc-item-main">
+                  <h3 class="svc-item-title">Weboldal</h3>
+                  <p class="svc-item-desc">Egyedi, modern üzleti weboldal.</p>
+                </div>
+                <button
+                  type="button"
+                  class="svc-toggle"
+                  aria-expanded="false"
+                  aria-controls="svc-panel-1"
+                  id="svc-trigger-1"
+                  aria-label="Részletek — Weboldal"
+                >
+                  <span class="svc-toggle-label">Részletek</span>
+                  <span class="svc-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div
+                class="svc-panel"
+                id="svc-panel-1"
+                role="region"
+                aria-labelledby="svc-trigger-1"
+              >
+                <div class="svc-panel-inner">
+                  <p>
+                    Kézzel kódolt, sablon nélkül — a te vállalkozásodra szabva.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li
+              class="svc-item"
+              data-reveal="slide-right"
+              data-reveal-delay="2"
+            >
+              <div class="svc-item-row">
+                <span class="svc-item-index" aria-hidden="true">02</span>
+                <div class="svc-item-main">
+                  <h3 class="svc-item-title">Mobil</h3>
+                  <p class="svc-item-desc">Tökéletes élmény minden eszközön.</p>
+                </div>
+                <button
+                  type="button"
+                  class="svc-toggle"
+                  aria-expanded="false"
+                  aria-controls="svc-panel-2"
+                  id="svc-trigger-2"
+                  aria-label="Részletek — Mobil"
+                >
+                  <span class="svc-toggle-label">Részletek</span>
+                  <span class="svc-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div
+                class="svc-panel"
+                id="svc-panel-2"
+                role="region"
+                aria-labelledby="svc-trigger-2"
+              >
+                <div class="svc-panel-inner">
+                  <p>
+                    Az ügyfeleid nagy része mobilról keres rád — ott is
+                    ugyanolyan gyors és világos az oldal.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="svc-item" data-reveal="slide-left" data-reveal-delay="3">
+              <div class="svc-item-row">
+                <span class="svc-item-index" aria-hidden="true">03</span>
+                <div class="svc-item-main">
+                  <h3 class="svc-item-title">Konverzió</h3>
+                  <p class="svc-item-desc">A látogatóból érdeklődő.</p>
+                </div>
+                <button
+                  type="button"
+                  class="svc-toggle"
+                  aria-expanded="false"
+                  aria-controls="svc-panel-3"
+                  id="svc-trigger-3"
+                  aria-label="Részletek — Konverzió"
+                >
+                  <span class="svc-toggle-label">Részletek</span>
+                  <span class="svc-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div
+                class="svc-panel"
+                id="svc-panel-3"
+                role="region"
+                aria-labelledby="svc-trigger-3"
+              >
+                <div class="svc-panel-inner">
+                  <p>
+                    Minden elem egy célt szolgál: világos út a hívásig, a
+                    megkeresésig.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li
+              class="svc-item"
+              data-reveal="slide-right"
+              data-reveal-delay="4"
+            >
+              <div class="svc-item-row">
+                <span class="svc-item-index" aria-hidden="true">04</span>
+                <div class="svc-item-main">
+                  <h3 class="svc-item-title">Egyedi funkciók</h3>
+                  <p class="svc-item-desc">A vállalkozásodhoz igazítva.</p>
+                </div>
+                <button
+                  type="button"
+                  class="svc-toggle"
+                  aria-expanded="false"
+                  aria-controls="svc-panel-4"
+                  id="svc-trigger-4"
+                  aria-label="Részletek — Egyedi funkciók"
+                >
+                  <span class="svc-toggle-label">Részletek</span>
+                  <span class="svc-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div
+                class="svc-panel"
+                id="svc-panel-4"
+                role="region"
+                aria-labelledby="svc-trigger-4"
+              >
+                <div class="svc-panel-inner">
+                  <p>
+                    Időpontfoglaló, árkalkulátor, kiszállási térkép — amire a
+                    szakmádnak ténylegesen szüksége van.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ FOLYAMAT ============ -->
+      <section class="pm-process divider" id="folyamat">
+        <div class="pm-process__container">
+          <h2 class="pm-process__eyebrow" data-reveal="blur">Folyamat</h2>
+
+          <div class="pm-process__grid">
+            <div
+              class="pm-process__step"
+              data-reveal="mask"
+              data-reveal-delay="1"
+            >
+              <span class="pm-process__number" aria-hidden="true"></span>
+              <p class="pm-process__label">01 / Egyeztetés</p>
+              <h3 class="pm-process__title">Megismerjük a céged</h3>
+            </div>
+
+            <div class="pm-process__connector" aria-hidden="true">
+              <span class="pm-process__connector-line"></span>
+              <svg
+                class="pm-process__connector-arrow"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 12h15m0 0-5.5-5.5M19 12l-5.5 5.5" />
+              </svg>
+              <span class="pm-process__connector-line"></span>
+            </div>
+
+            <div
+              class="pm-process__step"
+              data-reveal="mask"
+              data-reveal-delay="2"
+            >
+              <span class="pm-process__number" aria-hidden="true"></span>
+              <p class="pm-process__label">02 / Tervezés</p>
+              <h3 class="pm-process__title">Megtervezzük az élményt</h3>
+            </div>
+
+            <div class="pm-process__connector" aria-hidden="true">
+              <span class="pm-process__connector-line"></span>
+              <svg
+                class="pm-process__connector-arrow"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 12h15m0 0-5.5-5.5M19 12l-5.5 5.5" />
+              </svg>
+              <span class="pm-process__connector-line"></span>
+            </div>
+
+            <div
+              class="pm-process__step"
+              data-reveal="mask"
+              data-reveal-delay="3"
+            >
+              <span class="pm-process__number" aria-hidden="true"></span>
+              <p class="pm-process__label">03 / Élesítés</p>
+              <h3 class="pm-process__title">Élesítjük az oldalad</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA ============ -->
+      <section class="divider cta-section" id="kapcsolat">
+        <div class="container cta-inner">
+          <p class="eyebrow" style="justify-content: center" data-reveal="mask">
+            kapcsolat
+          </p>
+          <h2 class="cta-title" data-reveal="mask" data-reveal-delay="1">
+            Készen állsz a következő szintre?
+          </h2>
+          <p class="cta-sub" data-reveal="mask" data-reveal-delay="2">
+            Nézzük meg együtt, mit tudunk kezdeni a weboldaladdal.
+          </p>
+          <div class="cta-ctas" data-reveal="scale" data-reveal-delay="3">
+            <a
+              href="mailto:szakioldal@outlook.hu"
+              class="btn btn-primary"
+              data-magnetic
+              data-cursor="view"
+              >Beszéljünk róla <span class="arrow">→</span></a
+            >
+            <a href="tel:+307134323" class="btn btn-outline" data-magnetic
+              >+36 30 713 4323</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="foot-row">
+          <span class="wordmark" style="font-size: 1.1rem">SzakiOldal</span>
+          <ul class="foot-links">
+            <li><a href="#munkaink">Munkáink</a></li>
+            <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+            <li><a href="#folyamat">Folyamat</a></li>
+            <li><a href="#kapcsolat">Kapcsolat</a></li>
+          </ul>
+        </div>
+        <p class="foot-fine">
+          © 2026 SzakiOldal — webfejlesztés magyar szakipari vállalkozásoknak.
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
