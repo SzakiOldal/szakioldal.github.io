@@ -54,7 +54,7 @@
   font-size: clamp(3.75rem, 9vw, 7.5rem);
   line-height: 0.82;
   letter-spacing: -0.02em;
-  color: var(--ink-faint);
+  color: var(--ink-ghost, var(--ink-faint));
   opacity: 0.5;
 }
 
@@ -108,7 +108,7 @@
 
 .pm-process__connector-arrow {
   flex: 0 0 auto;
-  color: var(--ink-faint);
+  color: var(--ink-ghost, var(--ink-faint));
   transition: color var(--dur-fast, 200ms) var(--ease-out-expo, cubic-bezier(.16,1,.3,1));
 }
 

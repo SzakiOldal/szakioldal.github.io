@@ -111,12 +111,25 @@ header.is-scrolled .nav {
   padding: 2rem var(--gutter);
   transform: translateY(-8px);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--dur-base) var(--ease-out-expo), transform var(--dur-base) var(--ease-out-expo);
+  transition: opacity var(--dur-base) var(--ease-out-expo),
+              transform var(--dur-base) var(--ease-out-expo),
+              visibility 0s linear var(--dur-base);
   z-index: 190;
 }
-.nav-mobile.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.nav-mobile.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
 .nav-mobile a { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--ink); }
+
+@media (min-width: 901px) {
+  .nav-mobile { display: none; }
+}
 
 @media (max-width: 900px) {
   .nav-links, .desktop-only { display: none; }
@@ -296,6 +309,14 @@ header.is-scrolled .nav {
   align-items: center;
   justify-content: center;
   transition: opacity 0.5s var(--ease-out-expo), visibility 0.5s;
+  /* CSS-only failsafe: if js/intro.js never runs (a blocked/broken script,
+     a crashed module earlier in the chain), don't leave the whole page
+     covered forever — fade this out on a timer no matter what. Normally
+     the JS removes the element from the DOM well before this ever fires. */
+  animation: intro-failsafe 0.01s 4s forwards;
+}
+@keyframes intro-failsafe {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
 }
 .intro-overlay.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .intro-mark {

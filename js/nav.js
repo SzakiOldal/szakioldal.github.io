@@ -11,20 +11,34 @@ export function initNav() {
   window.addEventListener('scroll', onScroll, { passive: true });
 
   if (toggle && mobile) {
+    function closeMenu() {
+      mobile.classList.remove('is-open');
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('nav-open');
+    }
+    function openMenu() {
+      mobile.classList.add('is-open');
+      toggle.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.documentElement.classList.add('nav-open');
+    }
     toggle.addEventListener('click', () => {
-      const open = mobile.classList.toggle('is-open');
-      toggle.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.style.overflow = open ? 'hidden' : '';
+      if (mobile.classList.contains('is-open')) closeMenu();
+      else openMenu();
     });
-    mobile.querySelectorAll('a').forEach((a) =>
-      a.addEventListener('click', () => {
-        mobile.classList.remove('is-open');
-        toggle.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      })
-    );
+    mobile.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobile.classList.contains('is-open')) {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+    try {
+      window.matchMedia('(min-width: 901px)').addEventListener('change', (e) => {
+        if (e.matches) closeMenu();
+      });
+    } catch (e) {}
   }
 
   // Active-section highlight

@@ -1,0 +1,13 @@
+node_modules/
+_site/
+.tmp-assets/
+tools/playwright-report/
+tools/test-results/
+lhci-report/
+.lighthouseci/
+.DS_Store
+Thumbs.db
+desktop.ini
+.env
+.env.*
+*.pem

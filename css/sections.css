@@ -157,6 +157,7 @@
    ============================================================ */
 .showcase-head { margin-bottom: clamp(28px, 4vw, 48px); }
 .showcase-head h2 { font-size: clamp(2.2rem, 4vw + 1rem, 4rem); max-width: 14ch; }
+.showcase-intro { margin-top: 1rem; color: var(--ink-dim); font-size: 1.02rem; max-width: 52ch; }
 
 .showcase-tabs {
   display: flex;
@@ -212,10 +213,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 200%;
-  height: 200%;
+  /* width/height/transform are set from JS (see showcase.js) so the demo
+     always renders at a realistic ~1440px desktop layout, scaled down to
+     fit the frame — not an arbitrary 200% crop with 8px text. */
+  width: 1440px;
+  height: 900px;
   border: 0;
-  transform: scale(0.5);
   transform-origin: top left;
   pointer-events: none;
   background: var(--bg-elevated);
@@ -275,6 +278,68 @@
 }
 
 /* ============================================================
+   Ki vagyok
+   ============================================================ */
+.who-grid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: start;
+}
+.who-avatar {
+  width: clamp(84px, 9vw, 108px);
+  height: clamp(84px, 9vw, 108px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, var(--accent-glow), transparent 65%), var(--surface-2);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  color: var(--accent-2);
+  flex-shrink: 0;
+}
+.who-content h2 { font-size: clamp(2rem, 3.6vw + 1rem, 3.2rem); max-width: 16ch; }
+.who-lede {
+  margin-top: 1.1rem;
+  font-family: var(--font-body);
+  color: var(--ink-dim);
+  font-size: 1.05rem;
+  max-width: 56ch;
+}
+.who-promises {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 1.6rem;
+  max-width: 62ch;
+}
+.who-promises li {
+  position: relative;
+  padding-left: 1.6em;
+  font-size: 0.92rem;
+  color: var(--ink-dim);
+}
+.who-promises li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+@media (max-width: 720px) {
+  .who-grid { grid-template-columns: 1fr; }
+  .who-promises { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
    CTA
    ============================================================ */
 .cta-section { text-align: center; }
@@ -286,7 +351,11 @@
 }
 .cta-title { font-size: clamp(2.2rem, 4vw + 1rem, 4rem); max-width: 16ch; }
 .cta-sub { font-size: 1.1rem; color: var(--ink-dim); max-width: 40ch; }
-.cta-ctas { display: flex; gap: 1rem; margin-top: 0.6rem; }
+.cta-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 0.6rem; }
+@media (max-width: 420px) {
+  .cta-ctas { flex-direction: column; align-items: stretch; width: 100%; }
+  .cta-ctas .btn { justify-content: center; }
+}
 
 /* ============================================================
    Footer
@@ -341,4 +410,48 @@ footer { border-top: 1px solid var(--border); padding-block: clamp(48px, 7vw, 76
 @media (max-width: 540px) {
   .foot-grid { grid-template-columns: 1fr; gap: 2rem; }
   .foot-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+/* ============================================================
+   GYIK
+   ============================================================ */
+.faq-container { max-width: 900px; }
+.faq-container h2 { font-size: clamp(2rem, 3.6vw + 1rem, 3.2rem); max-width: 18ch; margin-top: 0.4em; }
+.faq-list { margin-top: clamp(32px, 5vw, 48px); border-top: 1px solid var(--border); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.4rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  min-height: 44px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "";
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CA1AC' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+.faq-item[open] summary::after { transform: rotate(180deg); }
+.faq-item summary:hover { color: var(--accent-2); }
+.faq-item summary:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 4px; }
+.faq-answer { padding-bottom: 1.4rem; }
+.faq-answer p {
+  margin: 0;
+  color: var(--ink-dim);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  max-width: 60ch;
 }

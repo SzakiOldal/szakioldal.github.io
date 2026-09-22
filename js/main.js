@@ -10,16 +10,25 @@ import { initShowcase } from './showcase.js';
 import { initBeforeAfter } from './before-after.js';
 
 function boot() {
-  initIntro();
-  initNav();
-  initReveal();
-  initCursor();
-  initMagnetic();
-  initTilt();
-  initParallax();
-  initMorph();
-  initShowcase();
-  initBeforeAfter();
+  document.documentElement.classList.add('js-ready');
+  [
+    initIntro,
+    initNav,
+    initReveal,
+    initCursor,
+    initMagnetic,
+    initTilt,
+    initParallax,
+    initMorph,
+    initShowcase,
+    initBeforeAfter,
+  ].forEach((fn) => {
+    try {
+      fn();
+    } catch (e) {
+      console.error(e);
+    }
+  });
 }
 
 if (document.readyState === 'loading') {

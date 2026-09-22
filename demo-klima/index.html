@@ -2,8 +2,16 @@
 <html lang="hu">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      document.documentElement.classList.add('js');
+      window.setTimeout(function () {
+        if (!document.documentElement.classList.contains('js-ready')) {
+          document.documentElement.classList.remove('js');
+        }
+      }, 4000);
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nord Klíma — demóoldal</title>
+    <title>Szellő Klíma — demóoldal</title>
     <meta
       name="description"
       content="Minta weboldal klímaszerelő vállalkozásnak — demó projekt a SzakiOldal portfólióból."
@@ -11,7 +19,7 @@
     <meta name="robots" content="noindex, nofollow" />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230C93A8'/%3E%3Ctext x='50' y='69' font-size='54' font-family='Georgia,serif' fill='%23FFFFFF' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230C93A8'/%3E%3Ctext x='50' y='69' font-size='44' font-family='Georgia,serif' fill='%23FFFFFF' text-anchor='middle'%3ESz%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +35,7 @@
         --line: #d9e8ee;
         --ink: #0e2438;
         --ink-dim: #4c6579;
-        --ink-faint: #8aa0b1;
+        --ink-faint: #61707c;
         --accent: #0c93a8;
         --accent-dark: #086878;
         --accent-soft: #cdeaef;
@@ -221,7 +229,7 @@
         color: var(--accent-dark);
         font-weight: 600;
       }
-      @media (max-width: 1080px) {
+      @media (max-width: 1150px) {
         .nav-links,
         .btn.desktop-only {
           display: none;
@@ -255,11 +263,11 @@
           color 0.2s ease;
       }
       .btn-accent {
-        background: var(--accent);
+        background: var(--accent-dark);
         color: var(--on-accent);
       }
       .btn-accent:hover {
-        background: var(--accent-dark);
+        background: var(--accent);
         transform: translateY(-1px);
       }
       .btn-outline {
@@ -654,15 +662,17 @@
         font-weight: 600;
       }
 
-      /* SCROLL REVEAL */
-      .reveal {
+      /* SCROLL REVEAL — gated behind html.js, see the watchdog script in
+         <head>: if JS never runs, .reveal content stays fully visible
+         instead of hiding forever. */
+      .js .reveal {
         opacity: 0;
         transform: translateY(18px);
         transition:
           opacity 0.7s ease,
           transform 0.7s ease;
       }
-      .reveal.in-view {
+      .js .reveal.in-view {
         opacity: 1;
         transform: none;
       }
@@ -679,7 +689,7 @@
       <div class="container">
         <span
           >Hívjon bizalommal ·
-          <a href="tel:+36204458821">+36 20 445 8821</a></span
+          <a>+36 20 445 8821</a></span
         >
         <span class="badge-demo">Demo projekt — SzakiOldal portfólió</span>
       </div>
@@ -688,7 +698,7 @@
     <header>
       <div class="container nav">
         <a href="#top" class="wordmark"
-          ><span class="mark"></span>Nord Klíma</a
+          ><span class="mark"></span>Szellő Klíma</a
         >
         <ul class="nav-links">
           <li><a href="#klimaberendezesek">Klímaberendezések</a></li>
@@ -701,7 +711,7 @@
         <a href="#ajanlatkeres" class="btn btn-accent desktop-only"
           >Árajánlatot kérek</a
         >
-        <button
+        <button type="button"
           class="nav-toggle"
           id="navToggle"
           aria-label="Menü megnyitása"
@@ -1237,14 +1247,14 @@
               hívjon telefonon — gyors, írásos árajánlattal jelentkezünk.
             </p>
             <div class="contact-ctas">
-              <a href="tel:+36204458821" class="btn btn-accent"
+              <a class="btn btn-accent"
                 >Hívjon: +36 20 445 8821</a
               >
               <a
-                href="mailto:info@nordklima.hu"
+                href="mailto:info@szelloklima.example"
                 class="btn btn-outline"
                 style="border-color: #d6ebef; color: #d6ebef;"
-                >info@nordklima.hu</a
+                >info@szelloklima.example</a
               >
             </div>
             <p class="contact-note">
@@ -1266,6 +1276,7 @@
     </footer>
 
     <script>
+      document.documentElement.classList.add("js-ready");
       var navToggle = document.getElementById("navToggle");
       var navMobile = document.getElementById("navMobile");
       if (navToggle && navMobile) {

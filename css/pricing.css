@@ -192,6 +192,13 @@
   margin: 0;
 }
 
+.pr-extra-note {
+  margin-top: 1.2rem;
+  font-size: 0.86rem;
+  color: var(--ink-faint);
+  max-width: 60ch;
+}
+
 @media (max-width: 900px) {
   .pr-grid { grid-template-columns: 1fr; }
   .pr-card--featured { padding-top: clamp(28px, 3vw, 40px); }

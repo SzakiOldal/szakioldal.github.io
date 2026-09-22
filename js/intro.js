@@ -12,7 +12,7 @@ export function initIntro() {
     return;
   }
 
-  document.body.style.overflow = 'hidden';
+  document.documentElement.classList.add('intro-lock');
 
   requestAnimationFrame(() => {
     overlay.classList.add('is-visible');
@@ -20,7 +20,7 @@ export function initIntro() {
 
   window.setTimeout(() => {
     overlay.classList.add('is-hidden');
-    document.body.style.overflow = '';
+    document.documentElement.classList.remove('intro-lock');
     window.setTimeout(() => overlay.remove(), 550);
   }, 1100);
 }

@@ -1,0 +1,15 @@
+{
+  "name": "szakioldal-tools",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "validate:html": "html-validate --config .htmlvalidate.json \"../*.html\" \"../demo-*/index.html\"",
+    "check:tel": "node check-tel-links.mjs",
+    "check:links": "node check-internal-links.mjs",
+    "check": "npm run validate:html && npm run check:tel && npm run check:links"
+  },
+  "devDependencies": {
+    "html-validate": "^9.5.0"
+  }
+}

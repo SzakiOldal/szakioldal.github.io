@@ -29,7 +29,7 @@
         --line-soft: rgba(255, 255, 255, 0.06);
         --ink: #f5f6f4;
         --ink-dim: #a6aca9;
-        --ink-faint: #6e7472;
+        --ink-faint: #7f8583;
         --accent: #d7ff3e;
         --accent-bright: #e7ff7a;
         --accent-dim: #aecb27;
@@ -734,7 +734,7 @@
       .contact-box {
         padding: clamp(1.8rem, 4vw, 3rem);
       }
-      .contact-box h2 {
+      .contact-box h3 {
         font-size: clamp(1.8rem, 3vw + 1rem, 2.5rem);
         text-transform: uppercase;
       }
@@ -776,12 +776,36 @@
         border-radius: 2px;
         overflow: hidden;
         aspect-ratio: 4/3;
-        filter: grayscale(1) invert(0.9) contrast(0.85) brightness(0.92);
       }
       .map-frame iframe {
         width: 100%;
         height: 100%;
         border: 0;
+        filter: grayscale(1) invert(0.9) contrast(0.85) brightness(0.92);
+      }
+      .map-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: var(--surface-2, #202850);
+        border: 0;
+        cursor: pointer;
+        font-family: inherit;
+        color: var(--ink-dim);
+        font-size: 0.9rem;
+      }
+      .map-placeholder:hover {
+        background: var(--surface, #1a2140);
+        color: var(--ink);
+      }
+      .map-placeholder svg {
+        width: 34px;
+        height: 34px;
+        opacity: 0.7;
       }
 
       /* --- footer --- */
@@ -826,7 +850,7 @@
       <div class="container">
         <span
           >Munkanapokon 7–18 óra ·
-          <a href="tel:+36309984471">+36 30 998 4471</a></span
+          <a>+36 30 998 4471</a></span
         >
         <span class="badge-demo">Demo projekt — SzakiOldal portfólió</span>
       </div>
@@ -849,8 +873,8 @@
             <li><a href="#kapcsolat">Kapcsolat</a></li>
           </ul>
         </nav>
-        <a href="tel:+36309984471" class="btn btn-accent desktop-only">Hívjon most</a>
-        <button
+        <a class="btn btn-accent desktop-only">Hívjon most</a>
+        <button type="button"
           class="nav-toggle"
           id="navToggle"
           aria-label="Menü megnyitása"
@@ -865,7 +889,7 @@
         <a href="#biztonsag">Biztonság</a>
         <a href="#referenciak">Referenciák</a>
         <a href="#kapcsolat">Kapcsolat</a>
-        <a href="tel:+36309984471">Hívjon: +36 30 998 4471</a>
+        <a>Hívjon: +36 30 998 4471</a>
       </div>
     </header>
 
@@ -881,7 +905,7 @@
               időpontot, a helyszínen pedig írásban adjuk meg az árat, mielőtt elkezdenénk.
             </p>
             <div class="hero-ctas">
-              <a href="tel:+36309984471" class="btn btn-accent">Hívjon most</a>
+              <a class="btn btn-accent">Hívjon most</a>
               <a href="#szolgaltatasok" class="btn btn-outline">Szolgáltatásaink</a>
             </div>
           </div>
@@ -932,7 +956,7 @@
                   <text x="70" y="56" font-family="Public Sans, sans-serif" font-size="10" fill="#6E7472">L1</text>
                   <text x="16" y="255" font-family="Public Sans, sans-serif" font-size="10" fill="#6E7472">N</text>
                   <text x="176" y="278" font-family="Public Sans, sans-serif" font-size="10" fill="#D7FF3E">230V~</text>
-                  <text x="150" y="164" font-family="Public Sans, sans-serif" font-size="9" fill="#08090A" font-weight="700">16A</text>
+                  <text x="150" y="164" font-family="Public Sans, sans-serif" font-size="9" fill="#D7FF3E" font-weight="700">16A</text>
                 </svg>
               </div>
             </div>
@@ -1145,14 +1169,14 @@
           </div>
           <div class="contact-wrap">
             <div class="contact-box panel">
-              <h2>Beszéljünk a hálózatáról</h2>
+              <h3>Beszéljünk a hálózatáról</h3>
               <p>
                 Hívjon minket telefonon, vagy írjon emailt — munkanapokon igyekszünk még
                 aznap visszajelezni.
               </p>
               <div class="contact-ctas">
-                <a href="tel:+36309984471" class="btn btn-accent">Hívjon: +36 30 998 4471</a>
-                <a href="mailto:info@fazisvillany.hu" class="btn btn-outline">info@fazisvillany.hu</a>
+                <a class="btn btn-accent">Hívjon: +36 30 998 4471</a>
+                <a href="mailto:info@fazisvillany.example" class="btn btn-outline">info@fazisvillany.example</a>
               </div>
               <div class="contact-meta">
                 <span>Fázis Villany · Budapest</span>
@@ -1166,13 +1190,26 @@
                 Budaörs, Érd, Szentendre és Gödöllő térségében. Bizonytalan, hogy Önhöz
                 kiérünk-e? Hívjon, és azonnal megmondjuk.
               </p>
-              <div class="map-frame">
-                <iframe
-                  src="https://www.google.com/maps?q=Budapest&output=embed"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  title="Szolgáltatási terület térkép"
-                ></iframe>
+              <div class="map-frame" id="mapFrame">
+                <button
+                  type="button"
+                  class="map-placeholder"
+                  id="mapLoadBtn"
+                  aria-label="Térkép betöltése"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"
+                    />
+                    <circle cx="12" cy="10" r="2.5" />
+                  </svg>
+                  <span>Térkép betöltése</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1219,6 +1256,20 @@
         document.addEventListener("keydown", function (e) {
           if (e.key === "Escape") closeMenu();
         });
+
+        var mapBtn = document.getElementById("mapLoadBtn");
+        var mapFrame = document.getElementById("mapFrame");
+        if (mapBtn && mapFrame) {
+          mapBtn.addEventListener("click", function () {
+            var iframe = document.createElement("iframe");
+            iframe.src = "https://www.google.com/maps?q=Budapest&output=embed";
+            iframe.loading = "lazy";
+            iframe.referrerPolicy = "no-referrer-when-downgrade";
+            iframe.title = "Szolgáltatási terület térkép";
+            mapFrame.innerHTML = "";
+            mapFrame.appendChild(iframe);
+          });
+        }
       })();
     </script>
   </body>

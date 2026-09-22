@@ -207,7 +207,7 @@
   background: var(--surface-2, #171A1F);
   border-color: var(--border-strong, rgba(255,255,255,.14));
 }
-.ba-mock--after .ba-mock-dot { background: var(--ink-faint, #5C6169); }
+.ba-mock--after .ba-mock-dot { background: var(--ink-ghost, #5C6169); }
 .ba-mock--after .ba-mock-address { background: var(--border-strong, rgba(255,255,255,.14)); }
 
 .ba-mock-accentbar {
@@ -236,7 +236,7 @@
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--ink-faint, #5C6169);
+  color: var(--ink-faint, #7D838E);
 }
 
 .ba-mock-newtitle {
@@ -298,7 +298,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 8px;
   letter-spacing: 0.04em;
-  color: var(--ink-faint, #5C6169);
+  color: var(--ink-faint, #7D838E);
   border: 1px solid var(--border, rgba(255,255,255,.08));
   border-radius: 999px;
   padding: 0.35em 0.7em;

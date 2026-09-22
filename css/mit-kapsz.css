@@ -69,7 +69,7 @@
   font-weight: 500;
   font-size: clamp(2.75rem, 6vw, 4.5rem);
   line-height: 1;
-  color: var(--ink-faint);
+  color: var(--ink-ghost, var(--ink-faint));
   flex-shrink: 0;
   transition: color var(--dur-base) var(--ease-out-expo);
 }

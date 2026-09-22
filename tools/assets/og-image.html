@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; background:#08090B; overflow:hidden; }
+  .stage {
+    position:relative; width:1200px; height:630px;
+    background:
+      radial-gradient(ellipse 900px 500px at 78% 15%, rgba(62,157,255,.30), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 10% 100%, rgba(62,157,255,.10), transparent 60%),
+      #08090B;
+  }
+  .grid {
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size:56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 30% 30%, black, transparent 75%);
+            mask-image: radial-gradient(ellipse 70% 70% at 30% 30%, black, transparent 75%);
+  }
+  .content { position:relative; z-index:2; padding:76px 84px; height:100%; display:flex; flex-direction:column; justify-content:center; }
+  .eyebrow {
+    font-family:'JetBrains Mono',monospace; font-weight:500; font-size:19px; letter-spacing:.22em; text-transform:uppercase;
+    color:#7AD1FF; display:flex; align-items:center; gap:16px; margin-bottom:34px;
+  }
+  .eyebrow::before { content:""; width:40px; height:2px; background:#3E9DFF; display:inline-block; }
+  h1 {
+    font-family:'Manrope',sans-serif; font-weight:800; font-size:88px; line-height:1.02; color:#F4F5F7; letter-spacing:-.02em;
+    max-width:920px;
+  }
+  h1 .accent { color:#3E9DFF; }
+  .sub {
+    font-family:'Inter',sans-serif; font-weight:500; font-size:30px; color:#9CA1AC; margin-top:30px; max-width:760px;
+  }
+  .foot {
+    position:absolute; left:84px; bottom:56px; display:flex; align-items:center; gap:18px;
+  }
+  .mark {
+    width:52px; height:52px; border-radius:13px; background:#3E9DFF; display:flex; align-items:center; justify-content:center;
+    font-family:Georgia,serif; font-size:32px; color:#04101E; font-weight:700;
+  }
+  .wordmark { font-family:'Manrope',sans-serif; font-weight:800; font-size:26px; color:#F4F5F7; }
+  .domain { font-family:'JetBrains Mono',monospace; font-size:18px; color:#5C6169; margin-left:8px; }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="grid"></div>
+    <div class="content">
+      <div class="eyebrow">webfejlesztés szakipari vállalkozásoknak</div>
+      <h1>Weboldal, ami<br><span class="accent">dolgozik helyetted.</span></h1>
+      <div class="sub">Prémium, egyedi weboldalak víz-gáz-fűtés-, villany-, klíma- és burkolószakembereknek.</div>
+    </div>
+    <div class="foot">
+      <div class="mark">S</div>
+      <div class="wordmark">SzakiOldal</div>
+      <div class="domain">szakioldal.github.io</div>
+    </div>
+  </div>
+</body>
+</html>

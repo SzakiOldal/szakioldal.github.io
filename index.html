@@ -2,15 +2,29 @@
 <html lang="hu">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Progressive-enhancement gate: assume JS will finish, but if
+      // boot() in main.js never sets .js-ready within 4s (a blocked
+      // script, a crashed module chain, file:// CORS), drop back to the
+      // no-JS state so [data-reveal] content in css/base.css is visible.
+      document.documentElement.classList.add('js');
+      window.setTimeout(function () {
+        if (!document.documentElement.classList.contains('js-ready')) {
+          document.documentElement.classList.remove('js');
+        }
+      }, 4000);
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SzakiOldal — weboldal, ami dolgozik helyetted</title>
+    <title>Weboldalkészítés szakembereknek | SzakiOldal</title>
     <meta
       name="description"
-      content="Prémium weboldalak magyar szakipari vállalkozásoknak — víz-gáz-fűtésszerelőknek, villanyszerelőknek és más szakembereknek."
+      content="Egyedi, gyors weboldalak víz-gáz-fűtés-, villany-, klíma- és burkolószakembereknek. Árak 189 000 Ft-tól, ajánlatkérés telefonon vagy e-mailben."
     />
+    <meta name="theme-color" content="#08090B" />
     <link rel="canonical" href="https://szakioldal.github.io/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="hu_HU" />
+    <meta property="og:site_name" content="SzakiOldal" />
     <meta
       property="og:title"
       content="SzakiOldal — weboldal, ami dolgozik helyetted"
@@ -20,17 +34,21 @@
       content="Prémium weboldalak magyar szakipari vállalkozásoknak — víz-gáz-fűtésszerelőknek, villanyszerelőknek és más szakembereknek."
     />
     <meta property="og:url" content="https://szakioldal.github.io/" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://szakioldal.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="SzakiOldal — modern weboldalak szakipari vállalkozásoknak"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2308090B'/%3E%3Ctext x='50' y='69' font-size='56' font-family='Georgia,serif' fill='%233E9DFF' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
@@ -62,7 +80,7 @@
         <a href="#kapcsolat" class="nav-cta desktop-only" data-magnetic
           >Weboldalt szeretnék →</a
         >
-        <button
+        <button type="button"
           class="nav-toggle"
           id="navToggle"
           aria-label="Menü"
@@ -147,7 +165,7 @@
               <span>Új érdeklődő <strong>érkezett</strong></span>
             </div>
             <div class="chip chip-stat" style="bottom: 8%; right: -7%">
-              <span>Betöltés <strong>0.4s</strong></span>
+              <span>Villámgyors <strong>betöltés</strong></span>
             </div>
           </div>
         </div>
@@ -280,7 +298,7 @@
                     <span class="mk-viz-bar"
                       ><span class="mk-viz-bar-fill"></span
                     ></span>
-                    <span class="mk-viz-time mono">0.4s</span>
+                    <span class="mk-viz-time mono">Gyors</span>
                   </div>
                 </div>
               </div>
@@ -292,8 +310,12 @@
       <!-- ============ SHOWCASE ============ -->
       <section class="divider showcase" id="munkaink">
         <div class="container showcase-head">
-          <p class="eyebrow" data-reveal="slide-left">munkáink</p>
+          <p class="eyebrow" data-reveal="slide-left">demók</p>
           <h2 data-reveal="mask">Ilyen lehet a te weboldalad.</h2>
+          <p class="showcase-intro" data-reveal="mask" data-reveal-delay="1">
+            Négy kitalált vállalkozás, de valódi, működő weboldal &mdash; így
+            nézhet ki a tiéd.
+          </p>
         </div>
 
         <div
@@ -301,7 +323,7 @@
           role="tablist"
           aria-label="Projektek"
         >
-          <button
+          <button type="button"
             class="showcase-tab is-active"
             role="tab"
             aria-selected="true"
@@ -313,7 +335,7 @@
           >
             Víz-Gáz-Fűtés
           </button>
-          <button
+          <button type="button"
             class="showcase-tab"
             role="tab"
             aria-selected="false"
@@ -325,19 +347,19 @@
           >
             Villanyszerelő
           </button>
-          <button
+          <button type="button"
             class="showcase-tab"
             role="tab"
             aria-selected="false"
             data-target="klima"
-            data-name="Nord Klíma"
+            data-name="Szellő Klíma"
             data-tag="Klímaszerelés"
             data-link="demo-klima/index.html"
             data-live="true"
           >
             Klímaszerelő
           </button>
-          <button
+          <button type="button"
             class="showcase-tab"
             role="tab"
             aria-selected="false"
@@ -376,7 +398,6 @@
                     <iframe
                       class="showcase-frame"
                       title="Balogh Víz-Gáz-Fűtés előnézet"
-                      scrolling="no"
                       tabindex="-1"
                       aria-hidden="true"
                     ></iframe>
@@ -395,7 +416,6 @@
                     <iframe
                       class="showcase-frame"
                       title="Fázis Villany előnézet"
-                      scrolling="no"
                       tabindex="-1"
                       aria-hidden="true"
                     ></iframe>
@@ -413,8 +433,7 @@
                   <div class="showcase-frame-wrap">
                     <iframe
                       class="showcase-frame"
-                      title="Nord Klíma előnézet"
-                      scrolling="no"
+                      title="Szellő Klíma előnézet"
                       tabindex="-1"
                       aria-hidden="true"
                     ></iframe>
@@ -433,7 +452,6 @@
                     <iframe
                       class="showcase-frame"
                       title="FORMA Burkolás előnézet"
-                      scrolling="no"
                       tabindex="-1"
                       aria-hidden="true"
                     ></iframe>
@@ -448,13 +466,13 @@
             <div class="showcase-caption">
               <span class="showcase-caption-name">Balogh Víz-Gáz-Fűtés</span>
               <span class="showcase-caption-tag mono">Víz • Gáz • Fűtés</span>
-              <span class="showcase-caption-badge is-live">Élő oldal</span>
+              <span class="showcase-caption-badge is-live">Demó &middot; kitalált vállalkozás</span>
               <a
                 href="demo-vizgazfutes/index.html"
                 class="showcase-caption-link mono"
                 target="_blank"
                 rel="noopener"
-                >Élő oldal megtekintése
+                >Demó megnyitása
                 <span class="arrow" aria-hidden="true">→</span></a
               >
             </div>
@@ -599,8 +617,7 @@
               Átlátható árazás
             </h2>
             <p class="pr-sub" data-reveal="mask" data-reveal-delay="1">
-              Prémium minőség, elérhetőbb áron — nem olcsó weboldalgyártás, nem
-              irreális agency-árazás.
+              Írásos, fix árajánlat — rejtett költség nélkül.
             </p>
           </div>
 
@@ -613,10 +630,11 @@
               </p>
               <ul class="pr-card-list">
                 <li>Egyedi design</li>
-                <li>Reszponzív weboldal</li>
+                <li>Telefonon is tökéletesen működik</li>
                 <li>Főoldal, szolgáltatások, kapcsolat</li>
-                <li>Alap SEO</li>
+                <li>Alap SEO — Google-barát felépítés</li>
                 <li>Gyors betöltés</li>
+                <li>1 módosítási kör</li>
               </ul>
               <a href="#kapcsolat" class="btn btn-outline" data-magnetic
                 >Ajánlatot kérek</a
@@ -624,17 +642,18 @@
             </div>
 
             <div class="pr-card pr-card--featured">
-              <span class="pr-card-tag">Legnépszerűbb</span>
+              <span class="pr-card-tag">Ajánlott</span>
               <p class="pr-card-name">Üzleti</p>
               <p class="pr-card-price">289 000 Ft<span>-tól</span></p>
               <p class="pr-card-desc">A legtöbb szakipari vállalkozásnak.</p>
               <ul class="pr-card-list">
                 <li>Egyedi design</li>
                 <li>4–6 szekciós oldalstruktúra</li>
-                <li>Referenciák bemutatása</li>
-                <li>Kapcsolati rendszer</li>
+                <li>Munkáid bemutatása képekkel</li>
+                <li>Hívógomb + ajánlatkérő űrlap</li>
                 <li>Mobil optimalizálás + SEO alapok</li>
-                <li>Animációk, teljes technikai beállítás</li>
+                <li>Finom animációk, teljes technikai beüzemelés</li>
+                <li>2 módosítási kör</li>
               </ul>
               <a
                 href="#kapcsolat"
@@ -652,12 +671,13 @@
                 Ha a weboldal az ügyfélszerzés fő eszköze.
               </p>
               <ul class="pr-card-list">
-                <li>Teljesen egyedi UI/UX</li>
+                <li>Teljesen egyedi felület és élmény</li>
                 <li>Egyedi animációk</li>
                 <li>Összetettebb oldalszerkezet</li>
-                <li>Referencia / portfólió rendszer</li>
-                <li>Konverzió-orientált CTA-k</li>
+                <li>Részletes referencia / portfólió rendszer</li>
+                <li>Jól átgondolt, hívásra ösztönző felépítés</li>
                 <li>Technikai SEO + teljes mobil optimalizálás</li>
+                <li>3 módosítási kör</li>
               </ul>
               <a href="#kapcsolat" class="btn btn-outline" data-magnetic
                 >Beszéljünk róla</a
@@ -668,7 +688,9 @@
           <p class="pr-note" data-reveal="mask">
             A feltüntetett árak tájékoztató jellegűek. A végleges ajánlat az
             oldal összetettsége, tartalma és az egyedi funkciók alapján kerül
-            meghatározásra.
+            meghatározásra. Minden csomag ára tartalmazza az első évre szóló
+            domain-regisztrációt és tárhelyet; a fizetés jellemzően előlegből
+            és záró részletből áll, a pontos ütemezést az ajánlat rögzíti.
           </p>
 
           <div class="pr-extra" data-reveal="mask">
@@ -681,13 +703,112 @@
               <p class="pr-extra-value">egyedi ajánlat alapján</p>
             </div>
             <div class="pr-extra-item">
-              <p class="pr-extra-label">Karbantartás</p>
+              <p class="pr-extra-label">Gondoskodás (karbantartás)</p>
               <p class="pr-extra-value">12 900 Ft / hó-tól</p>
             </div>
             <div class="pr-extra-item">
               <p class="pr-extra-label">Tartalmi segítség</p>
               <p class="pr-extra-value">egyedi ajánlat alapján</p>
             </div>
+          </div>
+          <p class="pr-extra-note" data-reveal="mask">
+            A Gondoskodás tartalma: domain- és tárhelymegújítás, üzemidő-
+            figyelés, mentés, és havonta 1 kisebb tartalmi módosítás.
+            Kötelezettség nélkül, bármikor lemondható — a domain és a kód
+            közben is a tiéd marad.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ GYIK ============ -->
+      <section class="divider faq-section" id="gyik">
+        <div class="container faq-container">
+          <p class="eyebrow" data-reveal="blur">Gyakori kérdések</p>
+          <h2 data-reveal="mask">Amit a hívás előtt úgyis megkérdeznél.</h2>
+          <div class="faq-list" data-reveal="mask" data-reveal-delay="1">
+            <details class="faq-item">
+              <summary>Van Facebook-oldalam, kell weboldal is?</summary>
+              <div class="faq-answer">
+                <p>
+                  A Facebook-oldal nem a tiéd, és a Google-keresésben sem
+                  jelenik meg jól. A weboldal az, amit teljesen te
+                  irányítasz — ide érkeznek a Google-ből, ajánlásból vagy a
+                  névjegykártyádról jövők. A kettő kiegészíti egymást.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Mennyi idő alatt készül el a weboldal?</summary>
+              <div class="faq-answer">
+                <p>
+                  A csomagtól és attól függ, milyen gyorsan érkezik meg
+                  tőled a szöveg és a pár fotó, amire szükségem van. A
+                  pontos határidőt az írásos árajánlat rögzíti, mielőtt
+                  elkezdenénk.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Kié lesz a domain és a tárhely?</summary>
+              <div class="faq-answer">
+                <p>
+                  A domain a te neveden fut, a tárhely az első évre a
+                  csomagár része. A kész oldal kódja is a tiéd — ha
+                  szeretnéd, bármikor átviheted máshova.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Mi van, ha indulás után módosítanék valamit?</summary>
+              <div class="faq-answer">
+                <p>
+                  Minden csomag tartalmaz módosítási kört (Induló: 1,
+                  Üzleti: 2, Prémium: 3). Ezen felül, vagy már az élesítés
+                  után is, egyedi ajánlat alapján szívesen segítek.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Van rejtett költség?</summary>
+              <div class="faq-answer">
+                <p>
+                  Nincs. Az árajánlat írásban rögzíti, mi tartozik bele.
+                  Amit ez nem fed le (pl. extra aloldal, egyedi funkció),
+                  arról előre szólok, mielőtt elkezdeném — nem a végén
+                  derül ki.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Hogyan fizetek?</summary>
+              <div class="faq-answer">
+                <p>
+                  Jellemzően előlegből és egy záró részletből, a pontos
+                  ütemezést az árajánlat rögzíti.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Ki írja meg a weboldal szövegét?</summary>
+              <div class="faq-answer">
+                <p>
+                  Alapból te adod meg a tartalmat (szolgáltatások,
+                  elérhetőségek, pár fotó) — ha ebben segítség kell, azt
+                  egyedi ajánlat alapján be tudom vállalni.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Miért egy 20 éves fejlesztőtől rendeljek?</summary>
+              <div class="faq-answer">
+                <p>
+                  Jogos kérdés. Ezért nem ígéretekkel, hanem írásban
+                  vállalt dolgokkal dolgozom: fix árajánlat, élő előnézet
+                  az utolsó részlet előtt, a domain a te neveden. A fenti
+                  négy mintaoldal megmutatja, mire számíthatsz.
+                </p>
+              </div>
+            </details>
           </div>
         </div>
       </section>
@@ -767,6 +888,28 @@
         </div>
       </section>
 
+      <!-- ============ KI VAGYOK ============ -->
+      <section class="divider who-section" id="rolam">
+        <div class="container who-grid">
+          <div class="who-avatar" data-reveal="scale" aria-hidden="true">HB</div>
+          <div class="who-content">
+            <p class="eyebrow" data-reveal="slide-left">ki vagyok</p>
+            <h2 data-reveal="mask">Hajzer Bence vagyok.</h2>
+            <p class="who-lede" data-reveal="mask" data-reveal-delay="1">
+              Egyszemélyes stúdió vagyok: az első hívástól az élesítésig én
+              foglalkozom a weboldaladdal — nincs alvállalkozó, nincs
+              ügyfélszolgálati sor, engem hívsz.
+            </p>
+            <ul class="who-promises" data-reveal="mask" data-reveal-delay="2">
+              <li>Írásos árajánlat, mielőtt bármi elkezdődik</li>
+              <li>Fix hatókör — előre tudod, pontosan mit kapsz</li>
+              <li>Élő előnézetet látsz, mielőtt az utolsó részlet befizetnéd</li>
+              <li>A domain a te neveden fut, a kész oldal kódja a tiéd</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <!-- ============ CTA ============ -->
       <section class="divider cta-section" id="kapcsolat">
         <div class="container cta-inner">
@@ -774,21 +917,37 @@
             kapcsolat
           </p>
           <h2 class="cta-title" data-reveal="mask" data-reveal-delay="1">
-            Készen állsz a következő szintre?
+            Beszéljünk 10 percet.
           </h2>
           <p class="cta-sub" data-reveal="mask" data-reveal-delay="2">
-            Nézzük meg együtt, mit tudunk kezdeni a weboldaladdal.
+            Az első hívás rövid és nem kötelez semmire — elmondod, mire
+            van szükséged, én pedig megmondom, hogyan és mennyiért tudom
+            megcsinálni.
           </p>
           <div class="cta-ctas" data-reveal="scale" data-reveal-delay="3">
             <a
-              href="mailto:szakioldal@outlook.hu"
+              href="tel:+36307134323"
               class="btn btn-primary"
               data-magnetic
               data-cursor="view"
-              >Beszéljünk róla <span class="arrow">→</span></a
+              >Hívjon most <span class="arrow">→</span></a
             >
-            <a href="tel:+307134323" class="btn btn-outline" data-magnetic
-              >+36 30 713 4323</a
+            <a href="sms:+36307134323" class="btn btn-outline" data-magnetic
+              >SMS küldése</a
+            >
+            <a
+              href="https://wa.me/36307134323"
+              class="btn btn-outline"
+              data-magnetic
+              target="_blank"
+              rel="noopener"
+              >WhatsApp</a
+            >
+            <a
+              href="mailto:szakioldal@outlook.hu"
+              class="btn btn-outline"
+              data-magnetic
+              >E-mail</a
             >
           </div>
         </div>
@@ -825,7 +984,7 @@
             <p class="foot-col-title">Kapcsolat</p>
             <ul class="foot-links">
               <li><a href="mailto:szakioldal@outlook.hu">szakioldal@outlook.hu</a></li>
-              <li><a href="tel:+307134323">+36 30 713 4323</a></li>
+              <li><a href="tel:+36307134323">+36&nbsp;30&nbsp;713&nbsp;4323</a></li>
             </ul>
           </div>
         </div>

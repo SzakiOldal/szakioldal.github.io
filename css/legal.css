@@ -80,6 +80,7 @@
 .legal-footer a { font-size: 0.85rem; color: var(--ink-faint); }
 .legal-footer a:hover { color: var(--accent-2); }
 .legal-footer .foot-fine { font-size: 0.78rem; color: var(--ink-faint); font-family: var(--font-mono); margin: 0; }
+.legal-footer-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
 
 @media (max-width: 560px) {
   .legal-footer .container { flex-direction: column; align-items: flex-start; }

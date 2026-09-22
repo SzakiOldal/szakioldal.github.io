@@ -1,3 +1,5 @@
+const SHOWCASE_DESIGN_WIDTH = 1440;
+
 export function initShowcase() {
   const stage = document.querySelector('.showcase-stage');
   if (!stage) return;
@@ -10,6 +12,32 @@ export function initShowcase() {
   const badgeEl = document.querySelector('.showcase-caption-badge');
   const urlEl = document.getElementById('showcaseUrl');
   if (!tabs.length || !panels.length) return;
+
+  // Scale every demo iframe to a real ~1440px desktop layout instead of an
+  // arbitrary crop, so the preview is actually readable at any frame size.
+  function rescaleFrames() {
+    const wrap = stage.querySelector('.showcase-frame-wrap');
+    if (!wrap) return;
+    const w = wrap.clientWidth;
+    const h = wrap.clientHeight;
+    if (!w || !h) return;
+    const scale = w / SHOWCASE_DESIGN_WIDTH;
+    panels.forEach((p) => {
+      const frame = p.querySelector('.showcase-frame');
+      if (!frame) return;
+      frame.style.width = SHOWCASE_DESIGN_WIDTH + 'px';
+      frame.style.height = h / scale + 'px';
+      frame.style.transform = 'scale(' + scale + ')';
+    });
+  }
+  rescaleFrames();
+  if (typeof ResizeObserver === 'function') {
+    const ro = new ResizeObserver(rescaleFrames);
+    const firstWrap = stage.querySelector('.showcase-frame-wrap');
+    if (firstWrap) ro.observe(firstWrap);
+  } else {
+    window.addEventListener('resize', rescaleFrames, { passive: true });
+  }
 
   function loadPanel(panel) {
     if (!panel || panel.classList.contains('is-loading') || panel.classList.contains('is-loaded')) return;
@@ -53,9 +81,8 @@ export function initShowcase() {
       urlEl.textContent = 'szakioldal.github.io/' + activePanel.dataset.src.replace('/index.html', '');
     }
     if (badgeEl) {
-      const isLive = tab.dataset.live === 'true';
-      badgeEl.textContent = isLive ? 'Élő oldal' : 'Koncepció';
-      badgeEl.classList.toggle('is-live', isLive);
+      badgeEl.textContent = 'Demó · kitalált vállalkozás';
+      badgeEl.classList.add('is-live');
     }
     if (linkEl) {
       if (tab.dataset.link) {
@@ -63,7 +90,7 @@ export function initShowcase() {
         linkEl.style.visibility = 'visible';
         linkEl.textContent = '';
         const label = document.createElement('span');
-        label.textContent = tab.dataset.live === 'true' ? 'Élő oldal megtekintése ' : 'Weboldal megtekintése ';
+        label.textContent = 'Demó megnyitása ';
         const arrow = document.createElement('span');
         arrow.className = 'arrow';
         arrow.setAttribute('aria-hidden', 'true');

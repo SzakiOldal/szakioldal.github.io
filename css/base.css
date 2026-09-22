@@ -1,9 +1,17 @@
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 88px; color-scheme: dark; }
 
 html, body {
   overflow-x: hidden;
   max-width: 100%;
+}
+
+/* Scroll-lock while the mobile menu or the intro overlay is open. Applied
+   on html (not via an inline body.style.overflow toggle) so it reliably
+   locks the viewport regardless of how html/body propagate overflow. */
+html.nav-open,
+html.intro-lock {
+  overflow-y: hidden;
 }
 
 body {
@@ -107,53 +115,56 @@ section { padding-block: clamp(72px, 11vw, 160px); }
 .btn .arrow { transition: transform var(--dur-fast) var(--ease-out-expo); }
 .btn:hover .arrow { transform: translateX(4px); }
 
-/* ---------- Central scroll-reveal system ---------- */
-[data-reveal] { will-change: opacity, transform, filter, clip-path; }
+/* ---------- Central scroll-reveal system ----------
+   Gated behind html.js: if the boot script never runs (blocked script,
+   file:// CORS, a crashed module), [data-reveal] elements simply render
+   in their normal, fully-visible state instead of staying hidden forever. */
+.js [data-reveal] { will-change: opacity, transform, filter, clip-path; }
 
-[data-reveal="mask"] {
+.js [data-reveal="mask"] {
   clip-path: inset(0 0 100% 0);
   opacity: 1;
   transition: clip-path var(--dur-slow) var(--ease-out-expo);
 }
-[data-reveal="mask"].is-revealed { clip-path: inset(0 0 0% 0); }
+.js [data-reveal="mask"].is-revealed { clip-path: inset(0 0 0% 0); }
 
-[data-reveal="scale"] {
+.js [data-reveal="scale"] {
   opacity: 0;
   transform: scale(0.92);
   transition: opacity var(--dur-base) var(--ease-out-expo),
               transform var(--dur-base) var(--ease-out-expo);
 }
-[data-reveal="scale"].is-revealed { opacity: 1; transform: scale(1); }
+.js [data-reveal="scale"].is-revealed { opacity: 1; transform: scale(1); }
 
-[data-reveal="blur"] {
+.js [data-reveal="blur"] {
   opacity: 0;
   filter: blur(14px);
   transition: opacity var(--dur-base) var(--ease-out-expo),
               filter var(--dur-base) var(--ease-out-expo);
 }
-[data-reveal="blur"].is-revealed { opacity: 1; filter: blur(0); }
+.js [data-reveal="blur"].is-revealed { opacity: 1; filter: blur(0); }
 
-[data-reveal="slide-left"] {
+.js [data-reveal="slide-left"] {
   opacity: 0;
   transform: translateX(-40px);
   transition: opacity var(--dur-base) var(--ease-out-expo),
               transform var(--dur-base) var(--ease-out-expo);
 }
-[data-reveal="slide-left"].is-revealed { opacity: 1; transform: translateX(0); }
+.js [data-reveal="slide-left"].is-revealed { opacity: 1; transform: translateX(0); }
 
-[data-reveal="slide-right"] {
+.js [data-reveal="slide-right"] {
   opacity: 0;
   transform: translateX(40px);
   transition: opacity var(--dur-base) var(--ease-out-expo),
               transform var(--dur-base) var(--ease-out-expo);
 }
-[data-reveal="slide-right"].is-revealed { opacity: 1; transform: translateX(0); }
+.js [data-reveal="slide-right"].is-revealed { opacity: 1; transform: translateX(0); }
 
-[data-reveal-delay="1"] { transition-delay: 90ms; }
-[data-reveal-delay="2"] { transition-delay: 180ms; }
-[data-reveal-delay="3"] { transition-delay: 270ms; }
-[data-reveal-delay="4"] { transition-delay: 360ms; }
-[data-reveal-delay="5"] { transition-delay: 450ms; }
+.js [data-reveal-delay="1"] { transition-delay: 90ms; }
+.js [data-reveal-delay="2"] { transition-delay: 180ms; }
+.js [data-reveal-delay="3"] { transition-delay: 270ms; }
+.js [data-reveal-delay="4"] { transition-delay: 360ms; }
+.js [data-reveal-delay="5"] { transition-delay: 450ms; }
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {

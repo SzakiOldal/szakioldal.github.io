@@ -26,7 +26,7 @@
         --surface: #fffdf9;
         --ink: #1e1a15;
         --ink-dim: #5c5548;
-        --ink-faint: #8c8371;
+        --ink-faint: #6c6557;
         --line: #ddd3bf;
         --sand: #d8cbb0;
         --bronze: #9c6b44;
@@ -103,7 +103,7 @@
         font-size: 0.78rem;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: var(--bronze);
+        color: var(--bronze-dark);
         margin: 0 0 1em;
         display: flex;
         align-items: center;
@@ -216,7 +216,7 @@
         display: block;
         padding-block: 0.3rem;
       }
-      @media (max-width: 860px) {
+      @media (max-width: 1040px) {
         .nav-links,
         .btn.desktop-only {
           display: none;
@@ -246,11 +246,11 @@
         min-height: 44px;
       }
       .btn-accent {
-        background: var(--bronze);
+        background: var(--bronze-dark);
         color: var(--on-accent);
       }
       .btn-accent:hover {
-        background: var(--bronze-dark);
+        background: var(--bronze);
         transform: translateY(-1px);
       }
       .btn-outline {
@@ -446,10 +446,12 @@
         bottom: 16px;
         color: var(--on-accent);
       }
-      .tile-info h3 {
+      .tile-info h3,
+      .tile-info .tile-info-title {
         color: var(--on-accent);
         font-size: clamp(1.05rem, 1.1vw + 0.8rem, 1.5rem);
         font-weight: 600;
+        margin: 0;
       }
       .tile-info p {
         margin: 0.35em 0 0;
@@ -787,7 +789,7 @@
   <body>
     <div class="topbar">
       <div class="container">
-        <span>Csempézés · Járólap · Fürdőszoba · Terasz · <a href="tel:+36204813357">+36 20 481 3357</a></span>
+        <span>Csempézés · Járólap · Fürdőszoba · Terasz · <a>+36 20 481 3357</a></span>
         <span class="badge-demo">Demo projekt — SzakiOldal portfólió</span>
       </div>
     </div>
@@ -812,7 +814,7 @@
           <li><a href="#kapcsolat">Kapcsolat</a></li>
         </ul>
         <a href="#kapcsolat" class="btn btn-accent desktop-only">Árajánlatot kérek</a>
-        <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="navMobile">
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="navMobile">
           ☰
         </button>
       </div>
@@ -822,7 +824,7 @@
         <a href="#folyamat">Folyamat</a>
         <a href="#anyagok">Anyagok</a>
         <a href="#kapcsolat">Kapcsolat</a>
-        <a href="tel:+36204813357">Hívjon: +36 20 481 3357</a>
+        <a>Hívjon: +36 20 481 3357</a>
       </div>
     </header>
 
@@ -849,7 +851,7 @@
                 <div class="tile-scrim" aria-hidden="true"></div>
                 <span class="tile-tag">Koncepció</span>
                 <div class="tile-info">
-                  <h3>Márvány-hatású felület</h3>
+                  <p class="tile-info-title">Márvány-hatású felület</p>
                   <p>Illusztráció a jellemző anyaghasználatról.</p>
                 </div>
               </article>
@@ -1109,7 +1111,7 @@
             <dl>
               <div>
                 <dt>Telefon</dt>
-                <dd><a href="tel:+36204813357">+36 20 481 3357</a></dd>
+                <dd><a>+36 20 481 3357</a></dd>
               </div>
               <div>
                 <dt>E-mail</dt>
@@ -1121,7 +1123,7 @@
               </div>
             </dl>
             <div class="contact-ctas">
-              <a href="tel:+36204813357" class="btn btn-accent">Hívjon most</a>
+              <a class="btn btn-accent">Hívjon most</a>
               <a href="mailto:info@formaburkolas.hu" class="btn btn-outline">Írjon e-mailt</a>
             </div>
           </div>
