@@ -10,6 +10,6 @@
     "check": "npm run validate:html && npm run check:tel && npm run check:links"
   },
   "devDependencies": {
-    "html-validate": "^9.5.0"
+    "html-validate": "^11.16.0"
   }
 }
